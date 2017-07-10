@@ -7,11 +7,11 @@ import { CardComponent } from './card.component';
     imports: [
         RouterModule.forChild([
             {
-                path: 'tasks',
+                path: 'game-configuration',
                 component: CardComponent,
             }
         ])
     ],
     exports: [RouterModule]
 })
-export class TasksRoutingModule { }
+export class GameConfigurationModule { }
