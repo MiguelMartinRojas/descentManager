@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Descent.Web", "Portal\Descent.Web.csproj", "{15F28DB6-D43C-488E-B262-0C5735D75358}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{539825C0-F86B-4EBE-B5F3-117D4BBDEC97}"
+	ProjectSection(SolutionItems) = preProject
+		..\.nuget\nuget.config = ..\.nuget\nuget.config
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{15F28DB6-D43C-488E-B262-0C5735D75358}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15F28DB6-D43C-488E-B262-0C5735D75358}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15F28DB6-D43C-488E-B262-0C5735D75358}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15F28DB6-D43C-488E-B262-0C5735D75358}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,15 @@
+:host {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.snackbar-icon {
+    fill: #c10606;
+    padding-right: 16px;
+    min-width: 20px;
+}
+
+.snackbar-message {
+    font-size: 0.875rem;
+}

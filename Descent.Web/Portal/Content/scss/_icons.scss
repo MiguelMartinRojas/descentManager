@@ -1,0 +1,92 @@
+.primary-icon {
+    color: mat-color($primary, 900);
+        
+    path {
+        fill: mat-color($primary, 900);
+    }
+}
+
+.secondary-icon {
+    color: mat-color($primary, 700);
+    
+    path {
+        fill: mat-color($primary, 700);
+    }
+}
+
+.green-icon {
+    color: #5D9834;
+
+    path {
+        fill: #5D9834;
+    }
+}
+
+.red-icon {
+    color: mat-color($warn, 500);
+
+    path {
+        fill: mat-color($warn, 500);
+    }
+}
+
+.orange-icon {
+    color: #ED6F19;
+
+    path {
+        fill: #ED6F19;
+    }
+}
+
+.grey-icon {
+    color: mat-color($primary, 300);
+
+    path {
+        fill: mat-color($primary, 300);
+    }
+}
+
+.primary-500-icon {
+    color: mat-color($primary, 500);
+}
+
+.enormous-icon {
+    height: 125px !important;
+    width: 125px !important;
+    font-size: 125px !important;
+}
+
+.very-big-icon {
+    height: 100px !important;
+    width: 100px !important;
+    font-size: 100px !important;
+}
+
+.big-icon {
+    height: 32px !important;
+    width: 32px !important;
+    font-size: 32px !important;
+}
+
+.medium-icon {
+    height: 20px !important;
+    width: 20px !important;
+    font-size: 20px !important;
+}
+
+.arrow-icon {
+    height: 28px !important;
+    width: 28px !important;
+    font-size: 28px !important;
+}
+
+.importance-icon {
+    height: 16px !important;
+    width: 8px !important;
+    font-size: 16px !important;
+    vertical-align: middle;
+}
+
+.selectable-icon {
+    cursor: pointer;
+}

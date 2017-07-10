@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 230 230" xml:space="preserve">
+    <g transform="translate(15,15)">
+        <path d="M 100,0 A 100,100 0 0 0 69.1,4.9" stroke="#58C2E7" fill="none" stroke-width="25"></path>
+        <path d="M 69.1,4.9 A 100,100 0 0 0 6.3,65.4" stroke="#F08C3B" fill="none" stroke-width="25"></path>
+        <path d="M 6.3,65.4 A 100,100 0 0 0 115.6,198.76" stroke="#ABB3B7" fill="none" stroke-width="25"></path>
+        <linearGradient id="greenwhite" gradientUnits="objectBoundingBox" x1="1" y1="1" x2="0" y2="1">
+            <stop offset="0" style="stop-color: #ADC34B; stop-opacity: 1;" />
+            <stop offset="0.66" style="stop-color: #ADC34B; stop-opacity: 0;" />
+        </linearGradient>
+        <path d="M 115.6,198.76 A 100,100 0 0 0 200,101" stroke="#ADC34B" fill="none" stroke-width="25"></path>
+        <path d="M 200,101 A 100,100 0 0 0 100,0" stroke="url(#greenwhite)" fill="none" stroke-width="25"></path>
+    </g>
+</svg>

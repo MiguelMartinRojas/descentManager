@@ -1,0 +1,15 @@
+<div class = "master-detail" fxLayout.lt-md="column">
+    <div class = "master" fxFlex.gt-sm="30" fxFlex.lt-md="100" [fxShow.lt-md] = "!hideMaster">
+        <router-outlet></router-outlet>
+    </div>
+    <div class = "detail" fxFlex="100" [fxShow.lt-md] = "hideMaster">
+        <div [fxShow.gt-sm] = "hideMaster" class="detail-container">
+            <router-outlet name="details"></router-outlet>
+        </div>
+        <div fxLayout="column" class="no-detail" fxHide [fxShow.gt-sm] = "!hideMaster">
+            <md-icon svgIcon="ic_document_draft" class="enormous-icon grey-icon"></md-icon>
+            <h1>{{selectTaskTitle | async}}</h1>
+            <span>{{chooseItemTitle | async}}</span>
+        </div>
+    </div>
+</div>

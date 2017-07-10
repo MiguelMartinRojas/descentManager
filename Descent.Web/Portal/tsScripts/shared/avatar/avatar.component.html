@@ -1,0 +1,8 @@
+﻿<ng-container [ngSwitch]="!!img">
+    <img *ngSwitchCase="true" [src]="img" [alt]="title" class="img-avatar"/>
+    <div *ngSwitchCase="false" class="avatar-card">
+        <span class="initials">
+            {{initials}}
+        </span>
+    </div>
+</ng-container>

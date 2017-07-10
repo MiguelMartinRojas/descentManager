@@ -1,0 +1,26 @@
+﻿<md-toolbar class="toolbar md-elevation-z6">
+    <div class="header container-fluid" fxLayout="row" fxLayoutAlign="start center">
+        <div fxLayout="row">
+            <md-icon *ngIf="mustActivateBackButton" class="primary-icon arrow-icon" svgIcon="ic_arrow_left" (click)="backToMaster()"  fxHide [fxShow.lt-md]="mustActivateBackButton"></md-icon>
+        </div>
+        <span fxFlex="auto"></span>
+        <md-menu #menu="mdMenu">
+            <a md-menu-item (click)="reloadPage();">
+                <span>Refresh</span>
+            </a>
+            <a md-menu-item (click)="showAbout();">
+                <span>About</span>
+            </a>
+            <a md-menu-item href="{{logOutUrl}}" class="warn-button">
+                <span>Log out</span>
+            </a>
+        </md-menu>
+        <button md-icon-button [mdMenuTriggerFor]="menu">
+            <md-icon class="primary-icon">more_vert</md-icon>
+        </button>
+    </div>
+</md-toolbar>
+
+<div class="main-container">
+    <router-outlet></router-outlet>
+</div>

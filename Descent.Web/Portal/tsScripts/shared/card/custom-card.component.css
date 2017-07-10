@@ -1,0 +1,16 @@
+.custom-card {
+    border: solid 1px #d2d6d9;
+    min-height: 120px;
+    margin-bottom: 36px;
+    background-color: white;
+}
+.custom-card-header {
+    background-color: #f5f6f6;
+    padding: 11px 16px 10px 16px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+ }
+
+.custom-card-content-container {
+    padding: 11px 16px 10px 16px;
+}

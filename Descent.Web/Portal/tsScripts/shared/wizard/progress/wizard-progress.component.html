@@ -1,0 +1,7 @@
+﻿<div class="wizard-footer">
+    <button md-button [class.hidden]="wizard.isOnFirstStep()" wz-previous>Previous</button>
+
+    {{wizard.currentStep}} / {{wizard.steps}}
+
+    <button md-button wz-next>{{wizard.isOnFinalStep() ? 'Finish' : 'Next'}}</button>
+</div>

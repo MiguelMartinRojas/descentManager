@@ -1,0 +1,9 @@
+﻿<md-card>
+    <md-card-header (click)="onClick.emit($event)">
+        <avatar *ngIf="avatar !== false" md-card-avatar [img]="avatar" [title]="title"></avatar>
+        <md-card-title>{{title}}</md-card-title>
+        <md-card-title>{{description}}</md-card-title>
+        <md-icon *ngIf="icon" [color]="color" style="position: absolute; right: 24px;">{{icon}}</md-icon>
+    </md-card-header>
+    <ng-content></ng-content>
+</md-card>

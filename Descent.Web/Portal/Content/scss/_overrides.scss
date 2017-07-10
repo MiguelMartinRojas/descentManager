@@ -1,0 +1,70 @@
+body {
+
+    // Cards
+    @media (max-width: 960px) {
+        .mat-card-header > .mat-card-header-text {
+            margin: 0px;
+        }
+    }
+
+    .mat-card-title {
+        margin-bottom: 10px;
+    }
+
+    // Dialogs
+    .mat-dialog-container {
+        max-width: calc(100vw - 32px) !important;
+        max-height: calc(100vh - 32px) !important;
+        transform: none !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+    }
+
+    // Buttons
+    .mat-raised-button {
+        box-shadow: none;
+    }
+
+    .mat-raised-button.mat-accent{
+        &[disabled] {
+            color: white;
+            background-color: mat-color($accent, 500);
+            opacity: 0.3;
+        }
+    }
+
+    .mat-raised-button.mat-warn{
+        &[disabled] {
+            color: white;
+            background-color: mat-color($warn, 500);
+            opacity: 0.3;
+        }
+    }
+
+    // Inputs
+    .input .mat-input-placeholder{
+        color: mat-color($primary, 900);
+    }
+
+    .input .mat-input-underline{
+        border-color: mat-color($primary, 900);
+    }
+
+    .input .mat-input-ripple{
+        background-color: mat-color($accent, 500);
+    }
+
+    .input.mat-focused label{
+        padding-top: 18px;
+    }
+
+    // Overlay
+    .cdk-overlay-backdrop {
+        opacity: 0.8 !important;
+        background: mat-color($primary, A700);
+    }
+
+    .large-content-margin.mat-divider {
+        margin: 16px 0px !important;
+    }
+}

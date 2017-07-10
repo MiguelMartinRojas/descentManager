@@ -1,0 +1,15 @@
+﻿<div fxLayout="column" fxFlex>
+    <search-bar delay="200" (onSearch)="filter($event)"></search-bar>
+    <div fxLayout="row" fxFlex="100%">
+        <button color="{{modeAsc ? 'accent' : 'primary'}}" md-raised-button fxFlex (click)="setOrder(true)">A-Z</button>
+        <button color="{{modeAsc ? 'primary' : 'accent'}}" md-raised-button fxFlex (click)="setOrder(false)">Z-A</button>
+    </div>
+    
+    <div fxFlex>
+        <div class="item" [ngClass]="{'selectable': selectable}" *ngFor="let item of data" (click)="selectable && selected(item)">
+            <ng-template [ngTemplateOutlet]="tmpl" [ngOutletContext]="{ item: item }">
+            </ng-template>
+        </div>
+        
+    </div>
+</div>

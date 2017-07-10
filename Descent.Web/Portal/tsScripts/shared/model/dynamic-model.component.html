@@ -1,0 +1,6 @@
+﻿<div [formGroup]="form">
+    <ng-container [ngSwitch]="isTemplateMode()">
+        <dynamic-template-item *ngSwitchCase="true" [templateSchema]="suggestions" [schema]="innerSchema" [form]="form"></dynamic-template-item>
+        <dynamic-item *ngSwitchCase="false" [schema]="innerSchema" [form]="form"></dynamic-item>
+    </ng-container>
+</div>
