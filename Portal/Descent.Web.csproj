@@ -294,7 +294,6 @@
     <Content Include="tsScripts\app.component.html" />
     <Content Include="tsScripts\shared\avatar\avatar.component.css" />
     <Content Include="tsScripts\shared\avatar\avatar.component.html" />
-    <Content Include="tsScripts\shared\card\simple-card.component.html" />
     <Content Include="tsScripts\shared\model\dynamic-model.component.html" />
     <Content Include="tsScripts\shared\model\item\dynamic-item.component.html" />
     <Content Include="tsScripts\shared\model\template-item\dynamic-template-item.component.html" />
@@ -452,17 +451,107 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <CopyAllFilesToSingleFolderForPackageDependsOn>
-      $(CopyAllFilesToSingleFolderForPackageDependsOn);
-      CollectNpmContent;
-      CollectNpmScriptsLibs;
-      CollectNpmScriptsDist;
+    <CopyAllFilesToSingleFolderForPackageDependsOn>
+
+
+
+
+
+
+
+
+
+      $(CopyAllFilesToSingleFolderForPackageDependsOn);
+
+
+
+
+
+
+
+
+
+      CollectNpmContent;
+
+
+
+
+
+
+
+
+
+      CollectNpmScriptsLibs;
+
+
+
+
+
+
+
+
+
+      CollectNpmScriptsDist;
+
+
+
+
+
+
+
+
+
     </CopyAllFilesToSingleFolderForPackageDependsOn>
-    <CopyAllFilesToSingleFolderForMsdeployDependsOn>
-      $(CopyAllFilesToSingleFolderForMsdeployDependsOn);
-      CollectNpmContent;
-      CollectNpmScriptsLibs;
-      CollectNpmScriptsDist;
+    <CopyAllFilesToSingleFolderForMsdeployDependsOn>
+
+
+
+
+
+
+
+
+
+      $(CopyAllFilesToSingleFolderForMsdeployDependsOn);
+
+
+
+
+
+
+
+
+
+      CollectNpmContent;
+
+
+
+
+
+
+
+
+
+      CollectNpmScriptsLibs;
+
+
+
+
+
+
+
+
+
+      CollectNpmScriptsDist;
+
+
+
+
+
+
+
+
+
     </CopyAllFilesToSingleFolderForMsdeployDependsOn>
   </PropertyGroup>
   <Target Name="CollectNpmContent">
