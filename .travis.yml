@@ -22,3 +22,9 @@ notifications:
   email:
     on_failure: change
     on_success: change
+    
+deploy:
+  provider: azure_web_apps
+  username: aweloska1       # If AZURE_WA_USERNAME isn't set
+  password: 12345abcde   # If AZURE_WA_PASSWORD isn't set
+  site: descent-manager       # If AZURE_WA_SITE isn't set
