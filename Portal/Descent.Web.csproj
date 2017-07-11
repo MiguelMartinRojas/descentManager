@@ -417,7 +417,6 @@
     <TypeScriptCompile Include="tsScripts\shared\services\title\title.service.ts" />
     <TypeScriptCompile Include="tsScripts\shared\services\title\title.model.ts" />
     <TypeScriptCompile Include="tsScripts\tasks\card.component.ts" />
-    <Content Include="tsScripts\tasks\card.component.html" />
     <TypeScriptCompile Include="tsScripts\tasks\game-configuration.module.ts" />
     <TypeScriptCompile Include="tsScripts\tasks\game-configuration-routing.module.ts" />
     <Content Include="tsScripts\game-configuration\card.component.html" />
