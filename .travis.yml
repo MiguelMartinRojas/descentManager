@@ -12,7 +12,7 @@ before_script:
   - npm install
 
 script:
-  - npm run build:jit
+  - npm run build
   - cd ..
 
 after_success:
@@ -29,9 +29,11 @@ before_deploy:
 deploy:
   provider: azure_web_apps
   username: aweloska1       # If AZURE_WA_USERNAME isn't set
-  password: 12345abcde   # If AZURE_WA_PASSWORD isn't set
+  password: $password   # If AZURE_WA_PASSWORD isn't set
   site: descent-manager       # If AZURE_WA_SITE isn't set
   verbose: true
   
 after_deploy:
   - git reset --hard
+after_success:
+    "curl --ftp-create-dirs -T uploadfilename -u aweloska1:$password ftp://sitename.com/directory/myfile"
