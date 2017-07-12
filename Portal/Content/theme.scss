@@ -1,0 +1,83 @@
+@import '../node_modules/@angular/material/theming';
+@include mat-core();
+
+
+$palete-primary: ( 50: #f5f6f6, 100: #eff0f1, 200: #e7e9ea, 300: #d2d6d9, 400: #bdc3c6, 500: #a9b1b5, 600: #959ea4, 700: #7c878e, 800: #6c777c, 900: #4c5358, A100: #fcfeff, A200: #e8eef2, A400: #949fa6, A700: #4a5c69, contrast: ( 50: $black-87-opacity, 100: $black-87-opacity, 200: $black-87-opacity, 300: $black-87-opacity, 400: $black-87-opacity, 500: $black-87-opacity, 600: $black-87-opacity, 700: $black-87-opacity, 800: white, 900: white, A100: $black-87-opacity, A200: $black-87-opacity, A400: $black-87-opacity, A700: white, ) );
+
+$palete-accent: ( 50 : #46baf1, 100 : #2eb2ef, 200 : #16a9ed, 300 : #1199d9, 400 : #0f89c2, 500 : #0d78aa, 600 : #0b6792, 700 : #09577b, 800 : #084663, 900 : #06354b, A100: #edf9fd, A200: #dbf4fb, A400: #b7e9f8, A700: #0d78aa, contrast: ( 50: $black-87-opacity, 100: $black-87-opacity, 200: $black-87-opacity, 300: $black-87-opacity, 400: $black-87-opacity, 500: white, 600: white, 700: white, 800: white, 900: white, A100: $black-87-opacity, A200: $black-87-opacity, A400: $black-87-opacity, A700: white, ) );
+
+$palete-warn: ( 50 : #f94d4d, 100 : #f93434, 200 : #f81c1c, 300 : #f20808, 400 : #da0707, 500 : #c10606, 600 : #a80505, 700 : #8f0404, 800 : #770404, 900 : #5e0303, A100: #fef3f2, A200: #fcd0cc, A400: #f69390, A700: #c10606, contrast: ( 50: $black-87-opacity, 100: $black-87-opacity, 200: $black-87-opacity, 300: $black-87-opacity, 400: white, 500: white, 600: white, 700: white, 800: white, 900: white, A100: $black-87-opacity, A200: $black-87-opacity, A400: $black-87-opacity, A700: white, ) );
+
+$primary: mat-palette($palete-primary, 100, 200, A700);
+$accent: mat-palette($palete-accent, 500, A100, A200);
+$warn: mat-palette($palete-warn, 500, 100, 300);
+$theme: mat-light-theme($primary, $accent, $warn);
+@include angular-material-theme($theme);
+
+body {
+    margin: 0 auto;
+}
+
+.toolbar {
+    position: fixed;
+    width: 100%;
+    height: 64px;
+    background-color: white;
+    z-index: 200;
+
+    .-logo {
+        width: 175px;
+
+        @media (max-width: 960px) {
+            flex: 0 1 auto;
+            transform: translateX(-50%);
+            position: absolute;
+            top: 0;
+            left: 50%;
+            height:100%;
+        }
+    }
+    &:before {
+        display: block;
+        width: 100%;
+        height: 4px;
+        background-image: linear-gradient(to right, #4ac7ed 36px, #f68d2e 36px, #f68d2e 16%, #aab1b6 16%, #aab1b6 51%, #afc836 51%);
+        content: ' ';
+    }
+
+    @media (max-width: 960px) {
+        &:before {
+            background-image: linear-gradient(to right, #4ac7ed 16px, #f68d2e 16px, #f68d2e 16%, #aab1b6 16%, #aab1b6 51%, #afc836 51%);
+        }
+    }
+}
+
+.title {
+    color: mat-color($primary, 900);
+}
+
+.container-fluid {
+    padding-left: 36px;
+    padding-right: 18px;
+
+    @media (max-width: 960px) {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}
+
+.md-sidenav-container {
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    background:  mat-color($primary, 400); 
+}
+

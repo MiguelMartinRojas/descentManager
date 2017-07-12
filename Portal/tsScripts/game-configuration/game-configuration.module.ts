@@ -11,11 +11,11 @@ import { UrlSerializer } from '@angular/router';
 
 import { HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { CustomHammerConfig } from './hammer-gesture-config';
-import { CardComponent } from './card.component'
+import { GameChooserComponent } from './game-chooser.component'
 
 @NgModule({
     imports: [SharedModule, GameConfigurationModule],
-    declarations: [CardComponent],
+    declarations: [GameChooserComponent],
     exports: []
 })
 export class GameConfiguration {

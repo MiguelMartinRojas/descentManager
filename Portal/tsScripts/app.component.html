@@ -5,14 +5,14 @@
         </div>
         <span fxFlex="auto"></span>
         <md-menu #menu="mdMenu">
-            <a md-menu-item (click)="reloadPage();">
-                <span>Refresh</span>
+            <a md-menu-item (click)="selectGame(1);">
+                <span>Game 1</span>
             </a>
-            <a md-menu-item (click)="showAbout();">
-                <span>About</span>
+            <a md-menu-item (click)="selectGame(2);">
+                <span>Game 2</span>
             </a>
-            <a md-menu-item href="{{logOutUrl}}" class="warn-button">
-                <span>Log out</span>
+            <a md-menu-item (click)="selectGame(3);">
+                <span>Game 3</span>
             </a>
         </md-menu>
         <button md-icon-button [mdMenuTriggerFor]="menu">

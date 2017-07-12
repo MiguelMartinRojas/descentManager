@@ -1,14 +1,14 @@
 ﻿import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { CardComponent } from './card.component';
+import { GameChooserComponent } from './game-chooser.component';
 
 @NgModule({
     imports: [
         RouterModule.forChild([
             {
                 path: 'game-configuration',
-                component: CardComponent,
+                component: GameChooserComponent,
             }
         ])
     ],

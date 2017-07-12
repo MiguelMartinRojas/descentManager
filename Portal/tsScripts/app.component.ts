@@ -46,13 +46,6 @@ export class AppComponent {
         
     }
     
-    reloadPage(){
-    }
-
-    backToMaster(){
-    }
-
-    showAbout() {
-        let isMobileView = this._media.isActive('xs');
+    selectGame( index: number){
     }
 }

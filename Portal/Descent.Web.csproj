@@ -47,6 +47,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="IdentityModel, Version=1.0.0.0, Culture=neutral, PublicKeyToken=a19df35487781f71, processorArchitecture=MSIL">
+      <HintPath>..\packages\IdentityModel.Signed.1.9.2\lib\net45\IdentityModel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Azure.KeyVault.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Azure.KeyVault.Core.2.0.4\lib\net45\Microsoft.Azure.KeyVault.Core.dll</HintPath>
       <Private>True</Private>
@@ -108,9 +112,6 @@
       <HintPath>..\packages\Microsoft.WindowsAzure.ConfigurationManager.3.2.3\lib\net40\Microsoft.WindowsAzure.Configuration.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RestSharp.105.2.3\lib\net46\RestSharp.dll</HintPath>
       <Private>True</Private>
@@ -125,6 +126,10 @@
     </Reference>
     <Reference Include="SimpleInjector.Integration.WebApi, Version=4.0.6.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
       <HintPath>..\packages\SimpleInjector.Integration.WebApi.4.0.6\lib\net45\SimpleInjector.Integration.WebApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Swashbuckle.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cd1bb07a5ac7c7bc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Swashbuckle.Core.5.2.2\lib\net40\Swashbuckle.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
@@ -201,6 +206,10 @@
     </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\Packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\Packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
@@ -294,6 +303,7 @@
     <Content Include="tsScripts\app.component.html" />
     <Content Include="tsScripts\shared\avatar\avatar.component.css" />
     <Content Include="tsScripts\shared\avatar\avatar.component.html" />
+    <Content Include="tsScripts\shared\card\simple-card.component.html" />
     <Content Include="tsScripts\shared\model\dynamic-model.component.html" />
     <Content Include="tsScripts\shared\model\item\dynamic-item.component.html" />
     <Content Include="tsScripts\shared\model\template-item\dynamic-template-item.component.html" />
@@ -417,6 +427,7 @@
     <TypeScriptCompile Include="tsScripts\shared\services\title\title.service.ts" />
     <TypeScriptCompile Include="tsScripts\shared\services\title\title.model.ts" />
     <TypeScriptCompile Include="tsScripts\tasks\card.component.ts" />
+    <Content Include="tsScripts\tasks\card.component.html" />
     <TypeScriptCompile Include="tsScripts\tasks\game-configuration.module.ts" />
     <TypeScriptCompile Include="tsScripts\tasks\game-configuration-routing.module.ts" />
     <Content Include="tsScripts\game-configuration\card.component.html" />
@@ -450,107 +461,17 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <CopyAllFilesToSingleFolderForPackageDependsOn>
-
-
-
-
-
-
-
-
-
-      $(CopyAllFilesToSingleFolderForPackageDependsOn);
-
-
-
-
-
-
-
-
-
-      CollectNpmContent;
-
-
-
-
-
-
-
-
-
-      CollectNpmScriptsLibs;
-
-
-
-
-
-
-
-
-
-      CollectNpmScriptsDist;
-
-
-
-
-
-
-
-
-
+    <CopyAllFilesToSingleFolderForPackageDependsOn>
+      $(CopyAllFilesToSingleFolderForPackageDependsOn);
+      CollectNpmContent;
+      CollectNpmScriptsLibs;
+      CollectNpmScriptsDist;
     </CopyAllFilesToSingleFolderForPackageDependsOn>
-    <CopyAllFilesToSingleFolderForMsdeployDependsOn>
-
-
-
-
-
-
-
-
-
-      $(CopyAllFilesToSingleFolderForMsdeployDependsOn);
-
-
-
-
-
-
-
-
-
-      CollectNpmContent;
-
-
-
-
-
-
-
-
-
-      CollectNpmScriptsLibs;
-
-
-
-
-
-
-
-
-
-      CollectNpmScriptsDist;
-
-
-
-
-
-
-
-
-
+    <CopyAllFilesToSingleFolderForMsdeployDependsOn>
+      $(CopyAllFilesToSingleFolderForMsdeployDependsOn);
+      CollectNpmContent;
+      CollectNpmScriptsLibs;
+      CollectNpmScriptsDist;
     </CopyAllFilesToSingleFolderForMsdeployDependsOn>
   </PropertyGroup>
   <Target Name="CollectNpmContent">

@@ -1,10 +1,10 @@
 ﻿[
   {
-    "outputFile": "Content/dist/unit4-theme.css",
-    "inputFile": "Content/unit4-theme.scss"
+    "outputFile": "Content/dist/theme.css",
+    "inputFile": "Content/theme.scss"
   },
   {
-    "outputFile": "Content/dist/Site.css",
-    "inputFile": "Content/Site.scss"
+    "outputFile": "Content/dist/site.css",
+    "inputFile": "Content/site.scss"
   }
 ]
