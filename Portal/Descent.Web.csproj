@@ -26,7 +26,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
-    <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>2.2</TypeScriptToolsVersion>
     <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -427,7 +427,6 @@
     <TypeScriptCompile Include="tsScripts\shared\services\title\title.service.ts" />
     <TypeScriptCompile Include="tsScripts\shared\services\title\title.model.ts" />
     <TypeScriptCompile Include="tsScripts\tasks\card.component.ts" />
-    <Content Include="tsScripts\tasks\card.component.html" />
     <TypeScriptCompile Include="tsScripts\tasks\game-configuration.module.ts" />
     <TypeScriptCompile Include="tsScripts\tasks\game-configuration-routing.module.ts" />
     <Content Include="tsScripts\game-configuration\card.component.html" />
