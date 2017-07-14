@@ -261,37 +261,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\images\shadow.svg" />
-    <Content Include="Content\images\thumbnails\pdf.png">
+    <Content Include="Content\images\**\*.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\images\thumbnails\doc.png">
+    <Content Include="Content\images\**\*.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\images\thumbnails\xls.png">
+    <Content Include="Content\images\*.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\images\thumbnails\ppt.png">
+    <Content Include="Content\images\*.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\images\thumbnails\draft.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\images\ic_document_draft.svg" />
-    <Content Include="Content\images\ic_doc_pdf.svg" />
-    <Content Include="Content\images\ic_doc_xls.svg" />
-    <Content Include="Content\images\ic_doc_ppt.svg" />
-    <Content Include="Content\images\ic_doc_doc.svg" />
-    <Content Include="Content\images\ic_error.svg" />
-    <Content Include="Content\images\ic_spinner.svg" />
-    <Content Include="Content\images\ic_success.svg" />
-    <Content Include="Content\images\ic_warning.svg" />
-    <Content Include="Content\images\ic_importance.svg" />
-    <Content Include="Content\images\ic_no_tasks.svg" />
-    <Content Include="Content\images\ic_arrow_down.svg" />
-    <Content Include="Content\images\ic_arrow_left.svg" />
-    <Content Include="Content\images\ic_arrow_right.svg" />
-    <Content Include="Content\images\ic_arrow_top.svg" />
     <Content Include="rollup-config.js" />
     <Content Include="Scripts\system.config.js" />
     <Content Include="Scripts\systemjs.config.extras.js" />
