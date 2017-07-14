@@ -14,6 +14,7 @@ import { CustomHammerConfig } from './hammer-gesture-config';
 import { GameCreatorComponent } from './creator/game-creator.component'
 import { GameComponent } from './selector/game.component'
 
+
 @NgModule({
     imports: [SharedModule, GameModule],
     declarations: [GameCreatorComponent, GameComponent],

@@ -1,4 +1,5 @@
-﻿using MimeTypes;
+﻿using Descent.Web.Models;
+using MimeTypes;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,8 +12,8 @@ using System.Web.Http.Description;
 
 namespace Descent.Web.Portal.Controllers
 {
-    [RoutePrefix("api/cards")]
-    public class TasksController : ApiController
+    [RoutePrefix("api/game")]
+    public class GameController : ApiController
     {
         private struct Icons
         {
@@ -23,17 +24,18 @@ namespace Descent.Web.Portal.Controllers
             public static string Draft = "draft.png";
         }
 
-        private readonly Services.ITasksServiceClient _tasksService;
-        public TasksController(Services.ITasksServiceClient taskService)
+        private readonly Services.IGameServiceClient _gamesService;
+        public GameController(Services.IGameServiceClient gamesService)
         {
-            _tasksService = taskService;
+            _gamesService = gamesService;
         }
 
         [HttpGet]
-        [ResponseType(typeof(Object))]
-        public IHttpActionResult GetCards()
+        [Route("{email}")]
+        [ResponseType(typeof(List<GameModel>))]
+        public IHttpActionResult GetGames(string email)
         {
-            return Ok(_tasksService.GetCards());
+            return Ok(_gamesService.GetGames(email));
         }
         
     }

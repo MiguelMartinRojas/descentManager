@@ -8,6 +8,7 @@ import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/take';
 
 import { GameModelDefinition } from './game/models/game.model';
+import { GameService } from './services/game.service'
 
 @Component({
     selector: 'descent-app',
@@ -25,7 +26,8 @@ export class AppComponent {
         private readonly _iconRegistry: MdIconRegistry,
         private readonly _sanitizer: DomSanitizer,
         private readonly _media: ObservableMedia,
-        private readonly _dialog: MdDialog) {
+        private readonly _dialog: MdDialog,
+        private readonly _gameService: GameService) {
 
         const element = el.nativeElement;
         this.logOutUrl = element.getAttribute('logOutUrl');
@@ -45,14 +47,9 @@ export class AppComponent {
         _iconRegistry.addSvgIcon('ic_arrow_right', _sanitizer.bypassSecurityTrustResourceUrl('Content/images/ic_arrow_right.svg'));
         _iconRegistry.addSvgIcon('ic_arrow_left', _sanitizer.bypassSecurityTrustResourceUrl('Content/images/ic_arrow_left.svg'));
 
-        this.games = new Promise ((resolve, reject) =>{
-            resolve([
-                {Id : "1", User: "Luis", Name:"Game 1", Notes:"Muchas notas"},
-                {Id : "2", User: "Pepe", Name:"Game 2 entre todos", Notes:"Muchas notas"}
-            ]);
-        })
+        this.games = _gameService.getGames("aweloska@gmail.com");
 
-        this.games.then(()=>{
+        this.games.then((games : Array<GameModelDefinition>)=>{
             console.log();
         })
     }

@@ -10,11 +10,13 @@ import { Game} from './game/game.module';
 
 import { AppComponent } from './app.component';
 import { SelectTenantComponent } from './select-tenant.component';
+import { GameService } from './services/game.service'
 
 
 @NgModule({
     imports: [BrowserModule, HttpModule, AppRoutingModule, SharedModule, ThemeModule, Game],
     declarations: [AppComponent, SelectTenantComponent],
+    providers:[GameService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

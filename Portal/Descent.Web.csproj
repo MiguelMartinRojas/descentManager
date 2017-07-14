@@ -124,10 +124,6 @@
       <HintPath>..\packages\SimpleInjector.Integration.WebApi.4.0.6\lib\net45\SimpleInjector.Integration.WebApi.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Swashbuckle.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cd1bb07a5ac7c7bc, processorArchitecture=MSIL">
-      <HintPath>..\packages\Swashbuckle.Core.5.2.2\lib\net40\Swashbuckle.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.IdentityModel" />
     <Reference Include="System.IdentityModel.Tokens.Jwt, Version=4.0.40306.1554, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -318,10 +314,13 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\TasksController.cs" />
+    <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Mappers\MimeTypeMap.cs" />
-    <Compile Include="Services\ITasksServiceClient.cs" />
-    <Compile Include="Services\TasksServiceClient.cs" />
+    <Compile Include="Models\CardModel.cs" />
+    <Compile Include="Models\GameModel.cs" />
+    <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Services\IGameServiceClient.cs" />
+    <Compile Include="Services\GameServiceClient.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -379,7 +378,6 @@
     <Folder Include="Attributes\" />
     <Folder Include="Content\dist\" />
     <Folder Include="Exceptions\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="tsScripts\app-routing.module.ts" />

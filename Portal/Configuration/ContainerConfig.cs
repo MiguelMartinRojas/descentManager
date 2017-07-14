@@ -17,7 +17,7 @@ namespace Descent.Web.Portal
 
         private static void ConfigureDi(Container container)
         {
-            container.Register<ITasksServiceClient, TasksServiceClient>();
+            container.Register<IGameServiceClient, GameServiceClient>();
 
             container.RegisterSingleton(new HttpClient());
         }
