@@ -5,18 +5,19 @@ import { MdSnackBar, MdDialog } from '@angular/material';
 
 import { SharedModule } from '../shared/shared.module';
 
-import { GameConfigurationModule } from './game-configuration-routing.module';
+import { GameModule } from './game-routing.module';
 
 import { UrlSerializer } from '@angular/router';
 
 import { HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { CustomHammerConfig } from './hammer-gesture-config';
-import { GameChooserComponent } from './game-chooser.component'
+import { GameCreatorComponent } from './creator/game-creator.component'
+import { GameComponent } from './selector/game.component'
 
 @NgModule({
-    imports: [SharedModule, GameConfigurationModule],
-    declarations: [GameChooserComponent],
+    imports: [SharedModule, GameModule],
+    declarations: [GameCreatorComponent, GameComponent],
     exports: []
 })
-export class GameConfiguration {
+export class Game {
 }

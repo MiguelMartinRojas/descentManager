@@ -1,18 +1,18 @@
 ﻿<md-toolbar class="toolbar md-elevation-z6">
     <div class="header container-fluid" fxLayout="row" fxLayoutAlign="start center">
         <div fxLayout="row">
-            <md-icon *ngIf="mustActivateBackButton" class="primary-icon arrow-icon" svgIcon="ic_arrow_left" (click)="backToMaster()"  fxHide [fxShow.lt-md]="mustActivateBackButton"></md-icon>
+            <img class = "logo" src ="Content/images/descent-logo.jpg">
         </div>
         <span fxFlex="auto"></span>
         <md-menu #menu="mdMenu">
-            <a md-menu-item (click)="selectGame(1);">
-                <span>Game 1</span>
+            <a md-menu-item class = "divider"  routerLink="/new-game">
+                <div fxLayoutAlign="start center">
+                    <md-icon class="primary-icon">add</md-icon>
+                    <span> New game</span>
+                </div>
             </a>
-            <a md-menu-item (click)="selectGame(2);">
-                <span>Game 2</span>
-            </a>
-            <a md-menu-item (click)="selectGame(3);">
-                <span>Game 3</span>
+            <a md-menu-item *ngFor="let game of games | async" routerLink="/game/{{game.Id}}">
+                <span>{{game.Name}}</span>
             </a>
         </md-menu>
         <button md-icon-button [mdMenuTriggerFor]="menu">

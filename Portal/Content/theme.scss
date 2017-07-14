@@ -25,30 +25,21 @@ body {
     background-color: white;
     z-index: 200;
 
-    .-logo {
-        width: 175px;
-
-        @media (max-width: 960px) {
-            flex: 0 1 auto;
-            transform: translateX(-50%);
-            position: absolute;
-            top: 0;
-            left: 50%;
-            height:100%;
-        }
+    .logo {
+        width: 200px;
+        flex: 0 1 auto;
+        transform: translateX(-50%);
+        position: absolute;
+        top: 0;
+        left: 50%;
+        height:100%;
     }
     &:before {
         display: block;
         width: 100%;
         height: 4px;
-        background-image: linear-gradient(to right, #4ac7ed 36px, #f68d2e 36px, #f68d2e 16%, #aab1b6 16%, #aab1b6 51%, #afc836 51%);
+        background-image: linear-gradient(to right, #000066 20% ,#0000ff 30%, #4d4dff 50%);
         content: ' ';
-    }
-
-    @media (max-width: 960px) {
-        &:before {
-            background-image: linear-gradient(to right, #4ac7ed 16px, #f68d2e 16px, #f68d2e 16%, #aab1b6 16%, #aab1b6 51%, #afc836 51%);
-        }
     }
 }
 
@@ -57,13 +48,8 @@ body {
 }
 
 .container-fluid {
-    padding-left: 36px;
-    padding-right: 18px;
-
-    @media (max-width: 960px) {
-        padding-left: 16px;
-        padding-right: 16px;
-    }
+    padding-left: 16px;
+    padding-right: 16px;
 }
 
 .md-sidenav-container {

@@ -6,13 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { SharedModule } from './shared/shared.module';
 import { ThemeModule } from './theme/theme.module';
-import { GameConfiguration } from './game-configuration/game-configuration.module';
+import { Game} from './game/game.module';
 
 import { AppComponent } from './app.component';
 import { SelectTenantComponent } from './select-tenant.component';
 
+
 @NgModule({
-    imports: [BrowserModule, HttpModule, AppRoutingModule, SharedModule, ThemeModule, GameConfiguration],
+    imports: [BrowserModule, HttpModule, AppRoutingModule, SharedModule, ThemeModule, Game],
     declarations: [AppComponent, SelectTenantComponent],
     bootstrap: [AppComponent]
 })

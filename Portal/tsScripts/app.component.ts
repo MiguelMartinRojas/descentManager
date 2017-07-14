@@ -7,11 +7,13 @@ import { Observable } from 'rxjs';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/take';
 
+import { GameModelDefinition } from './game/models/game.model';
+
 @Component({
-    selector: 'tasks-app',
+    selector: 'descent-app',
     moduleId: module.id,
     templateUrl: 'app.component.html',
-    host: {'class': 'font-override tasks-app'}
+    host: {'class': 'font-override descent-app'}
 })
 export class AppComponent {
     logOutUrl: string;
@@ -37,15 +39,24 @@ export class AppComponent {
         _iconRegistry.addSvgIcon('ic_doc_xls', _sanitizer.bypassSecurityTrustResourceUrl('Content/images/ic_doc_xls.svg'));
         _iconRegistry.addSvgIcon('ic_doc_ppt', _sanitizer.bypassSecurityTrustResourceUrl('Content/images/ic_doc_ppt.svg'));
         _iconRegistry.addSvgIcon('ic_doc_doc', _sanitizer.bypassSecurityTrustResourceUrl('Content/images/ic_doc_doc.svg'));
-        _iconRegistry.addSvgIcon('ic_no_tasks', _sanitizer.bypassSecurityTrustResourceUrl('Content/images/ic_no_tasks.svg'));
         _iconRegistry.addSvgIcon('ic_importance', _sanitizer.bypassSecurityTrustResourceUrl('Content/images/ic_importance.svg'));
         _iconRegistry.addSvgIcon('ic_arrow_top', _sanitizer.bypassSecurityTrustResourceUrl('Content/images/ic_arrow_top.svg'));
         _iconRegistry.addSvgIcon('ic_arrow_down', _sanitizer.bypassSecurityTrustResourceUrl('Content/images/ic_arrow_down.svg'));
         _iconRegistry.addSvgIcon('ic_arrow_right', _sanitizer.bypassSecurityTrustResourceUrl('Content/images/ic_arrow_right.svg'));
         _iconRegistry.addSvgIcon('ic_arrow_left', _sanitizer.bypassSecurityTrustResourceUrl('Content/images/ic_arrow_left.svg'));
-        
+
+        this.games = new Promise ((resolve, reject) =>{
+            resolve([
+                {Id : "1", User: "Luis", Name:"Game 1", Notes:"Muchas notas"},
+                {Id : "2", User: "Pepe", Name:"Game 2 entre todos", Notes:"Muchas notas"}
+            ]);
+        })
+
+        this.games.then(()=>{
+            console.log();
+        })
     }
-    
-    selectGame( index: number){
+
+    public games: Promise<Array<GameModelDefinition>>;
+
     }
-}

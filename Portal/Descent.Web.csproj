@@ -421,12 +421,9 @@
     <TypeScriptCompile Include="tsScripts\shared\dynamic\dynamic-section.component.ts" />
     <TypeScriptCompile Include="tsScripts\shared\services\title\title.service.ts" />
     <TypeScriptCompile Include="tsScripts\shared\services\title\title.model.ts" />
-    <TypeScriptCompile Include="tsScripts\tasks\card.component.ts" />
-    <TypeScriptCompile Include="tsScripts\tasks\game-configuration.module.ts" />
-    <TypeScriptCompile Include="tsScripts\tasks\game-configuration-routing.module.ts" />
-    <Content Include="tsScripts\game-configuration\card.component.html" />
-    <TypeScriptCompile Include="tsScripts\game-configuration\card.component.ts" />
-    <TypeScriptCompile Include="tsScripts\game-configuration\hammer-gesture-config.ts" />
+    <TypeScriptCompile Include="tsScripts\game.module.ts" />
+    <TypeScriptCompile Include="tsScripts\game-routing.module.ts" />
+    <TypeScriptCompile Include="tsScripts\game\hammer-gesture-config.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -455,17 +452,107 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <CopyAllFilesToSingleFolderForPackageDependsOn>
-      $(CopyAllFilesToSingleFolderForPackageDependsOn);
-      CollectNpmContent;
-      CollectNpmScriptsLibs;
-      CollectNpmScriptsDist;
+    <CopyAllFilesToSingleFolderForPackageDependsOn>
+
+
+
+
+
+
+
+
+
+      $(CopyAllFilesToSingleFolderForPackageDependsOn);
+
+
+
+
+
+
+
+
+
+      CollectNpmContent;
+
+
+
+
+
+
+
+
+
+      CollectNpmScriptsLibs;
+
+
+
+
+
+
+
+
+
+      CollectNpmScriptsDist;
+
+
+
+
+
+
+
+
+
     </CopyAllFilesToSingleFolderForPackageDependsOn>
-    <CopyAllFilesToSingleFolderForMsdeployDependsOn>
-      $(CopyAllFilesToSingleFolderForMsdeployDependsOn);
-      CollectNpmContent;
-      CollectNpmScriptsLibs;
-      CollectNpmScriptsDist;
+    <CopyAllFilesToSingleFolderForMsdeployDependsOn>
+
+
+
+
+
+
+
+
+
+      $(CopyAllFilesToSingleFolderForMsdeployDependsOn);
+
+
+
+
+
+
+
+
+
+      CollectNpmContent;
+
+
+
+
+
+
+
+
+
+      CollectNpmScriptsLibs;
+
+
+
+
+
+
+
+
+
+      CollectNpmScriptsDist;
+
+
+
+
+
+
+
+
+
     </CopyAllFilesToSingleFolderForMsdeployDependsOn>
   </PropertyGroup>
   <Target Name="CollectNpmContent">

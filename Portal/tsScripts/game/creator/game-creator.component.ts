@@ -4,10 +4,10 @@ import { Observable } from 'rxjs';
 
 @Component({
     moduleId: module.id,
-    selector: 'game-chooser',
-    templateUrl: './game-chooser.component.html',
+    selector: 'game-creator',
+    templateUrl: './game-creator.component.html',
 })
-export class GameChooserComponent {
+export class GameCreatorComponent {
     constructor() {
     }
 
