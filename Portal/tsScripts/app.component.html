@@ -1,10 +1,18 @@
 ﻿<md-toolbar class="toolbar md-elevation-z6">
     <div class="header container-fluid" fxLayout="row" fxLayoutAlign="start center">
         <div fxLayout="row">
+            <img class = "user-profile" src ="{{userProfile.getImageUrl()}}">
+        </div>
+        <div fxLayout="row">
             <img class = "logo" src ="Content/images/descent-logo.jpg">
         </div>
         <span fxFlex="auto"></span>
         <md-menu #menu="mdMenu">
+            <a md-menu-item routerLink="/new-game">
+                <div fxLayoutAlign="start center">
+                    <span>Hello {{userProfile.getName()}}</span>
+                </div>
+            </a>
             <a md-menu-item class = "divider"  routerLink="/new-game">
                 <div fxLayoutAlign="start center">
                     <md-icon class="primary-icon">add</md-icon>
@@ -20,7 +28,6 @@
         </button>
     </div>
 </md-toolbar>
-
 <div class="main-container">
     <router-outlet></router-outlet>
 </div>

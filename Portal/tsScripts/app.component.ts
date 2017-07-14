@@ -46,7 +46,9 @@ export class AppComponent {
         _iconRegistry.addSvgIcon('ic_arrow_down', _sanitizer.bypassSecurityTrustResourceUrl('Content/images/ic_arrow_down.svg'));
         _iconRegistry.addSvgIcon('ic_arrow_right', _sanitizer.bypassSecurityTrustResourceUrl('Content/images/ic_arrow_right.svg'));
         _iconRegistry.addSvgIcon('ic_arrow_left', _sanitizer.bypassSecurityTrustResourceUrl('Content/images/ic_arrow_left.svg'));
-
+        
+        var aut = gapi.auth2.init({});
+        this.userProfile = aut.currentUser.get().getBasicProfile();
         this.games = _gameService.getGames("aweloska@gmail.com");
 
         this.games.then((games : Array<GameModelDefinition>)=>{
@@ -55,5 +57,5 @@ export class AppComponent {
     }
 
     public games: Promise<Array<GameModelDefinition>>;
-
+    public userProfile : any;
     }

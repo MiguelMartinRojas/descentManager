@@ -21,7 +21,7 @@ namespace Descent.Web
             routes.MapRoute(
                 "AngularApp", // Route name
                 "{*.}", // URL with parameters
-                new {controller = "Home", action = "Index"} // Parameter defaults
+                new {controller = "Home", action = "App"} // Parameter defaults
             );
         }
     }

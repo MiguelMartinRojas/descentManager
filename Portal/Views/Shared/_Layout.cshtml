@@ -1,9 +1,11 @@
-﻿@using System.Web.Configuration
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="1030197237184-1qtod5qe8of2f4unucqqq9pf2r04cj6u.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <link rel="icon" type="image/x-icon" href="~/Content/images/favicon.ico" />
     <link rel="apple-touch-icon" href="~/Content/images/apple-touch-icon.png" />
     <title>Descent Manager</title>
@@ -19,31 +21,10 @@
     <script src="~/Scripts/libs/web-animations.min.js"></script>
     <script src="~/Scripts/libs/smoothscroll.js"></script>
     <script src="~/Scripts/libs/hammer.min.js"></script>
-
-    @{ var isDevMode = WebConfigurationManager.AppSettings["DevMode"] == "true"; }
-
-    @if (isDevMode)
-    {
-        <!-- 2. Configure SystemJS -->
-        <script src="~/Scripts/libs/system.src.js"></script>
-
-        <script src="~/Scripts/system.config.js"></script>
-        <script>
-            System.import('../Scripts/dist/jit/main').catch(function(err) {
-                console.error(err);
-            });
-        </script>
-    }
 </head>
 <body>
 
 @RenderBody()
-
-@if (!isDevMode)
-{
-    <script>window.module = 'aot'</script>
-    <script src="~/Scripts/dist/build.js"></script>
-}
 
 </body>
 </html>

@@ -9,5 +9,10 @@ namespace Descent.Web.Portal.Controllers
         {
             return View();
         }
+        public ActionResult App()
+        {
+            return View();
+        }
+
     }
 }

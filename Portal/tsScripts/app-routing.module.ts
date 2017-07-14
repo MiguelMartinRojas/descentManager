@@ -7,8 +7,8 @@ import { SelectTenantComponent } from './select-tenant.component';
     imports: [
         RouterModule.forRoot([
             {
-                path: '',
-                redirectTo: '/game/1',
+                path: 'descent-portal',
+                redirectTo: 'game/1',
                 pathMatch: 'full'
             }
         ])
