@@ -1,14 +1,14 @@
 ﻿import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { SelectTenantComponent } from './select-tenant.component';
+import { AppComponent } from './app.component';
 
 @NgModule({
     imports: [
         RouterModule.forRoot([
             {
-                path: 'descent-portal',
-                redirectTo: 'game/1',
+                path: 'descent',
+                redirectTo: '/game/1',
                 pathMatch: 'full'
             }
         ])

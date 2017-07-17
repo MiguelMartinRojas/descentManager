@@ -1,7 +1,7 @@
 ﻿<md-toolbar class="toolbar md-elevation-z6">
     <div class="header container-fluid" fxLayout="row" fxLayoutAlign="start center">
-        <div fxLayout="row">
-            <img class = "user-profile" src ="{{userProfile.getImageUrl()}}">
+        <div *ngIf = "(userProfile | async)" fxLayout="row">
+            <img  class = "user-profile" src ="{{(userProfile | async)?.getImageUrl()}}">
         </div>
         <div fxLayout="row">
             <img class = "logo" src ="Content/images/descent-logo.jpg">
@@ -9,8 +9,8 @@
         <span fxFlex="auto"></span>
         <md-menu #menu="mdMenu">
             <a md-menu-item routerLink="/new-game">
-                <div fxLayoutAlign="start center">
-                    <span>Hello {{userProfile.getName()}}</span>
+                <div  fxLayoutAlign="start center">
+                    <span>Hello {{(userProfile | async)?.getName()}}</span>
                 </div>
             </a>
             <a md-menu-item class = "divider"  routerLink="/new-game">
@@ -23,11 +23,19 @@
                 <span>{{game.Name}}</span>
             </a>
         </md-menu>
-        <button md-icon-button [mdMenuTriggerFor]="menu">
+        <google-signin *ngIf = "!(userProfile | async)" 
+            [clientId]="myClientId"
+            [width]="35"
+            [theme]="dark"
+            [scope]="myScope"
+            [longTitle]="myLongTitle"
+            (googleSignInSuccess)="onGoogleSignInSuccess($event)">
+        </google-signin>
+        <button md-icon-button [mdMenuTriggerFor]="menu" *ngIf = "(userProfile | async)">
             <md-icon class="primary-icon">more_vert</md-icon>
         </button>
     </div>
 </md-toolbar>
-<div class="main-container">
+<div class="main-container" >
     <router-outlet></router-outlet>
 </div>

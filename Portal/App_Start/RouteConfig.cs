@@ -14,14 +14,14 @@ namespace Descent.Web
             routes.MapRoute(
                 "Default",
                 "{controller}/{action}/{id}",
-                new {controller = "Home", action = "Index", id = UrlParameter.Optional},
+                new { controller = "Home", action = "Index", id = UrlParameter.Optional },
                 new { controller = "Home|Account|System" }
             );
 
             routes.MapRoute(
                 "AngularApp", // Route name
                 "{*.}", // URL with parameters
-                new {controller = "Home", action = "App"} // Parameter defaults
+                new { controller = "Home", action = "Index" } // Parameter defaults
             );
         }
     }

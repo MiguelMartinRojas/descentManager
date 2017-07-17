@@ -366,7 +366,6 @@
     <Content Include="Content\fonts\DagnyWebPro-Italic.woff" />
     <Content Include="Content\fonts\DagnyWebPro.eot" />
     <Content Include="Content\fonts\DagnyWebPro.woff" />
-    <Content Include="Views\Home\App.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

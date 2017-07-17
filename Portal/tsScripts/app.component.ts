@@ -1,14 +1,17 @@
-﻿import { Component, ElementRef, OnInit } from '@angular/core';
+﻿import { Component, ElementRef, OnInit, ChangeDetectorRef, ApplicationRef } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MdIconRegistry, MdDialog } from '@angular/material';
 import { ObservableMedia } from '@angular/flex-layout';
+import { Router, ActivatedRoute, Params, NavigationEnd } from '@angular/router';
 import { Observable } from 'rxjs';
-
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/take';
+import { Subscription }   from 'rxjs/Subscription';
 
 import { GameModelDefinition } from './game/models/game.model';
 import { GameService } from './services/game.service'
+import { UserProfileService } from './shared/services/authentication/user-profile.service';
+import { GoogleSignInSuccess } from './google-button.component';
 
 @Component({
     selector: 'descent-app',
@@ -16,21 +19,26 @@ import { GameService } from './services/game.service'
     templateUrl: 'app.component.html',
     host: {'class': 'font-override descent-app'}
 })
-export class AppComponent {
-    logOutUrl: string;
-    tenantId: string;
+export class AppComponent implements OnInit{
+    
+    UserProfileServiceSubscription: Subscription;
+    games: Promise<Array<GameModelDefinition>>;
+    userProfile : Promise<any>;
 
-    mustActivateBackButton: boolean;
 
     constructor(private readonly el: ElementRef,
         private readonly _iconRegistry: MdIconRegistry,
         private readonly _sanitizer: DomSanitizer,
         private readonly _media: ObservableMedia,
         private readonly _dialog: MdDialog,
-        private readonly _gameService: GameService) {
+        private readonly _gameService: GameService,
+        private readonly _userProfileService: UserProfileService,
+        private router: Router,
+        private route: ActivatedRoute,
+        private _changeDetectorRef: ChangeDetectorRef,
+        private _appRef: ApplicationRef  ) {
 
         const element = el.nativeElement;
-        this.logOutUrl = element.getAttribute('logOutUrl');
 
         _iconRegistry.addSvgIcon('ic_success', _sanitizer.bypassSecurityTrustResourceUrl('Content/images/ic_success.svg'));
         _iconRegistry.addSvgIcon('ic_error', _sanitizer.bypassSecurityTrustResourceUrl('Content/images/ic_error.svg'));
@@ -47,15 +55,37 @@ export class AppComponent {
         _iconRegistry.addSvgIcon('ic_arrow_right', _sanitizer.bypassSecurityTrustResourceUrl('Content/images/ic_arrow_right.svg'));
         _iconRegistry.addSvgIcon('ic_arrow_left', _sanitizer.bypassSecurityTrustResourceUrl('Content/images/ic_arrow_left.svg'));
         
-        var aut = gapi.auth2.init({});
-        this.userProfile = aut.currentUser.get().getBasicProfile();
         this.games = _gameService.getGames("aweloska@gmail.com");
-
         this.games.then((games : Array<GameModelDefinition>)=>{
-            console.log();
+            console.log(); 
         })
     }
 
-    public games: Promise<Array<GameModelDefinition>>;
-    public userProfile : any;
+    myClientId: string = '1030197237184-1qtod5qe8of2f4unucqqq9pf2r04cj6u.apps.googleusercontent.com';
+    myLongTitle: string = 'Sign in';
+    myScope: string = 'profile email';
+    
+
+    onGoogleSignInSuccess(event: GoogleSignInSuccess) {
+        let googleUser: gapi.auth2.GoogleUser = event.googleUser;
+        let id: string = googleUser.getId();
+        let profile: gapi.auth2.BasicProfile = googleUser.getBasicProfile();
+        this.userProfile = new Promise<any>((resolve, reject) =>{
+            this._appRef.tick();
+            resolve(profile);
+            this._userProfileService.setUserProfile(profile);
+            this.router.navigate(['game/1'],{relativeTo: this.route});
+            this._changeDetectorRef.detectChanges();
+            this._changeDetectorRef.reattach();
+            this._appRef.components;
+        });
     }
+
+    ngOnInit(): void {
+    }
+
+    ngOnDestroy() {
+        this.UserProfileServiceSubscription.unsubscribe();
+    }
+
+}
