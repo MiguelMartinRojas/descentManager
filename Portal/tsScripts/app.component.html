@@ -8,7 +8,7 @@
         </div>
         <span fxFlex="auto"></span>
         <md-menu #menu="mdMenu">
-            <a md-menu-item routerLink="/new-game">
+            <a [hidden] = "!(userProfile | async)" md-menu-item routerLink="/new-game">
                 <div  fxLayoutAlign="start center">
                     <span>Hello {{(userProfile | async)?.getName()}}</span>
                 </div>
@@ -22,18 +22,27 @@
             <a md-menu-item *ngFor="let game of games | async" routerLink="/game/{{game.Id}}">
                 <span>{{game.Name}}</span>
             </a>
+            <a md-menu-item (click) = "onLogOut()">
+                <div fxLayoutAlign="start center">
+                    <span>Log out</span>
+                </div>
+            </a>
         </md-menu>
-        <google-signin *ngIf = "!(userProfile | async)" 
-            [clientId]="myClientId"
-            [width]="35"
-            [theme]="dark"
-            [scope]="myScope"
-            [longTitle]="myLongTitle"
-            (googleSignInSuccess)="onGoogleSignInSuccess($event)">
-        </google-signin>
-        <button md-icon-button [mdMenuTriggerFor]="menu" *ngIf = "(userProfile | async)">
-            <md-icon class="primary-icon">more_vert</md-icon>
-        </button>
+        <div [hidden] = "(userProfile | async)" >
+            <google-signin 
+                [clientId]="myClientId"
+                [width]="35"
+                [theme]="dark"
+                [scope]="myScope"
+                [longTitle]="myLongTitle"
+                (googleSignInSuccess)="onGoogleSignInSuccess($event)">
+            </google-signin>
+        </div>
+        <div [hidden] = "!(userProfile | async)" >
+            <button md-icon-button [mdMenuTriggerFor]="menu">
+                <md-icon class="primary-icon">more_vert</md-icon>
+            </button>
+        </div>
     </div>
 </md-toolbar>
 <div class="main-container" >

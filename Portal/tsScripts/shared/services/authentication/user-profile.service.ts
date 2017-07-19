@@ -10,15 +10,15 @@ import 'rxjs/add/operator/publishReplay';
 export class UserProfileService {
 
     private _userProfile= new Subject<any>();
-    private _currenctValue: any;
+    private _currencyValue: any;
 
     userProfile$ = this._userProfile.asObservable();
 
     setUserProfile(userProfile : any){
         this._userProfile.next(userProfile);
-        this._currenctValue = userProfile
+        this._currencyValue = userProfile
     }
     getUserProfile(){
-        return this._currenctValue;
+        return this._currencyValue;
     }
 }

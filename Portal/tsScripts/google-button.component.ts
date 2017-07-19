@@ -1,4 +1,7 @@
 ﻿import {Component, AfterViewInit, ChangeDetectionStrategy, Input, Output, EventEmitter} from '@angular/core';
+import { UserProfileService } from './shared/services/authentication/user-profile.service';
+import { Subscription }   from 'rxjs/Subscription';
+import { Router, ActivatedRoute, Params, NavigationEnd } from '@angular/router';
 
 export class GoogleSignInSuccess {
   public googleUser: gapi.auth2.GoogleUser;
@@ -18,7 +21,8 @@ export class GoogleSignInFailure {
 })
 export class GoogleButtonComponent implements AfterViewInit {
   public id: string = 'google-signin2';
-
+  private _userProfileServiceSubscription: Subscription;
+  
   // Render options
   @Input() private scope: string;
 
@@ -76,9 +80,16 @@ export class GoogleButtonComponent implements AfterViewInit {
 
   @Output() googleSignInFailure: EventEmitter<GoogleSignInFailure> = new EventEmitter<GoogleSignInFailure>();
 
+
+  constructor(private readonly _userProfileService: UserProfileService,
+        private _router: Router,
+        private _route: ActivatedRoute,) {
+  }
+
   ngAfterViewInit() {
     this.auth2Init();
     this.renderButton();
+    this.subscribeProfileService();
   }
 
   private auth2Init() {
@@ -105,6 +116,22 @@ export class GoogleButtonComponent implements AfterViewInit {
     this.googleSignInSuccess.next(new GoogleSignInSuccess(googleUser));
   }
 
+  private subscribeProfileService(){
+    this._userProfileServiceSubscription = this._userProfileService.userProfile$.subscribe(
+      value => {
+        if (value!== null && Object.keys(value).length === 0 && value.constructor === Object ) {
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(this.updateUserProfile.bind(this));
+        }
+    });
+  }
+
+  private updateUserProfile(){
+    console.log('User signed out.');
+    this._userProfileService.setUserProfile(null);
+    this._router.navigate(['/'],{relativeTo: this._route});
+  }
+
   private renderButton() {
     gapi.signin2.render(
       this.id, {
@@ -117,4 +144,5 @@ export class GoogleButtonComponent implements AfterViewInit {
         onfailure: () => this.handleFailure()
       });
   }
+
 }

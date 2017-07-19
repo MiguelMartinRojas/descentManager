@@ -1,4 +1,4 @@
-﻿import { Component, ElementRef, OnInit, ChangeDetectorRef, ApplicationRef } from '@angular/core';
+﻿import { Component, ElementRef, OnInit, NgZone } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MdIconRegistry, MdDialog } from '@angular/material';
 import { ObservableMedia } from '@angular/flex-layout';
@@ -21,7 +21,7 @@ import { GoogleSignInSuccess } from './google-button.component';
 })
 export class AppComponent implements OnInit{
     
-    UserProfileServiceSubscription: Subscription;
+    _userProfileServiceSubscription: Subscription;
     games: Promise<Array<GameModelDefinition>>;
     userProfile : Promise<any>;
 
@@ -35,8 +35,7 @@ export class AppComponent implements OnInit{
         private readonly _userProfileService: UserProfileService,
         private router: Router,
         private route: ActivatedRoute,
-        private _changeDetectorRef: ChangeDetectorRef,
-        private _appRef: ApplicationRef  ) {
+        private _ngZone: NgZone) {
 
         const element = el.nativeElement;
 
@@ -55,6 +54,11 @@ export class AppComponent implements OnInit{
         _iconRegistry.addSvgIcon('ic_arrow_right', _sanitizer.bypassSecurityTrustResourceUrl('Content/images/ic_arrow_right.svg'));
         _iconRegistry.addSvgIcon('ic_arrow_left', _sanitizer.bypassSecurityTrustResourceUrl('Content/images/ic_arrow_left.svg'));
         
+        this._userProfileServiceSubscription = this._userProfileService.userProfile$.subscribe(
+            value => {
+                this.runOutSideAngular(this.setUserProfile.bind(this, value));
+        });
+
         this.games = _gameService.getGames("aweloska@gmail.com");
         this.games.then((games : Array<GameModelDefinition>)=>{
             console.log(); 
@@ -65,27 +69,47 @@ export class AppComponent implements OnInit{
     myLongTitle: string = 'Sign in';
     myScope: string = 'profile email';
     
-
+    
     onGoogleSignInSuccess(event: GoogleSignInSuccess) {
         let googleUser: gapi.auth2.GoogleUser = event.googleUser;
         let id: string = googleUser.getId();
         let profile: gapi.auth2.BasicProfile = googleUser.getBasicProfile();
-        this.userProfile = new Promise<any>((resolve, reject) =>{
-            this._appRef.tick();
+        this._userProfileService.setUserProfile(profile);
+        this.runOutSideAngular(this.setUserProfile.bind(this, profile));
+                
+    }
+
+    onLogOut(){
+        this.runOutSideAngular(this.removeUserProfile.bind(this));
+    }
+
+
+    setUserProfile(profile: any){
+        this.userProfile = new Promise<any>((resolve, reject) => {
             resolve(profile);
-            this._userProfileService.setUserProfile(profile);
-            this.router.navigate(['game/1'],{relativeTo: this.route});
-            this._changeDetectorRef.detectChanges();
-            this._changeDetectorRef.reattach();
-            this._appRef.components;
+            if(profile){
+                this.router.navigate(['game/1'],{relativeTo: this.route});
+            }
         });
+    }
+
+    removeUserProfile(){
+        this._userProfileService.setUserProfile({});
     }
 
     ngOnInit(): void {
     }
 
-    ngOnDestroy() {
-        this.UserProfileServiceSubscription.unsubscribe();
+    runOutSideAngular(func: Function){
+        this._ngZone.runOutsideAngular(() => {
+            this._ngZone.run(() => {
+                func();
+             });
+        });
+    }
+
+    ngOnDestroy(){
+        this._userProfileServiceSubscription.unsubscribe();
     }
 
 }
