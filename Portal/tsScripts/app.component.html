@@ -1,16 +1,16 @@
 ﻿<md-toolbar class="toolbar md-elevation-z6">
     <div class="header container-fluid" fxLayout="row" fxLayoutAlign="start center">
         <div *ngIf = "(userProfile | async)" fxLayout="row">
-            <img  class = "user-profile" src ="{{(userProfile | async)?.getImageUrl()}}">
+            <img  class = "user-profile" [src] ="imageUrlProfile">
         </div>
         <div fxLayout="row">
             <img class = "logo" src ="Content/images/descent-logo.jpg">
         </div>
         <span fxFlex="auto"></span>
         <md-menu #menu="mdMenu">
-            <a [hidden] = "!(userProfile | async)" md-menu-item routerLink="/new-game">
+            <a *ngIf = "(userProfile | async)" md-menu-item routerLink="/new-game">
                 <div  fxLayoutAlign="start center">
-                    <span>Hello {{(userProfile | async)?.getName()}}</span>
+                    <span>Hello {{nameProfile}}</span>
                 </div>
             </a>
             <a md-menu-item class = "divider"  routerLink="/new-game">

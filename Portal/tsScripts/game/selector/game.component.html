@@ -1,4 +1,10 @@
-<div> Character</div>
-<div> Skills list</div>
-<div> Items list</div>
-<div> Free text list</div>
+<div fxLayout="column" >
+    <div class="container-fluid" fxLayout="row" fxLayoutAlign="space-between center">
+        <div> <img [src] = "(game | async)?.CharacterImage"></div>
+        <div> Free text list</div>
+    </div>
+    <div class="container-fluid" fxLayout="row" fxLayoutAlign="space-between center">
+        <div> Skills list</div>
+        <div> Weapon list</div>
+    </div>
+</div>

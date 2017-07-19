@@ -8,8 +8,8 @@ import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/take';
 import { Subscription }   from 'rxjs/Subscription';
 
-import { GameModelDefinition } from './game/models/game.model';
-import { GameService } from './services/game.service'
+import { GameModelDefinition } from './shared/model/game.model';
+import { GameService } from './shared/services/game/game.service'
 import { UserProfileService } from './shared/services/authentication/user-profile.service';
 import { GoogleSignInSuccess } from './google-button.component';
 
@@ -57,17 +57,18 @@ export class AppComponent implements OnInit{
         this._userProfileServiceSubscription = this._userProfileService.userProfile$.subscribe(
             value => {
                 this.runOutSideAngular(this.setUserProfile.bind(this, value));
+                if (value !== null && Object.keys(value).length > 0) {
+                    this.runOutSideAngular(this.getUserGames.bind(this, value.getEmail));
+                }
         });
-
-        this.games = _gameService.getGames("aweloska@gmail.com");
-        this.games.then((games : Array<GameModelDefinition>)=>{
-            console.log(); 
-        })
     }
 
     myClientId: string = '1030197237184-1qtod5qe8of2f4unucqqq9pf2r04cj6u.apps.googleusercontent.com';
     myLongTitle: string = 'Sign in';
     myScope: string = 'profile email';
+
+    imageUrlProfile: string;
+    nameProfile: string;
     
     
     onGoogleSignInSuccess(event: GoogleSignInSuccess) {
@@ -83,12 +84,18 @@ export class AppComponent implements OnInit{
         this.runOutSideAngular(this.removeUserProfile.bind(this));
     }
 
+    getUserGames(email: string){
+        this.games = this._gameService.getGames(email);
+    }
 
     setUserProfile(profile: any){
         this.userProfile = new Promise<any>((resolve, reject) => {
             resolve(profile);
+            this.imageUrlProfile = "";
+            this.nameProfile = "";
             if(profile){
-                this.router.navigate(['game/1'],{relativeTo: this.route});
+                this.imageUrlProfile = profile.getImageUrl();
+                this.router.navigate(['game/0'],{relativeTo: this.route});
             }
         });
     }

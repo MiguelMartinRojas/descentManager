@@ -16,6 +16,7 @@ namespace Descent.Web.Portal.Services
                     Name = "Game with Gonzalo and Pablo",
                     Notes = "some long text, this text can be very long it's used for taking some notes",
                     User = email,
+                    CharacterImage = "Content/images/thumbnails/Heroes/LeoricoftheBook.png",
                     Objects = new System.Collections.Generic.List<CardModel> {
                         new CardModel { Id = "1", Url = "Content/images/thumbnails/pdf.png" },
                         new CardModel { Id = "2", Url = "Content/images/thumbnails/cls.png" }

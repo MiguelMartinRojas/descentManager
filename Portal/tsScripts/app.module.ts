@@ -11,7 +11,7 @@ import { Game} from './game/game.module';
 import { AppComponent } from './app.component';
 import { GoogleButtonComponent } from './google-button.component';
 
-import { GameService } from './services/game.service'
+import { GameService } from './shared/services/game/game.service'
 import { UserProfileService } from './shared/services/authentication/user-profile.service'
 
 

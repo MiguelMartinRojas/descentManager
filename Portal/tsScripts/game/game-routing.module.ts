@@ -15,7 +15,7 @@ import { GameComponent } from './selector/game.component';
          RouterModule.forChild([
             {
                 path: 'game/:id',
-                component: GameCreatorComponent,
+                component: GameComponent,
             }
         ])
     ],

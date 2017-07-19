@@ -324,6 +324,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <TypeScriptCompile Include="tsScripts\google-button.component.ts" />
     <TypeScriptCompile Include="tsScripts\shared\avatar\avatar.component.ts" />
     <TypeScriptCompile Include="tsScripts\shared\card\simple-card.component.ts" />
     <TypeScriptCompile Include="tsScripts\shared\model\dynamic-model.component.ts" />
@@ -381,7 +382,6 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="tsScripts\app-routing.module.ts" />
-    <TypeScriptCompile Include="tsScripts\select-tenant.component.ts" />
     <TypeScriptCompile Include="tsScripts\main-aot.ts" />
     <TypeScriptCompile Include="tsScripts\main.ts" />
     <TypeScriptCompile Include="tsScripts\app.component.ts" />
@@ -412,8 +412,6 @@
     <TypeScriptCompile Include="tsScripts\shared\dynamic\dynamic-section.component.ts" />
     <TypeScriptCompile Include="tsScripts\shared\services\title\title.service.ts" />
     <TypeScriptCompile Include="tsScripts\shared\services\title\title.model.ts" />
-    <TypeScriptCompile Include="tsScripts\game.module.ts" />
-    <TypeScriptCompile Include="tsScripts\game-routing.module.ts" />
     <TypeScriptCompile Include="tsScripts\game\hammer-gesture-config.ts" />
   </ItemGroup>
   <PropertyGroup>

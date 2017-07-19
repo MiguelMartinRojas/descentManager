@@ -1,4 +1,4 @@
-﻿import {Component, AfterViewInit, ChangeDetectionStrategy, Input, Output, EventEmitter} from '@angular/core';
+﻿import {Component, AfterViewInit, ChangeDetectionStrategy, Input, Output, EventEmitter, NgZone} from '@angular/core';
 import { UserProfileService } from './shared/services/authentication/user-profile.service';
 import { Subscription }   from 'rxjs/Subscription';
 import { Router, ActivatedRoute, Params, NavigationEnd } from '@angular/router';
@@ -83,7 +83,8 @@ export class GoogleButtonComponent implements AfterViewInit {
 
   constructor(private readonly _userProfileService: UserProfileService,
         private _router: Router,
-        private _route: ActivatedRoute,) {
+        private _route: ActivatedRoute,
+        private _ngZone: NgZone) {
   }
 
   ngAfterViewInit() {
@@ -121,7 +122,7 @@ export class GoogleButtonComponent implements AfterViewInit {
       value => {
         if (value!== null && Object.keys(value).length === 0 && value.constructor === Object ) {
             var auth2 = gapi.auth2.getAuthInstance();
-            auth2.signOut().then(this.updateUserProfile.bind(this));
+            auth2.signOut().then(this.runOutSideAngular(this.updateUserProfile.bind(this)));
         }
     });
   }
@@ -144,5 +145,13 @@ export class GoogleButtonComponent implements AfterViewInit {
         onfailure: () => this.handleFailure()
       });
   }
+
+  runOutSideAngular(func: Function){
+        this._ngZone.runOutsideAngular(() => {
+            this._ngZone.run(() => {
+                func();
+             });
+        });
+    }
 
 }
