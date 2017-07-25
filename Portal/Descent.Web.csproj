@@ -292,8 +292,6 @@
     <Content Include="tsScripts\shared\selector\selector.component.html" />
     <Content Include="tsScripts\shared\spinner\spinner.component.css" />
     <Content Include="tsScripts\shared\spinner\spinner.component.html" />
-    <Content Include="tsScripts\shared\template\template-editor.component.css" />
-    <Content Include="tsScripts\shared\template\template-editor.component.html" />
     <Content Include="tsScripts\shared\wizard\progress\wizard-progress.component.css" />
     <Content Include="tsScripts\shared\wizard\progress\wizard-progress.component.html" />
     <Content Include="tsScripts\shared\wizard\step\wizard-step.component.html" />
@@ -329,8 +327,6 @@
     <TypeScriptCompile Include="tsScripts\shared\selector\selector-item.component.ts" />
     <TypeScriptCompile Include="tsScripts\shared\selector\selector.component.ts" />
     <TypeScriptCompile Include="tsScripts\shared\spinner\spinner.component.ts" />
-    <TypeScriptCompile Include="tsScripts\shared\template\chipify.pipe.ts" />
-    <TypeScriptCompile Include="tsScripts\shared\template\template-editor.component.ts" />
     <TypeScriptCompile Include="tsScripts\shared\utils\string-utils.ts" />
     <TypeScriptCompile Include="tsScripts\shared\utils\type-utils.ts" />
     <TypeScriptCompile Include="tsScripts\shared\wizard\progress\wizard-progress.component.ts" />
