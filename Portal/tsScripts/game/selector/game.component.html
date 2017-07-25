@@ -1,7 +1,11 @@
 <div fxLayout="column" >
     <div class="container-fluid" fxLayout="row" fxLayoutAlign="space-between center">
-        <div> <img [src] = "(game | async)?.CharacterImage"></div>
-        <div> Free text list</div>
+        <div>
+            <img [src] = "(game | async)?.CharacterImage">
+        </div>
+        <div>
+            <textarea [ngModel]="(game | async)?.Notes" rows="15" cols="30"></textarea>
+        </div>
     </div>
     <div class="container-fluid" fxLayout="row" fxLayoutAlign="space-between center">
         <div> Skills list</div>

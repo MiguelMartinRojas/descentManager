@@ -27,20 +27,20 @@ export class GameComponent implements OnInit{
 
     ngOnInit(){
         this.id = this.route.snapshot.params['id'];
-        this.game = this._gameService.getGameById(this._userProfileService.getUserProfile().getEmail(), +this.id);
-        // this._userProfileServiceSubscription = this._userProfileService.userProfile$.subscribe(
-        //     value => {
-        //         if (value !== null && Object.keys(value).length > 0) {
-        //             this.game = this._gameService.getGameById(value.getEmail(), +this.id);
-        //         }
-        //         else{
-        //             this.game =  null;
-        //         }
-        // });
+        if(this._userProfileService.getUserProfile()){
+            this.game = this._gameService.getGameById(this._userProfileService.getUserProfile().getEmail(), +this.id);
+        }
+        this._userProfileServiceSubscription = this._userProfileService.userProfile$.subscribe(
+            value => {
+                this.game =  null;
+                if (value && value.getEmail()) {
+                    this.game = this._gameService.getGameById(value.getEmail(), +this.id);
+                }
+        });
     }
 
-    // ngOnDestroy(){
-    //     this._userProfileServiceSubscription.unsubscribe();
-    // }
+    ngOnDestroy(){
+        this._userProfileServiceSubscription.unsubscribe();
+    }
 
 }
