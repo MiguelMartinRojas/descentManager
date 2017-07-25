@@ -66,6 +66,7 @@ export class AppComponent implements OnInit{
     myClientId: string = '1030197237184-1qtod5qe8of2f4unucqqq9pf2r04cj6u.apps.googleusercontent.com';
     myLongTitle: string = 'Sign in';
     myScope: string = 'profile email';
+    theme: string = "dark";
 
     imageUrlProfile: string;
     nameProfile: string;
