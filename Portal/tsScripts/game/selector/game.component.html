@@ -8,7 +8,11 @@
         </div>
     </div>
     <div class="container-fluid" fxLayout="row" fxLayoutAlign="space-between center">
-        <div> Skills list</div>
-        <div> Weapon list</div>
+        <div>
+            <img *ngFor = "let skill of (game | async)?.Skills" [src] = "skill.Url">
+        </div>
+        <div>
+            <img *ngFor = "let item of (game | async)?.Objects" [src] = "item.Url">
+        </div>
     </div>
 </div>
