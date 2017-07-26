@@ -6,24 +6,23 @@ import { Router, ActivatedRoute, Params, NavigationEnd } from '@angular/router';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/take';
-import { Subscription }   from 'rxjs/Subscription';
+import { Subscription } from 'rxjs/Subscription';
 
 import { GameModelDefinition } from './shared/model/game.model';
 import { GameService } from './shared/services/game/game.service'
 import { UserProfileService } from './shared/services/authentication/user-profile.service';
-import { GoogleSignInSuccess } from './google-button.component';
 
 @Component({
     selector: 'descent-app',
     moduleId: module.id,
     templateUrl: 'app.component.html',
-    host: {'class': 'font-override descent-app'}
+    host: { 'class': 'font-override descent-app' }
 })
-export class AppComponent implements OnInit{
-    
+export class AppComponent implements OnInit {
+
     _userProfileServiceSubscription: Subscription;
     games: Promise<Array<GameModelDefinition>>;
-    userProfile : Promise<any>;
+    userProfile: Promise<any>;
 
 
     constructor(private readonly el: ElementRef,
@@ -36,8 +35,6 @@ export class AppComponent implements OnInit{
         private router: Router,
         private route: ActivatedRoute,
         private _ngZone: NgZone) {
-
-        const element = el.nativeElement;
 
         _iconRegistry.addSvgIcon('ic_success', _sanitizer.bypassSecurityTrustResourceUrl('Content/images/ic_success.svg'));
         _iconRegistry.addSvgIcon('ic_error', _sanitizer.bypassSecurityTrustResourceUrl('Content/images/ic_error.svg'));
@@ -53,71 +50,13 @@ export class AppComponent implements OnInit{
         _iconRegistry.addSvgIcon('ic_arrow_down', _sanitizer.bypassSecurityTrustResourceUrl('Content/images/ic_arrow_down.svg'));
         _iconRegistry.addSvgIcon('ic_arrow_right', _sanitizer.bypassSecurityTrustResourceUrl('Content/images/ic_arrow_right.svg'));
         _iconRegistry.addSvgIcon('ic_arrow_left', _sanitizer.bypassSecurityTrustResourceUrl('Content/images/ic_arrow_left.svg'));
-        
-        this._userProfileServiceSubscription = this._userProfileService.userProfile$.subscribe(
-            value => {
-                this.runOutSideAngular(this.setUserProfile.bind(this, value));
-                if (value !== null && Object.keys(value).length > 0) {
-                    this.runOutSideAngular(this.getUserGames.bind(this, value.getEmail));
-                }
-        });
     }
 
-    myClientId: string = '1030197237184-1qtod5qe8of2f4unucqqq9pf2r04cj6u.apps.googleusercontent.com';
-    myLongTitle: string = 'Sign in';
-    myScope: string = 'profile email';
-    theme: string = "dark";
-
-    imageUrlProfile: string;
-    nameProfile: string;
-    
-    
-    onGoogleSignInSuccess(event: GoogleSignInSuccess) {
-        let googleUser: gapi.auth2.GoogleUser = event.googleUser;
-        let id: string = googleUser.getId();
-        let profile: gapi.auth2.BasicProfile = googleUser.getBasicProfile();
-        this._userProfileService.setUserProfile(profile);
-        this.runOutSideAngular(this.setUserProfile.bind(this, profile));
-                
-    }
-
-    onLogOut(){
-        this.runOutSideAngular(this.removeUserProfile.bind(this));
-    }
-
-    getUserGames(email: string){
+    getUserGames(email: string) {
         this.games = this._gameService.getGames(email);
     }
 
-    setUserProfile(profile: any){
-        this.userProfile = new Promise<any>((resolve, reject) => {
-            resolve(profile);
-            this.imageUrlProfile = "";
-            this.nameProfile = "";
-            if(profile){
-                this.imageUrlProfile = profile.getImageUrl();
-                this.router.navigate(['game/0'],{relativeTo: this.route});
-            }
-        });
-    }
-
-    removeUserProfile(){
-        this._userProfileService.setUserProfile({});
-    }
-
     ngOnInit(): void {
-    }
-
-    runOutSideAngular(func: Function){
-        this._ngZone.runOutsideAngular(() => {
-            this._ngZone.run(() => {
-                func();
-             });
-        });
-    }
-
-    ngOnDestroy(){
-        this._userProfileServiceSubscription.unsubscribe();
     }
 
 }

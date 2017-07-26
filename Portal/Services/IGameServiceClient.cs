@@ -1,7 +1,7 @@
 ﻿using Descent.Web.Models;
 using System.Collections.Generic;
 
-namespace Descent.Web.Portal.Services
+namespace Descent.Web.Services
 {
     public interface IGameServiceClient
     {

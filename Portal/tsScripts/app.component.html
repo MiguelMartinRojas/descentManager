@@ -28,21 +28,6 @@
                 </div>
             </a>
         </md-menu>
-        <div [hidden] = "(userProfile | async)" >
-            <google-signin 
-                [clientId]="myClientId"
-                [width]="35"
-                [theme]="theme"
-                [scope]="myScope"
-                [longTitle]="myLongTitle"
-                (googleSignInSuccess)="onGoogleSignInSuccess($event)">
-            </google-signin>
-        </div>
-        <div [hidden] = "!(userProfile | async)" >
-            <button md-icon-button [mdMenuTriggerFor]="menu">
-                <md-icon class="primary-icon">more_vert</md-icon>
-            </button>
-        </div>
     </div>
 </md-toolbar>
 <div class="main-container" >

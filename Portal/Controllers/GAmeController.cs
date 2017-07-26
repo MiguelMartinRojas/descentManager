@@ -1,31 +1,18 @@
-﻿using Descent.Web.Models;
-using MimeTypes;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net.Http;
-using System.Threading.Tasks;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Http;
 using System.Web.Http.Description;
+using Descent.Web.Models;
+using Descent.Web.Services;
 
-namespace Descent.Web.Portal.Controllers
+namespace Descent.Web.Controllers
 {
+    [Authorize]
     [RoutePrefix("api/game")]
     public class GameController : ApiController
     {
-        private struct Icons
-        {
-            public static string Pdf = "pdf.png";
-            public static string Xls = "xls.png";
-            public static string Doc = "doc.png";
-            public static string Ppt = "ppt.png";
-            public static string Draft = "draft.png";
-        }
+        private readonly IGameServiceClient _gamesService;
 
-        private readonly Services.IGameServiceClient _gamesService;
-        public GameController(Services.IGameServiceClient gamesService)
+        public GameController(IGameServiceClient gamesService)
         {
             _gamesService = gamesService;
         }
@@ -37,6 +24,14 @@ namespace Descent.Web.Portal.Controllers
         {
             return Ok(_gamesService.GetGames(email));
         }
-        
+
+        private struct Icons
+        {
+            public static string Pdf = "pdf.png";
+            public static string Xls = "xls.png";
+            public static string Doc = "doc.png";
+            public static string Ppt = "ppt.png";
+            public static string Draft = "draft.png";
+        }
     }
 }

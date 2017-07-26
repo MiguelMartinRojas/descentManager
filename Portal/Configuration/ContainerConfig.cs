@@ -1,10 +1,10 @@
 ﻿using System.Net.Http;
 using System.Web.Http;
+using Descent.Web.Services;
 using SimpleInjector;
 using SimpleInjector.Integration.WebApi;
-using Descent.Web.Portal.Services;
 
-namespace Descent.Web.Portal
+namespace Descent.Web.Configuration
 {
     public static class ContainerConfig
     {

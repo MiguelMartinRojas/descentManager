@@ -9,7 +9,6 @@ import { ThemeModule } from './theme/theme.module';
 import { Game} from './game/game.module';
 
 import { AppComponent } from './app.component';
-import { GoogleButtonComponent } from './google-button.component';
 
 import { GameService } from './shared/services/game/game.service'
 import { UserProfileService } from './shared/services/authentication/user-profile.service'
@@ -17,7 +16,7 @@ import { UserProfileService } from './shared/services/authentication/user-profil
 
 @NgModule({
     imports: [BrowserModule, HttpModule, AppRoutingModule, SharedModule, ThemeModule, Game],
-    declarations: [AppComponent, GoogleButtonComponent],
+    declarations: [AppComponent],
     providers:[GameService, UserProfileService],
     bootstrap: [AppComponent]
 })
