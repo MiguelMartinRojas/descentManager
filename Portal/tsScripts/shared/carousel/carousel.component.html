@@ -1,3 +1,9 @@
-<!--<div class = "carousel" #mycards>-->
-    <img #mycards *ngFor = "let card of cards; let i = index" class = "a{{i}}" [src] = "card.Url">
-<!--</div>-->
+<!--<div class = "carousel">
+    <img #mycards (click)="selectCard(i)"  *ngFor = "let card of cards; let i = index" class = "a{{i}}" [src] = "card.Url">
+</div>-->
+
+<div id="carousel">
+	<figure #figure id="spinner">
+        <img #mycards (click)="selectCard(i)"  *ngFor = "let card of cards; let i = index" class = "a{{i}}" [src] = "card.Url" alt>
+	</figure>
+</div>

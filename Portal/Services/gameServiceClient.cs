@@ -27,6 +27,13 @@ namespace Descent.Web.Portal.Services
                         new CardModel { Id = "3", Url = "Content/images/thumbnails/BaseGame/heroes/classes/Healers/Disciple/0.weapon Shield Wooden Shield..png" },
                         new CardModel { Id = "4", Url = "Content/images/thumbnails/BaseGame/heroes/classes/Healers/Disciple/1.skill Armor of Faith..png" },
                         new CardModel { Id = "5", Url = "Content/images/thumbnails/BaseGame/heroes/classes/Healers/Disciple/1.skill Blessed Strike..png" },
+                        new CardModel { Id = "6", Url = "Content/images/thumbnails/BaseGame/heroes/classes/Healers/Disciple/1.skill Blessed Strike..png" },
+                        //new CardModel { Id = "7", Url = "Content/images/thumbnails/BaseGame/heroes/classes/Healers/Disciple/1.skill Blessed Strike..png" },
+                        //new CardModel { Id = "8", Url = "Content/images/thumbnails/BaseGame/heroes/classes/Healers/Disciple/1.skill Blessed Strike..png" },
+                        //new CardModel { Id = "5", Url = "Content/images/thumbnails/BaseGame/heroes/classes/Healers/Disciple/1.skill Blessed Strike..png" },
+                        //new CardModel { Id = "6", Url = "Content/images/thumbnails/BaseGame/heroes/classes/Healers/Disciple/1.skill Blessed Strike..png" },
+                        //new CardModel { Id = "7", Url = "Content/images/thumbnails/BaseGame/heroes/classes/Healers/Disciple/1.skill Blessed Strike..png" },
+                        
                     },
                     Users = new System.Collections.Generic.List<UserModel> {
                         new UserModel {Id = "1", Name = "Migue", Value = "aweloska@gmail.com" },
