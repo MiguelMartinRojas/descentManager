@@ -1,0 +1,12 @@
+.carousel img{
+    max-width: 15%;
+        
+}
+.carousel img.a2{
+    max-width: 15%;
+    -webkit-transform: scale3d(2, 2, 1);
+    -moz-transform: scale3d(2, 2, 1);
+    -o-transform: scale3d(2, 2, 1);
+    -ms-transform: scale3d(2, 2, 1);
+    transform: scale3d(2, 2, 1);
+}
