@@ -5,7 +5,7 @@ import { MdSnackBar, MdDialog } from '@angular/material';
 
 import { SharedModule } from '../shared/shared.module';
 
-import { GameModule } from './game-routing.module';
+import { GameRoutingModule } from './game-routing.module';
 
 import { UrlSerializer } from '@angular/router';
 
@@ -16,9 +16,9 @@ import { GameComponent } from './selector/game.component'
 
 
 @NgModule({
-    imports: [SharedModule, GameModule],
+    imports: [SharedModule, GameRoutingModule],
     declarations: [GameCreatorComponent, GameComponent],
     exports: []
 })
-export class Game {
+export class GameModule {
 }

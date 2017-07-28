@@ -1,3 +1,1 @@
-﻿@ViewBag.user
-
-<descent-app logOutUrl="@Url.Action("LogOff", "Account")"></descent-app>
+﻿<descent-app isAuthenticated="@(Request.IsAuthenticated ? "true" : "false")" logOutUrl="@Url.Action("LogOff", "Account")"></descent-app>

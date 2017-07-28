@@ -6,7 +6,7 @@ namespace Descent.Web.Controllers
 {
     public class AccountController : Controller
     {
-        public ActionResult Login(string returnUrl = "/descent")
+        public ActionResult Login(string returnUrl = "/")
         {
             // Request a redirect to the external login provider
             return new ChallengeResult("Google",
@@ -21,7 +21,7 @@ namespace Descent.Web.Controllers
         public ActionResult LogOff()
         {
             Request.GetOwinContext().Authentication.SignOut();
-            return Redirect("/descent");
+            return Redirect("/");
         }
 
         // Implementation copied from a standard MVC Project, with some stuff

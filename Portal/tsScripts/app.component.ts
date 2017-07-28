@@ -1,16 +1,7 @@
-﻿import { Component, ElementRef, OnInit, NgZone } from '@angular/core';
+﻿import { AuthService } from './game/shared/auth.service';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { MdIconRegistry, MdDialog } from '@angular/material';
-import { ObservableMedia } from '@angular/flex-layout';
-import { Router, ActivatedRoute, Params, NavigationEnd } from '@angular/router';
-import { Observable } from 'rxjs';
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/take';
-import { Subscription } from 'rxjs/Subscription';
-
-import { GameModelDefinition } from './shared/model/game.model';
-import { GameService } from './shared/services/game/game.service'
-import { UserProfileService } from './shared/services/authentication/user-profile.service';
+import { MdIconRegistry } from '@angular/material';
 
 @Component({
     selector: 'descent-app',
@@ -20,22 +11,12 @@ import { UserProfileService } from './shared/services/authentication/user-profil
 })
 export class AppComponent implements OnInit {
 
-    _userProfileServiceSubscription: Subscription;
-    games: Promise<Array<GameModelDefinition>>;
-    userProfile: Promise<any>;
-
-
-    constructor(private readonly el: ElementRef,
+    constructor(
+        private readonly el: ElementRef,
         private readonly _iconRegistry: MdIconRegistry,
         private readonly _sanitizer: DomSanitizer,
-        private readonly _media: ObservableMedia,
-        private readonly _dialog: MdDialog,
-        private readonly _gameService: GameService,
-        private readonly _userProfileService: UserProfileService,
-        private router: Router,
-        private route: ActivatedRoute,
-        private _ngZone: NgZone) {
-
+        private readonly authService: AuthService
+    ) {
         _iconRegistry.addSvgIcon('ic_success', _sanitizer.bypassSecurityTrustResourceUrl('Content/images/ic_success.svg'));
         _iconRegistry.addSvgIcon('ic_error', _sanitizer.bypassSecurityTrustResourceUrl('Content/images/ic_error.svg'));
         _iconRegistry.addSvgIcon('ic_warning', _sanitizer.bypassSecurityTrustResourceUrl('Content/images/ic_warning.svg'));
@@ -52,11 +33,8 @@ export class AppComponent implements OnInit {
         _iconRegistry.addSvgIcon('ic_arrow_left', _sanitizer.bypassSecurityTrustResourceUrl('Content/images/ic_arrow_left.svg'));
     }
 
-    getUserGames(email: string) {
-        this.games = this._gameService.getGames(email);
-    }
-
-    ngOnInit(): void {
+    ngOnInit() {
+        this.authService.isLoggedIn(this.el.nativeElement.getAttribute('isAuthenticated') === 'true');
     }
 
 }
