@@ -19,8 +19,9 @@ class CardComponent {
 export class CarouselComponent {
 
     @Input() cards: Array<CardDefinition> = null;
-    @ViewChild('figure') figureDom: ElementRef;
-    @ViewChildren('mycards') cardsDom: QueryList<any>;
+    @Input() window: number = 5;
+    @ViewChild('carousel') figureDom: ElementRef;
+    @ViewChildren('mycards') cardsDom: QueryList<ElementRef>;
 
     constructor() {    
     }
@@ -33,60 +34,41 @@ export class CarouselComponent {
         }
         for(let i = 0; i < this.cardsDom.length; i++) {
             let card = this.cardsDom.toArray()[i];
-            if(i > 12){
-                card.nativeElement.style.display = 'none';
-            }
-            let rotationPer = this.getRotationPerc(this.cardsDom.length, i);
-            card.nativeElement.style.transform = 'rotateY(' + rotationPer  + 'deg)';
+            let scaleValue = this.getScale(this.cardsDom.length, i);
+            let percentageValue = this.getPercentage();
+
+            card.nativeElement.style = this.getTransformString(scaleValue, (this.cardsDom.length/i)>2?'':'-');
+            card.nativeElement.style.maxWidth = percentageValue+'%';
+            card.nativeElement.style.position = 'relative';
+            card.nativeElement.style.zIndex = this.getZIndex(this.cardsDom.length, i);
+            this.hideElementsOutOfWindow(this.cardsDom.length, i, card);
         }
+
+
     }
 
     selectCard(index: number){
-        if(this.selectedItem === index){
-            return;
-        }
-        let angle = this.getRotationPerc(this.cardsDom.length, index) * -1;
-        this.figureDom.nativeElement.setAttribute("style","-webkit-transform: rotateY("+ angle +"deg); -moz-transform: rotateY("+ angle +"deg); transform: rotateY("+ angle +"deg);");
         this.selectedItem = index;
     }
 
 
-    private getRotationPerc(size: number, index: number): number {
-        if(360/this.cardsDom.length > 40) {
-            return 40*index;
+
+    private hideElementsOutOfWindow(size: number, index: number, card: ElementRef)  {
+        if (index <= this.selectedItem - this.window/2 && this.window-this.selectedItem < 0 ){
+            card.nativeElement.style.transform = 'translateX(-1000px)'
         }
-        else {
-            return (45 * (index))
+        else if (index >=  this.selectedItem + this.window/2 ){
+            card.nativeElement.style.transform = 'translateX(1000px)'
         }
     }
 
-
-// let card = this.cardsDom.toArray()[i];
-// let scaleValue = this.getScale(this.cardsDom.length, i);
-// let percentageValue = this.getPercentage(this.cardsDom.length);
-// translateXValue  = this.getTranslateValue(scaleValue, percentageValue);
-
-// card.nativeElement.style = this.getTransformString(scaleValue);
-// card.nativeElement.style.maxWidth = percentageValue+'%';
-// card.nativeElement.style.position = 'relative';
-// card.nativeElement.style.zIndex = this.getZIndex(this.cardsDom.length, i);
-
-
-
-
-
-
-
-
-
-
-    private getTransformString(scale: number): string {
-
+    private getTransformString(scale: number, sign: string): string {
+        
         return  "-webkit-transform: scale3d("+ scale +", " + scale + ", 1); " +
                 "-moz-transform: scale3d("+ scale +", " + scale + ", 1); " +
                 "-o-transform: scale3d("+ scale +", " + scale + ", 1); " +
                 "-ms-transform: scale3d("+ scale +", " + scale + ", 1); " +
-                "transform: scale3d("+ scale +", " + scale + ", 1) translate("+scale+"%)";
+                "transform: scale3d("+ scale +", " + scale + ", 1)"; //translate(" + sign + scale*10+"px)";
     }
 
 
@@ -98,14 +80,15 @@ export class CarouselComponent {
     }
     
     private getScale(size: number, currentIndex : number) : number {
-        return (size - Math.abs(this.selectedItem - currentIndex))/size + 0.5;
+        let scale = (size - Math.abs(this.selectedItem - currentIndex))/size + 0.5;
+        return scale<1?1:scale;
     }
 
     private getZIndex(size: number, currentIndex : number) : number {
         return (size - Math.abs(this.selectedItem - currentIndex));
     }
 
-    private getPercentage(size: number) : number  {
-        return 100/size;
+    private getPercentage() : number  {
+        return 100/this.window;
     }
 }
