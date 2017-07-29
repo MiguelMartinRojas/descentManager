@@ -22,8 +22,18 @@ namespace Descent.Web.Portal.Services
                         new CardModel { Id = "2", Url = "Content/images/thumbnails/cls.png" }
                     },
                     Skills = new System.Collections.Generic.List<CardModel> {
-                        new CardModel { Id = "1", Url = "Content/images/thumbnails/doc.png" },
-                        new CardModel { Id = "2", Url = "Content/images/thumbnails/draft.png" }
+                        new CardModel { Id = "1", Url = "Content/images/thumbnails/BaseGame/heroes/classes/Healers/Disciple/0.skill Prayer of Healing..png" },
+                        new CardModel { Id = "2", Url = "Content/images/thumbnails/BaseGame/heroes/classes/Healers/Disciple/0.weapon Iron Mace..png" },
+                        new CardModel { Id = "3", Url = "Content/images/thumbnails/BaseGame/heroes/classes/Healers/Disciple/0.weapon Shield Wooden Shield..png" },
+                        new CardModel { Id = "4", Url = "Content/images/thumbnails/BaseGame/heroes/classes/Healers/Disciple/1.skill Armor of Faith..png" },
+                        new CardModel { Id = "5", Url = "Content/images/thumbnails/BaseGame/heroes/classes/Healers/Disciple/1.skill Blessed Strike..png" },
+                        new CardModel { Id = "6", Url = "Content/images/thumbnails/BaseGame/heroes/classes/Healers/Disciple/1.skill Blessed Strike..png" },
+                        new CardModel { Id = "7", Url = "Content/images/thumbnails/BaseGame/heroes/classes/Healers/Disciple/1.skill Blessed Strike..png" },
+                        new CardModel { Id = "8", Url = "Content/images/thumbnails/BaseGame/heroes/classes/Healers/Disciple/1.skill Blessed Strike..png" },
+                        //new CardModel { Id = "5", Url = "Content/images/thumbnails/BaseGame/heroes/classes/Healers/Disciple/1.skill Blessed Strike..png" },
+                        //new CardModel { Id = "6", Url = "Content/images/thumbnails/BaseGame/heroes/classes/Healers/Disciple/1.skill Blessed Strike..png" },
+                        //new CardModel { Id = "7", Url = "Content/images/thumbnails/BaseGame/heroes/classes/Healers/Disciple/1.skill Blessed Strike..png" },
+                        
                     },
                     Users = new System.Collections.Generic.List<UserModel> {
                         new UserModel {Id = "1", Name = "Migue", Value = "aweloska@gmail.com" },
