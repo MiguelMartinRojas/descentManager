@@ -39,7 +39,6 @@ export class CarouselComponent {
 
             card.nativeElement.style = this.getTransformString(scaleValue, (this.cardsDom.length/i)>2?'':'-');
             card.nativeElement.style.maxWidth = percentageValue+'%';
-            card.nativeElement.style.position = 'relative';
             card.nativeElement.style.zIndex = this.getZIndex(this.cardsDom.length, i);
             this.hideElementsOutOfWindow(this.cardsDom.length, i, card);
         }
@@ -54,11 +53,16 @@ export class CarouselComponent {
 
 
     private hideElementsOutOfWindow(size: number, index: number, card: ElementRef)  {
-        if (index <= this.selectedItem - this.window/2 && this.window-this.selectedItem < 0 ){
-            card.nativeElement.style.transform = 'translateX(-1000px)'
+        let leftDistance = this.selectedItem,
+            rightDistance = size - this.selectedItem;
+
+        if (index <= this.selectedItem - this.window/2 && Math.abs(index - this.selectedItem) > this.window - rightDistance){
+            card.nativeElement.style.transform = 'translateX(-1000px)';
+            card.nativeElement.style.maxWidth = '0';
         }
-        else if (index >=  this.selectedItem + this.window/2 ){
-            card.nativeElement.style.transform = 'translateX(1000px)'
+        else if (index >=  this.selectedItem + this.window/2 && Math.abs(index - this.selectedItem) >= this.window - leftDistance){
+            card.nativeElement.style.transform = 'translateX(1000px)';
+            card.nativeElement.style.maxWidth = '0';
         }
     }
 
@@ -68,7 +72,7 @@ export class CarouselComponent {
                 "-moz-transform: scale3d("+ scale +", " + scale + ", 1); " +
                 "-o-transform: scale3d("+ scale +", " + scale + ", 1); " +
                 "-ms-transform: scale3d("+ scale +", " + scale + ", 1); " +
-                "transform: scale3d("+ scale +", " + scale + ", 1)"; //translate(" + sign + scale*10+"px)";
+                "transform: scale3d("+ scale +", " + scale + ", 1)";
     }
 
 

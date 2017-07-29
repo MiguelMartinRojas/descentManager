@@ -4,19 +4,16 @@
             <img [src] = "(game | async)?.CharacterImage">
         </div>
         <div>
-            <textarea [ngModel]="(game | async)?.Notes" rows="15" cols="30"></textarea>
+            <textarea [ngModel]="(game | async)?.Notes" rows="10" cols="25"></textarea>
         </div>
     </div>
-    <div class="container-fluid" fxLayout="column" fxLayoutAlign="center">
-        <carousel 
+    <div class="container-fluid" fxLayout="column" fxLayoutAlign="space-between">
+        <carousel class = "carouselContainer"
             [cards]="(game | async)?.Skills">
         </carousel>
-        
-        <!--<div class = "carousel">
-            <img *ngFor = "let skill of (game | async)?.Skills" [src] = "skill.Url">
-        </div>
-        <div class = "carousel">
-            <img *ngFor = "let item of (game | async)?.Objects" [src] = "item.Url">
-        </div>-->
+        <carousel 
+            class = "carouselContainer"
+            [cards]="(game | async)?.Skills">
+        </carousel>
     </div>
 </div>
