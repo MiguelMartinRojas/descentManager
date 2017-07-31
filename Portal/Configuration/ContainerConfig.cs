@@ -3,6 +3,7 @@ using System.Web.Http;
 using SimpleInjector;
 using SimpleInjector.Integration.WebApi;
 using Descent.Web.Portal.Services;
+using Descent.Web.Managers;
 
 namespace Descent.Web.Portal
 {
@@ -17,6 +18,7 @@ namespace Descent.Web.Portal
 
         private static void ConfigureDi(Container container)
         {
+            container.Register<IGamesDocumentDbManager, AzureDocumentDbManager>(Lifestyle.Singleton);
             container.Register<IGameServiceClient, GameServiceClient>();
 
             container.RegisterSingleton(new HttpClient());

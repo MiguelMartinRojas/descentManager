@@ -1,6 +1,11 @@
 import { UserDefinition } from './user.model';
 import { CardDefinition } from './card.model';
 
+export class GamesModelDefinition {
+    Id: string;
+    Games: Array<GameModelDefinition>;
+}
+
 export class GameModelDefinition {
     Id: string;
     User: string;

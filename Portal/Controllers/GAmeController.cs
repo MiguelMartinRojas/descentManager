@@ -32,10 +32,10 @@ namespace Descent.Web.Portal.Controllers
 
         [HttpGet]
         [Route("{email}")]
-        [ResponseType(typeof(List<GameModel>))]
-        public IHttpActionResult GetGames(string email)
+        [ResponseType(typeof(GamesModel))]
+        public async Task<IHttpActionResult> GetGames(string email)
         {
-            return Ok(_gamesService.GetGames(email));
+            return Ok(await _gamesService.GetGames(email));
         }
         
     }
