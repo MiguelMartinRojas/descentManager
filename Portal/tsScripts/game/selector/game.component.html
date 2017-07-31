@@ -1,10 +1,19 @@
 <div fxLayout="column" >
-    <div class="container-fluid" fxLayout="row" fxLayoutAlign="space-between center">
-        <div> <img [src] = "(game | async)?.CharacterImage"></div>
-        <div> Free text list</div>
+    <div class="container-fluid" fxLayout="row" fxLayoutAlign="space-between start">
+        <div class = "character" fxFlex="30">
+            <img [src] = "(game | async)?.CharacterImage">
+        </div>
+        <div>
+            <textarea [ngModel]="(game | async)?.Notes" rows="10" cols="25"></textarea>
+        </div>
     </div>
-    <div class="container-fluid" fxLayout="row" fxLayoutAlign="space-between center">
-        <div> Skills list</div>
-        <div> Weapon list</div>
+    <div class="container-fluid" fxLayout="column" fxLayoutAlign="space-between">
+        <carousel class = "carouselContainer"
+            [cards]="(game | async)?.Skills">
+        </carousel>
+        <carousel 
+            class = "carouselContainer"
+            [cards]="(game | async)?.Skills">
+        </carousel>
     </div>
 </div>

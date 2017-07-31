@@ -16,10 +16,8 @@ export class GameComponent implements OnInit {
     id: number;
     games: Promise<Array<GameModelDefinition>>;
     game: Promise<GameModelDefinition>;
-    _userProfileServiceSubscription: Subscription;
 
     constructor(private _gameService: GameService,
-        private _userProfileService: UserProfileService,
         private router: Router,
         private route: ActivatedRoute) {
 
@@ -27,5 +25,4 @@ export class GameComponent implements OnInit {
 
     ngOnInit() {
     }
-
 }
