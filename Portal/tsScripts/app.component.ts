@@ -8,7 +8,7 @@ import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/take';
 import { Subscription }   from 'rxjs/Subscription';
 
-import { GameModelDefinition } from './shared/model/game.model';
+import { GameModelDefinition, GamesModelDefinition } from './shared/model/game.model';
 import { GameService } from './shared/services/game/game.service'
 import { UserProfileService } from './shared/services/authentication/user-profile.service';
 import { GoogleSignInSuccess } from './google-button.component';
@@ -22,7 +22,7 @@ import { GoogleSignInSuccess } from './google-button.component';
 export class AppComponent implements OnInit{
     
     _userProfileServiceSubscription: Subscription;
-    games: Promise<Array<GameModelDefinition>>;
+    games: Promise<GamesModelDefinition>;
     userProfile : Promise<any>;
 
 
