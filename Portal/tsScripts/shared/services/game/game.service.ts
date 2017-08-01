@@ -4,21 +4,21 @@ import { Observable } from 'rxjs';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/publishReplay';
 
-import { GameModelDefinition } from '../../model/game.model'
+import { GameModelDefinition, GamesModelDefinition } from '../../model/game.model'
 
 @Injectable()
 export class GameService {
 
-    private _gamesRef: Observable<Array<GameModelDefinition>>;
+    private _gamesRef: Observable<GamesModelDefinition>;
 
     constructor(private readonly _http: Http) { }
 
-    getGames(userValue: string): Promise<Array<GameModelDefinition>> {
+    getGames(userValue: string): Promise<GamesModelDefinition> {
         if (this._gamesRef == null) {
             this._gamesRef = this._http
                 .get('api/game/' + encodeURI(userValue))
                 .map((response: Response) => {
-                    const data : Array<GameModelDefinition> = response.json();
+                    const data : GamesModelDefinition = response.json();
                     return data;
                 })
                 .publishReplay(1)
@@ -28,8 +28,8 @@ export class GameService {
     }
 
     getGameById(userValue: string, id: number): Promise<GameModelDefinition> {
-        return this.getGames(userValue).then((games:Array<GameModelDefinition>)=>{
-            return games[id];
+        return this.getGames(userValue).then((gamesObject:GamesModelDefinition)=>{
+            return gamesObject.Games[id];
         })
     }
 }

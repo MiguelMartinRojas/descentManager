@@ -19,7 +19,7 @@
                     <span> New game</span>
                 </div>
             </a>
-            <a md-menu-item *ngFor="let game of games | async" routerLink="/game/{{game.Id}}">
+            <a md-menu-item *ngFor="let game of (games | async)?.Games" routerLink="/game/{{game.Id}}">
                 <span>{{game.Name}}</span>
             </a>
             <a md-menu-item (click) = "onLogOut()">
