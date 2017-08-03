@@ -1,0 +1,6 @@
+<div fxLayout="column" fxLayoutAlign="">
+    <md-icon (click) = "closeDialog();" class="primary-icon">more_vert</md-icon>
+    <div fxLayout="row" fxLayoutAlign="">
+        <img *ngFor ="let card of (cards | async)" [src] ="card?.Url">
+    </div>
+</div>

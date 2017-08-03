@@ -31,7 +31,20 @@ export class AppComponent implements OnInit {
         _iconRegistry.addSvgIcon('ic_arrow_down', _sanitizer.bypassSecurityTrustResourceUrl('Content/images/ic_arrow_down.svg'));
         _iconRegistry.addSvgIcon('ic_arrow_right', _sanitizer.bypassSecurityTrustResourceUrl('Content/images/ic_arrow_right.svg'));
         _iconRegistry.addSvgIcon('ic_arrow_left', _sanitizer.bypassSecurityTrustResourceUrl('Content/images/ic_arrow_left.svg'));
+        _iconRegistry.addSvgIcon('ic_box_frame', _sanitizer.bypassSecurityTrustResourceUrl('Content/images/ic_box_frame_black_24px.svg'));
+        _iconRegistry.addSvgIcon('ic_add_card', _sanitizer.bypassSecurityTrustResourceUrl('Content/images/thumbnails/add_card.svg'));
+        _iconRegistry.addSvgIcon('ic_add_weapon', _sanitizer.bypassSecurityTrustResourceUrl('Content/images/thumbnails/add_card_weapon.svg'));
+        _iconRegistry.addSvgIcon('ic_add_skill', _sanitizer.bypassSecurityTrustResourceUrl('Content/images/thumbnails/add_card_skill.svg'));
+
     }
+
+    myClientId: string = '1030197237184-1qtod5qe8of2f4unucqqq9pf2r04cj6u.apps.googleusercontent.com';
+    myLongTitle: string = 'Sign in';
+    myScope: string = 'profile email';
+    theme: string = "dark";
+
+    imageUrlProfile: string;
+    nameProfile: string;
 
     ngOnInit() {
         this.authService.isLoggedIn(this.el.nativeElement.getAttribute('isAuthenticated') === 'true');

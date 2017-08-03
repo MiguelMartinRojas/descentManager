@@ -10,9 +10,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 import { ThemeModule } from './theme/theme.module';
 import { GameModule } from './game/game.module';
+import { CardsService } from './shared/services/game/cards.service';
+import { GameService } from './shared/services/game/game.service';
 
 import { AppComponent } from './app.component';
-
 
 @NgModule({
     imports: [
@@ -24,9 +25,12 @@ import { AppComponent } from './app.component';
     ],
     providers: [
         AuthService,
-        CanActivateViaAuthGuard
+        CanActivateViaAuthGuard,
+        CardsService,
+        GameService
     ],
     bootstrap: [AppComponent]
 })
 export class AppModule {
 }
+

@@ -1,6 +1,13 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { MdDialog } from '@angular/material';
 import { Observable } from 'rxjs';
+
+import { ImageSelectorComponent } from '../selector/image.selector.component';
+import { CardsService } from '../../shared/services/game/cards.service';
+import { GameService } from '../../shared/services/game/game.service';
+import { GameModelDefinition } from '../../shared/model/game.model';
+
 
 @Component({
     moduleId: module.id,
@@ -8,7 +15,29 @@ import { Observable } from 'rxjs';
     templateUrl: './game-creator.component.html',
 })
 export class GameCreatorComponent {
-    constructor() {
+    game : Promise<GameModelDefinition>
+    
+    constructor(private _dialog: MdDialog,
+                private _cardsService: CardsService,
+                private _gameService: GameService) {
+                this.game = _gameService.getGameById('aweloska@gmail.com', 0);
+    }
+    
+    character: string;
+
+    selectCharacter () {
+      this._dialog.open(ImageSelectorComponent, {
+            data: {
+                cards: this._cardsService.getCharactersCards()
+            },
+            height: '432px',
+            width: '378px',
+            disableClose: true
+        }).afterClosed().subscribe((result: boolean) => {
+            if(result) {
+                //this._modifedTaskService.setTaskChanged(this.taskId);
+            }
+        });   
     }
 
 }
