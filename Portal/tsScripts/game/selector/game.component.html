@@ -8,12 +8,18 @@
         </div>
     </div>
     <div class="container-fluid" fxLayout="column" fxLayoutAlign="space-between">
-        <carousel class = "carouselContainer"
-            [cards]="(game | async)?.Skills">
-        </carousel>
+        <div>
+            <carousel class = "carouselContainer"
+                [cards]="(game | async)?.Skills">
+            </carousel>
+            <div (click) = "AddSkills()">
+                AddSkills
+            </div>
+        </div>
+        
         <carousel 
             class = "carouselContainer"
-            [cards]="(game | async)?.Skills">
+            [cards]="(game | async)?.Objects">
         </carousel>
     </div>
 </div>

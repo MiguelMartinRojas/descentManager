@@ -1,4 +1,4 @@
-import { AuthService } from './../game/shared/auth.service';
+import { AuthService } from '../game/shared/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

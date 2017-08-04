@@ -2,8 +2,6 @@ import { Component, ElementRef, OnInit, Input, Renderer, ViewChild, ViewChildren
 import { Router, ActivatedRoute, Params, NavigationEnd } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Subscription }   from 'rxjs/Subscription';
-import { CardDefinition } from '../model/card.model';
-import { GameService } from '../../shared/services/game/game.service';
 
 class CardComponent {
 
@@ -18,7 +16,7 @@ class CardComponent {
 })
 export class CarouselComponent {
 
-    @Input() cards: Array<CardDefinition> = null;
+    @Input() cards: Array<any> = null;
     @Input() window: number = 5;
     @ViewChild('carousel') figureDom: ElementRef;
     @ViewChildren('mycards') cardsDom: QueryList<ElementRef>;

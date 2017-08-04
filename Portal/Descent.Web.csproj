@@ -319,6 +319,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Managers\IGamesDocumentDbManager.cs" />
     <Compile Include="Mappers\MimeTypeMap.cs" />
@@ -432,7 +433,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>56023</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:65510/</IISUrl>
+          <IISUrl>https://localhost:44387/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

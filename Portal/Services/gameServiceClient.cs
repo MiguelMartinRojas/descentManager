@@ -1,17 +1,23 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Web;
+using System.Collections.Generic;
+using System.IO;
 using Descent.Web.Models;
 using Descent.Web.Managers;
 using System.Threading.Tasks;
+using Microsoft.Data.OData.Query.SemanticAst;
 
 namespace Descent.Web.Services
 {
     public class GameServiceClient : IGameServiceClient
     {
         private const string ServicePath = "game";
+        private readonly string _outputDir;
 
-        IGamesDocumentDbManager _gamesDocumentDbManager = null;
+        readonly IGamesDocumentDbManager _gamesDocumentDbManager = null;
         public GameServiceClient(IGamesDocumentDbManager gamesDocumentDbManager)
         {
+            _outputDir = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
             _gamesDocumentDbManager = gamesDocumentDbManager;
         }
 
@@ -62,6 +68,64 @@ namespace Descent.Web.Services
             GamesModel games = _gamesDocumentDbManager.GetGames("aweloska@gmail.com");
 
             return games;
+        }
+
+        public List<CardModel> GetCharacterCards()
+        {
+            string folderPath = GetFolderPath("\\Content\\images\\thumbnails\\BaseGame\\heroes\\images");
+            List<CardModel> paths = ProcessDirectory(folderPath);
+            return paths;
+        }
+
+        public List<CardModel> GetObjectsCards()
+        {
+            string folderPath = GetFolderPath("\\Content\\images\\thumbnails\\BaseGame\\heroes\\items");
+            List<CardModel> paths = ProcessDirectory(folderPath);
+            folderPath = GetFolderPath("\\Content\\images\\thumbnails\\BaseGame\\heroes\\relics");
+            paths.AddRange(ProcessDirectory(folderPath));
+            folderPath = GetFolderPath("\\Content\\images\\thumbnails\\BaseGame\\heroes\\search_cards");
+            paths.AddRange(ProcessDirectory(folderPath));
+            return paths;
+        }
+
+        public List<CardModel> GetSkillsCards()
+        {
+            string folderPath = GetFolderPath("\\Content\\images\\thumbnails\\BaseGame\\heroes\\images");
+            List<CardModel> paths = ProcessDirectory(folderPath);
+            return paths;
+        }
+
+
+        private List<CardModel> ProcessDirectory(string targetDirectory)
+        {
+            List <CardModel> paths = new List<CardModel>();
+
+            string[] fileEntries = Directory.GetFiles(targetDirectory);
+            foreach (string fileName in fileEntries)
+            {
+                var contentPath = fileName.Replace(_outputDir.Replace("file:\\", "") +"\\", "");
+                CardModel card = new CardModel {Id = fileName.GetHashCode().ToString(), Url = contentPath };
+                paths.Add(card);
+
+            }
+
+            string[] subdirectoryEntries = Directory.GetDirectories(targetDirectory);
+            foreach (string subdirectory in subdirectoryEntries)
+            {
+                paths.AddRange(ProcessDirectory(subdirectory));
+            }
+
+            return paths;
+        }
+
+
+
+        private string GetFolderPath(string extraPath)
+        {
+            string path = _outputDir + extraPath;
+
+            var uri = new Uri(path);
+            return uri.LocalPath;
         }
     }
 }

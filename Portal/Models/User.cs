@@ -3,15 +3,18 @@ using System.Security.Principal;
 
 namespace Descent.Web.Models
 {
-    public class User : ClaimsPrincipal
+    public class User
     {
-        public User(IPrincipal principal) : base(principal as ClaimsPrincipal)
+        private readonly ClaimsPrincipal _principal;
+
+        public User(IPrincipal principal)
         {
+            this._principal = new ClaimsPrincipal(principal);
         }
 
-        public string Name => Identity.Name;
-        public string UserId => FindFirst(ClaimTypes.NameIdentifier).Value;
-        public string ProfileImage => FindFirst(ClaimTypes.Uri).Value;
-        public string Email => FindFirst(ClaimTypes.Email).Value;
+        public string Name => _principal.Identity.Name;
+        public string UserId => _principal.FindFirst(ClaimTypes.NameIdentifier).Value;
+        public string ProfileImage => _principal.FindFirst(ClaimTypes.Uri).Value;
+        public string Email => _principal.FindFirst(ClaimTypes.Email).Value;
     }
 }

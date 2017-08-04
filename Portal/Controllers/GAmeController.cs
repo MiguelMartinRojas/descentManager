@@ -34,5 +34,27 @@ namespace Descent.Web.Controllers
             public static string Ppt = "ppt.png";
             public static string Draft = "draft.png";
         }
+        [HttpGet]
+        [Route("character-cards")]
+        [ResponseType(typeof(List<CardModel>))]
+        public IHttpActionResult GetCharacterCards()
+        {
+            return Ok(_gamesService.GetCharacterCards());
+        }
+        [HttpGet]
+        [Route("objects-cards")]
+        [ResponseType(typeof(List<CardModel>))]
+        public IHttpActionResult GetObjectsCards()
+        {
+            return Ok(_gamesService.GetObjectsCards());
+        }
+        [HttpGet]
+        [Route("skills-cards")]
+        [ResponseType(typeof(List<CardModel>))]
+        public IHttpActionResult GetSkillsCards()
+        {
+            return Ok(_gamesService.GetSkillsCards());
+        }
+
     }
 }

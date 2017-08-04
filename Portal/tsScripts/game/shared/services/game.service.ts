@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/publishReplay';
 
-import { GameModelDefinition, GamesModelDefinition } from '../../model/game.model'
+import { GameModelDefinition, GamesModelDefinition } from '../models/game.model'
 
 @Injectable()
 export class GameService {
