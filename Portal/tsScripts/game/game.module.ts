@@ -15,11 +15,17 @@ import { GameCreatorComponent } from './creator/game-creator.component';
 import { GameComponent } from './selector/game.component';
 import { ImageSelectorComponent } from './selector/image.selector.component';
 
+import { CardsService } from './shared/services/cards.service'
+import { AuthService } from './shared/services/auth.service'
+import { GameService } from './shared/services/game.service'
+
+
 
 @NgModule({
     imports: [SharedModule, GameRoutingModule],
     declarations: [GameCreatorComponent, GameComponent, ImageSelectorComponent],
     entryComponents: [ImageSelectorComponent],
+    providers: [CardsService, AuthService, GameService],
     exports: []
 })
 export class GameModule {

@@ -4,9 +4,9 @@ import { MdDialog } from '@angular/material';
 import { Observable } from 'rxjs';
 
 import { ImageSelectorComponent } from '../selector/image.selector.component';
-import { CardsService } from '../../shared/services/game/cards.service';
-import { GameService } from '../../shared/services/game/game.service';
-import { GameModelDefinition } from '../../shared/model/game.model';
+import { CardsService } from '../shared/services/cards.service';
+import { GameService } from '../shared/services/game.service';
+import { GameModelDefinition } from '../shared/models/game.model';
 
 
 @Component({

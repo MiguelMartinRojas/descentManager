@@ -1,7 +1,11 @@
-﻿import { AuthService } from './game/shared/auth.service';
+﻿import { AuthService } from './game/shared/services/auth.service';
+import { GameService } from './game/shared/services/game.service';
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MdIconRegistry } from '@angular/material';
+
+import { ProfileDefinition } from './game/shared/models/profile.model';
+import { GamesModelDefinition } from './game/shared/models/game.model';
 
 @Component({
     selector: 'descent-app',
@@ -11,11 +15,15 @@ import { MdIconRegistry } from '@angular/material';
 })
 export class AppComponent implements OnInit {
 
+    userProfile: Promise<ProfileDefinition>;
+    games: Promise<GamesModelDefinition>;
+
     constructor(
         private readonly el: ElementRef,
         private readonly _iconRegistry: MdIconRegistry,
         private readonly _sanitizer: DomSanitizer,
-        private readonly authService: AuthService
+        private readonly _authService: AuthService,
+        private readonly _gameService: GameService
     ) {
         _iconRegistry.addSvgIcon('ic_success', _sanitizer.bypassSecurityTrustResourceUrl('Content/images/ic_success.svg'));
         _iconRegistry.addSvgIcon('ic_error', _sanitizer.bypassSecurityTrustResourceUrl('Content/images/ic_error.svg'));
@@ -38,16 +46,17 @@ export class AppComponent implements OnInit {
 
     }
 
-    myClientId: string = '1030197237184-1qtod5qe8of2f4unucqqq9pf2r04cj6u.apps.googleusercontent.com';
-    myLongTitle: string = 'Sign in';
-    myScope: string = 'profile email';
-    theme: string = "dark";
-
     imageUrlProfile: string;
     nameProfile: string;
 
     ngOnInit() {
-        this.authService.isLoggedIn(this.el.nativeElement.getAttribute('isAuthenticated') === 'true');
+        this._authService.isLoggedIn(this.el.nativeElement.getAttribute('isAuthenticated') === 'true');
+        this.userProfile = this._authService.getProfile();
+        this.userProfile.then((profile: ProfileDefinition)=>{
+            this.games = this._gameService.getGames(profile.Email);
+        })
     }
+
+    onLogOut(){}
 
 }

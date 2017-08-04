@@ -1,25 +1,25 @@
 ﻿<md-toolbar class="toolbar md-elevation-z6">
-    <!--<div class="header container-fluid" fxLayout="row" fxLayoutAlign="start center">
-        <div *ngIf = "(userProfile | async)" fxLayout="row">
-            <img  class = "user-profile" [src] ="imageUrlProfile">
+    <div class="header container-fluid" fxLayout="row" fxLayoutAlign="start center">
+        <div *ngIf = "(userProfile | async)?.ProfileImage" fxLayout="row">
+            <img  class = "user-profile" [src] ="(userProfile | async)?.ProfileImage">
         </div>
         <div fxLayout="row">
             <img class = "logo" src ="Content/images/descent-logo.jpg">
         </div>
         <span fxFlex="auto"></span>
         <md-menu #menu="mdMenu">
-            <a *ngIf = "(userProfile | async)" md-menu-item routerLink="/new-game">
+            <a *ngIf = "(userProfile | async)?.Name" md-menu-item routerLink="/">
                 <div  fxLayoutAlign="start center">
-                    <span>Hello {{nameProfile}}</span>
+                    <span>Hello {{(userProfile | async)?.Name}}</span>
                 </div>
             </a>
-            <a md-menu-item class = "divider"  routerLink="/new-game">
+            <a md-menu-item class = "divider"  routerLink="/games/new">
                 <div fxLayoutAlign="start center">
                     <md-icon class="primary-icon">add</md-icon>
                     <span> New game</span>
                 </div>
             </a>
-            <a md-menu-item *ngFor="let game of (games | async)?.Games" routerLink="/game/{{game.Id}}">
+            <a md-menu-item *ngFor="let game of (games | async)?.Games" routerLink="/games/{{game.Id}}">
                 <span>{{game.Name}}</span>
             </a>
             <a md-menu-item (click) = "onLogOut()">
@@ -28,7 +28,12 @@
                 </div>
             </a>
         </md-menu>
-    </div>-->
+        <div [hidden] = "!(userProfile | async)?.Name" >
+            <button md-icon-button [mdMenuTriggerFor]="menu">
+                <md-icon class="primary-icon">more_vert</md-icon>
+            </button>
+        </div>
+    </div>
 </md-toolbar>
 <div class="main-container" >
     <router-outlet></router-outlet>

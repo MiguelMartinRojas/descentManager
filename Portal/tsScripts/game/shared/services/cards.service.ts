@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/publishReplay';
 
-import { CardDefinition } from '../../model/card.model';
+import { CardDefinition } from '../models/card.model';
 
 
 @Injectable()

@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit, Input, Inject } from '@angular/core';
 import { Subscription }   from 'rxjs/Subscription';
 import { MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 
-import { CardDefinition } from '../../shared/model/card.model';
+import { CardDefinition } from '../shared/models/card.model';
 
 @Component({
     moduleId: module.id,

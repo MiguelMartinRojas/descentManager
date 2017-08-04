@@ -319,6 +319,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Managers\IGamesDocumentDbManager.cs" />
     <Compile Include="Mappers\MimeTypeMap.cs" />
