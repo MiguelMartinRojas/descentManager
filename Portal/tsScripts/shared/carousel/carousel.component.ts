@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, Input, Renderer, ViewChild, ViewChildren, QueryList  } from '@angular/core';
+import { Component, ElementRef, OnInit, Input, Renderer, ViewChild, ViewChildren, QueryList, Output, EventEmitter  } from '@angular/core';
 import { Router, ActivatedRoute, Params, NavigationEnd } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Subscription }   from 'rxjs/Subscription';
@@ -18,6 +18,7 @@ export class CarouselComponent {
 
     @Input() cards: Array<any> = null;
     @Input() window: number = 5;
+    @Output() selectedItemChanged = new EventEmitter<Array<number>>();
     @ViewChild('carousel') figureDom: ElementRef;
     @ViewChildren('mycards') cardsDom: QueryList<ElementRef>;
 
@@ -46,6 +47,7 @@ export class CarouselComponent {
 
     selectCard(index: number){
         this.selectedItem = index;
+        this.selectedItemChanged.emit([this.selectedItem, this.cards.length]);
     }
 
 

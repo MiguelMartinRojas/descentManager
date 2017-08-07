@@ -42,18 +42,20 @@ export class GameComponent implements OnInit {
         })
     }
 
-    AddSkills () {
-      this._dialog.open(ImageSelectorComponent, {
-            data: {
-                cards: this._cardsService.getObjectsCards()
-            },
-            height: '432px',
-            width: '378px',
-            disableClose: true
-        }).afterClosed().subscribe((result: boolean) => {
-            if(result) {
-                //this._modifedTaskService.setTaskChanged(this.taskId);
-            }
-        });   
+    AddCard (event: Array<number>, type: string) {
+        if(event[0] === event[1]-1){
+            this._dialog.open(ImageSelectorComponent, {
+                    data: {
+                        cards: type =="objects"? this._cardsService.getObjectsCards(): this._cardsService.getSkillsCards()
+                    },
+                    height: '432px',
+                    width: '378px',
+                    disableClose: true
+                }).afterClosed().subscribe((result: boolean) => {
+                    if(result) {
+                        //this._modifedTaskService.setTaskChanged(this.taskId);
+                    }
+                });   
+        }
     }
 }

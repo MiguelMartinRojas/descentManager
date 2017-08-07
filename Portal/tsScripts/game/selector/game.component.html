@@ -10,16 +10,15 @@
     <div class="container-fluid" fxLayout="column" fxLayoutAlign="space-between">
         <div>
             <carousel class = "carouselContainer"
-                [cards]="(game | async)?.Skills">
+                [cards]="(game | async)?.Skills"
+                (selectedItemChanged)="AddCard($event, 'skills')">
             </carousel>
-            <div (click) = "AddSkills()">
-                AddSkills
-            </div>
         </div>
         
         <carousel 
             class = "carouselContainer"
-            [cards]="(game | async)?.Objects">
+            [cards]="(game | async)?.Objects"
+            (selectedItemChanged)="AddCard($event, 'objects')">
         </carousel>
     </div>
 </div>
