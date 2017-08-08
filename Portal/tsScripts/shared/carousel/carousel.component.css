@@ -1,11 +1,15 @@
 div#carousel img{ 
-    transition: 0.75s;
+    width: 100%;
+    height: auto;
     box-shadow: 0 8px 6px -6px black;
+    
 }
-div#carousel img:last-child { 
+div#carousel div:last-child img { 
     box-shadow: none;
 }
-
+div#carousel div { 
+    transition: 0.75s;
+}
 
 div#carousel { 
     margin: 9% 3% 9% 3%;

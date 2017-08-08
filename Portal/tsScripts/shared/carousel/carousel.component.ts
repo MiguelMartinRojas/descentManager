@@ -15,6 +15,7 @@ class CardComponent {
     styleUrls: ['carousel.component.css']
 })
 export class CarouselComponent {
+    SWIPE_ACTION = { LEFT: 'swipeleft', RIGHT: 'swiperight' };
 
     @Input() cards: Array<any> = null;
     @Input() window: number = 5;
@@ -48,6 +49,24 @@ export class CarouselComponent {
     selectCard(index: number){
         this.selectedItem = index;
         this.selectedItemChanged.emit([this.selectedItem, this.cards.length]);
+    }
+
+    swipe(currentIndex: number, action = this.SWIPE_ACTION.RIGHT) {
+        // out of range
+        if (currentIndex > this.cardsDom.length || currentIndex < 0) return;
+
+        let nextIndex = 0;
+        if (action === this.SWIPE_ACTION.LEFT) {
+            const isLast = currentIndex === this.cardsDom.length - 1;
+            nextIndex = isLast ? this.cardsDom.length - 1 : currentIndex + 1;
+        }
+
+        if (action === this.SWIPE_ACTION.RIGHT) {
+            const isFirst = currentIndex === 0;
+            nextIndex = isFirst ? 0 : currentIndex - 1;
+        }
+
+        this.selectedItem = nextIndex;
     }
 
 

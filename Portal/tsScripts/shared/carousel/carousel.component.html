@@ -1,3 +1,10 @@
 <div id ="carousel" #carousel class = "carousel " fxLayout="row" fxLayoutAlign="center center">
-    <img #mycards (click)="selectCard(i)"  *ngFor = "let card of cards; let i = index" [src] = "card.Url">
+    <div #mycards 
+         (click)="selectCard(i)"
+         *ngFor = "let card of cards; let i = index">
+            <img (swipeleft)="swipe(i, $event.type)"
+                 (swiperight)="swipe(i, $event.type)"
+                 [src] = "card.Url">
+    </div>
+    
 </div>

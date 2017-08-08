@@ -49,8 +49,7 @@ export class GameComponent implements OnInit {
                         cards: type =="objects"? this._cardsService.getObjectsCards(): this._cardsService.getSkillsCards()
                     },
                     height: '432px',
-                    width: '378px',
-                    disableClose: true
+                    width: '378px'
                 }).afterClosed().subscribe((result: boolean) => {
                     if(result) {
                         //this._modifedTaskService.setTaskChanged(this.taskId);

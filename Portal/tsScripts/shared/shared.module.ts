@@ -32,3 +32,4 @@ const COMPONENTS  = [CarouselComponent];
 })
 export class SharedModule {
 }
+

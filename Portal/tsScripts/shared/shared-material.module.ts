@@ -4,7 +4,6 @@ import {
     MdIconModule, MdInputModule, MdMenuModule, MdSidenavModule, 
     MdSlideToggleModule, MdListModule, MdChipsModule, MdSnackBarModule
 } from '@angular/material';
-import 'hammerjs';
 const MATERIAL_MODULES = [
     MdAutocompleteModule,
     MdButtonModule,

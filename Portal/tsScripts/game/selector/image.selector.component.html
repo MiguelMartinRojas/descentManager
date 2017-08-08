@@ -1,10 +1,10 @@
 <div fxLayout="column" class = "container-fluid" fxLayoutAlign="end end">
     <md-icon (click) = "closeDialog();" class="primary-icon">close</md-icon>
     <div fxLayout="row" fxLayoutWrap fxLayoutAlign = "space-between">
-        <img fxFlex="30" [class.active]="i == selectedIndex"
-            (click) = "zoomCard(i)"
-            class = "image-selector" 
-            *ngFor ="let card of (cards | async); let i = index" 
-            [src] ="card?.Url">
+        <img (press) = "zoomCard($event.type, i)" fxFlex="30" [class.active]="i == selectedIndex"
+             (click) = "selectCard(i)"
+             class="{{isCardSelected(i)? 'image-selector selected leftandright' : 'image-selector'}}"
+             *ngFor ="let card of (cards | async); let i = index" 
+             [src] ="card?.Url">
     </div>
 </div>
