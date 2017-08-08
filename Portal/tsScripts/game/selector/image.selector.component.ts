@@ -13,7 +13,7 @@ import { CardDefinition } from '../shared/models/card.model';
 export class ImageSelectorComponent {
     
     cards : Promise<Array<CardDefinition>> = null;
-
+    selectedIndex :number = -1;
     constructor(public dialogRef: MdDialogRef<ImageSelectorComponent>, 
                 @Inject(MD_DIALOG_DATA) public data: any,) {   
                     this.cards = data.cards;
@@ -22,6 +22,10 @@ export class ImageSelectorComponent {
 
     closeDialog() {
         this.dialogRef.close(true);
+    }
+
+    zoomCard( index: number) {
+        this.selectedIndex = (this.selectedIndex == index)? -1 : index;
     }
 
 }
