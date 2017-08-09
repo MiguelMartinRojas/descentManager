@@ -26,18 +26,22 @@ export class GameCreatorComponent {
     character: string;
 
     selectCharacter () {
-      this._dialog.open(ImageSelectorComponent, {
-            data: {
-                cards: this._cardsService.getCharactersCards()
-            },
-            height: '432px',
-            width: '378px',
-            disableClose: true
-        }).afterClosed().subscribe((result: boolean) => {
-            if(result) {
-                //this._modifedTaskService.setTaskChanged(this.taskId);
-            }
-        });   
+    this.game.then( game => {
+        this._dialog.open(ImageSelectorComponent, {
+                data: {
+                    cards: this._cardsService.getCharactersCards(),
+                    selectSingleCard: game.CharacterImage
+                },
+                height: '432px',
+                width: '378px',
+                disableClose: true
+            }).afterClosed().subscribe((result: any) => {
+                if(result) {
+                    game.CharacterImage =result;
+                    //this._modifedTaskService.setTaskChanged(this.taskId);
+                }
+            });   
+        })
     }
 
 }

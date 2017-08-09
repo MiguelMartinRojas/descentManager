@@ -5,9 +5,10 @@
         </md-input-container>
     </div>
     <div fxLayout="row" fxLayoutAlign="space-between">
+         {{(game | async)?.CharacterImage}}
         <div class = "character" fxFlex="30">
-            <md-icon (click)="selectCharacter()" *ngIf="!character" svgIcon="ic_box_frame" class="enormous-icon grey-icon frame"></md-icon>
-            <img  *ngIf="character" [src] = "">
+            <md-icon *ngIf="!(game | async)?.CharacterImage" (click)="selectCharacter()" svgIcon="ic_box_frame" class="enormous-icon grey-icon frame"></md-icon>
+            <img *ngIf="(game | async)?.CharacterImage" (click)="selectCharacter()" [src] = "(game | async)?.CharacterImage">
         </div>
         <div>
             Lo que sea menos un text area

@@ -4,6 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Subscription } from 'rxjs/Subscription';
 import { MdDialog } from '@angular/material';
 import { GameModelDefinition, GamesModelDefinition } from '../shared/models/game.model';
+import { CardDefinition } from '../shared/models/card.model';
 import { ProfileDefinition } from '../shared/models/profile.model';
 import { GameService } from '../shared/services/game.service';
 import { CardsService } from '../shared/services/cards.service';
@@ -46,14 +47,14 @@ export class GameComponent implements OnInit {
         if(event[0] === event[1]-1){
             this._dialog.open(ImageSelectorComponent, {
                     data: {
-                        cards: type =="objects"? this._cardsService.getObjectsCards(): this._cardsService.getSkillsCards()
+                        type: type,
+                        selectedCards: type ==="objects"? this.game.then(game => game.Objects): this.game.then(game => game.Skills),
+                        cards: type ==="objects"? this._cardsService.getObjectsCards(): this._cardsService.getSkillsCards()
                     },
                     height: '432px',
                     width: '378px'
-                }).afterClosed().subscribe((result: boolean) => {
-                    if(result) {
-                        //this._modifedTaskService.setTaskChanged(this.taskId);
-                    }
+                }).afterClosed().subscribe((result: any) => {
+                    
                 });   
         }
     }

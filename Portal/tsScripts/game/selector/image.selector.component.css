@@ -4,9 +4,9 @@
     width: 33%;
 }
 .image-selector.selected{
-    -ms-transform: scale(1.05, 1.05); /* IE 9 */
-    -webkit-transform: scale(1.05, 1.05); /* Safari */
-    transform: scale(1.05, 1.05);
+    -ms-transform: scale(1.02, 1.02); /* IE 9 */
+    -webkit-transform: scale(1.02, 1.02); /* Safari */
+    transform: scale(1.02, 1.02);
     -webkit-transition: all 0.30s ease-in-out;
     -moz-transition: all 0.30s ease-in-out;
     -ms-transition: all 0.30s ease-in-out;
@@ -16,10 +16,10 @@
 .leftandright
 {
 	background-color: #eed;
-	box-shadow: 8px 0 15px -4px rgba(31, 73, 125, 0.8), -8px 0 8px -4px rgba(31, 73, 125, 0.8);
-	-moz-box-shadow: 8px 0 15px -4px rgba(31, 73, 125, 0.8), -8px 0 8px -4px rgba(31, 73, 125, 0.8);
-	-webkit-box-shadow: 8px 0 15px -4px rgba(31, 73, 125, 0.8), -8px 0 8px -4px rgba(31, 73, 125, 0.8);
-	-o-box-shadow: 8px 0 15px -4px rgba(31, 73, 125, 0.8), -8px 0 8px -4px rgba(31, 73, 125, 0.8);
+	box-shadow: 8px 0 15px -4px rgba(244, 30, 30, 0.8), -8px 0 8px -4px rgba(244, 30, 30, 0.8);
+	-moz-box-shadow: 8px 0 15px -4px rgba(244, 30, 30, 0.8), -8px 0 8px -4px rgba(244, 30, 30, 0.8);
+	-webkit-box-shadow: 8px 0 15px -4px rgba(244, 30, 30, 0.8), -8px 0 8px -4px rgba(244, 30, 30, 0.8);
+	-o-box-shadow: 8px 0 15px -4px rgba(244, 30, 30, 0.8), -8px 0 8px -4px rgba(244, 30, 30, 0.8);
 }
 
  .image-selector.active {
