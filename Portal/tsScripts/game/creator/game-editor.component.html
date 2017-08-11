@@ -1,3 +1,4 @@
+<toolbar [color] = "game?.ClassType"></toolbar>
 <md-sidenav-container class="sidenav-container" *ngIf="game">
     <md-sidenav #sidenav class="sidenav" align= "end">
         <md-input-container class="full-width">
@@ -5,7 +6,7 @@
         </md-input-container>
         
     </md-sidenav>
-    <div fxLayout="column" class="container-fluid" >
+    <div fxLayout="column" class="container-fluid block-overflow" >
         <div fxLayout="row" fxLayoutAlign="space-between center">
             <md-input-container  fxFlex="85">
                 <input mdInput placeholder="Game Name" [(ngModel)]="game.Name">
@@ -15,10 +16,10 @@
         <div fxLayout="row" fxLayoutAlign="space-between center">
             <div *ngIf="!isCreated" class = "character" fxFlex="30">
                 <md-icon *ngIf="!game.CharacterImage" (click)="selectCharacter()" svgIcon="ic_box_frame" class="frame grey-icon"></md-icon>
-                <img *ngIf="game.CharacterImage" (click)="selectCharacter()" [src] = "game.CharacterImage">
+                <img class = "{{game.ClassType}}" *ngIf="game.CharacterImage" (click)="selectCharacter()" [src] = "game.CharacterImage">
             </div>
             <div *ngIf="isCreated" class = "character" fxFlex="30">
-                <img *ngIf="game.CharacterImage" [src] = "game.CharacterImage">
+                <img class = "{{game.ClassType}}" *ngIf="game.CharacterImage" [src] = "game.CharacterImage">
             </div>
             <div fxFlex="35" fxLayout="column" fxLayoutAlign="center">
                 <md-select *ngIf="!isCreated" placeholder="Hero class" [disabled] ="!game.CharacterImage" [(ngModel)]="game.Class" (ngModelChange)="onClassChanged()">

@@ -22,7 +22,7 @@
 
 .main-container {
     display:block;
-    height: calc(100% - 64px);
+    height: calc(100% - 70px);
     margin-top: 70px;
 }
 
@@ -183,6 +183,19 @@ snack-bar-container.warn-snack-bar {
         max-height: 100%;
         border-radius: 25px;
     }
+    >img.Scout{
+        border: 1px solid #004D40;
+    }
+    >img.Warrior{
+        border: 1px solid #B71C1C;
+    }
+    >img.Mage{
+        border: 1px solid #FFAB00;
+    }
+    >img.Healer{
+        border: 1px solid #01579B;
+    }
+
     >.frame{
         width: 115px;
         height: 170px;
@@ -217,4 +230,8 @@ snack-bar-container.warn-snack-bar {
 
 .sidenav-container{
     height: 100%;
+}
+
+.block-overflow{
+    overflow-x:hidden;
 }

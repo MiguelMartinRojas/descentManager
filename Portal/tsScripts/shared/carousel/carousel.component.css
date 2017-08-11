@@ -14,3 +14,6 @@ div#carousel div {
 div#carousel { 
     margin: 9% 3% 9% 3%;
 }
+.block-overflow{
+    overflow-x: hidden;
+}

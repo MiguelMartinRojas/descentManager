@@ -14,6 +14,7 @@ import { CustomHammerConfig } from './hammer-gesture-config';
 import { GameEditorComponent } from './creator/game-editor.component';
 import { GameComponent } from './game.component';
 import { ImageSelectorComponent } from './shared/selector/image.selector.component';
+import { ToolBarComponent } from './shared/ui/toolbar.component';
 
 import { SaveButtonComponent } from './shared/save/save.button.component';
 
@@ -25,7 +26,7 @@ import { GameService } from './shared/services/game.service'
 
 @NgModule({
     imports: [SharedModule, GameRoutingModule],
-    declarations: [GameEditorComponent, ImageSelectorComponent, GameComponent, SaveButtonComponent],
+    declarations: [GameEditorComponent, ImageSelectorComponent, GameComponent, SaveButtonComponent, ToolBarComponent],
     entryComponents: [GameComponent, ImageSelectorComponent],
     providers: [CardsService, AuthService, GameService],
     exports: []
