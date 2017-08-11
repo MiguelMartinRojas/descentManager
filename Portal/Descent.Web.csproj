@@ -298,8 +298,6 @@
     <Content Include="tsScripts\shared\avatar\avatar.component.css" />
     <Content Include="tsScripts\shared\avatar\avatar.component.html" />
     <Content Include="tsScripts\shared\card\simple-card.component.html" />
-    <Content Include="tsScripts\shared\selector\selector.component.css" />
-    <Content Include="tsScripts\shared\selector\selector.component.html" />
     <Content Include="tsScripts\shared\spinner\spinner.component.css" />
     <Content Include="tsScripts\shared\spinner\spinner.component.html" />
     <Content Include="tsScripts\shared\wizard\progress\wizard-progress.component.css" />
@@ -338,8 +336,6 @@
     <TypeScriptCompile Include="tsScripts\shared\card\simple-card.component.ts" />
     <TypeScriptCompile Include="tsScripts\shared\model\schema.ts" />
     <TypeScriptCompile Include="tsScripts\shared\search\search-bar.component.ts" />
-    <TypeScriptCompile Include="tsScripts\shared\selector\selector-item.component.ts" />
-    <TypeScriptCompile Include="tsScripts\shared\selector\selector.component.ts" />
     <TypeScriptCompile Include="tsScripts\shared\spinner\spinner.component.ts" />
     <TypeScriptCompile Include="tsScripts\shared\utils\string-utils.ts" />
     <TypeScriptCompile Include="tsScripts\shared\utils\type-utils.ts" />
