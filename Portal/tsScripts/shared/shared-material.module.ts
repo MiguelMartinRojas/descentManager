@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import {
     MdAutocompleteModule, MdButtonModule, MdCardModule, MdDialogModule,
     MdIconModule, MdInputModule, MdMenuModule, MdSidenavModule, 
-    MdSlideToggleModule, MdListModule, MdChipsModule, MdSnackBarModule
+    MdSlideToggleModule, MdListModule, MdChipsModule, MdSnackBarModule,MdSelectModule
 } from '@angular/material';
 const MATERIAL_MODULES = [
     MdAutocompleteModule,
@@ -16,7 +16,8 @@ const MATERIAL_MODULES = [
     MdSlideToggleModule,
     MdListModule,
     MdChipsModule, 
-    MdSnackBarModule
+    MdSnackBarModule,
+    MdSelectModule
 ];
 @NgModule({
     imports: MATERIAL_MODULES,

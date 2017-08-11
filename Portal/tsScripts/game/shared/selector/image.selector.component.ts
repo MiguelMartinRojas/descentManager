@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit, Input, Inject, ViewChild, ViewChildren, 
 import { Subscription }   from 'rxjs/Subscription';
 import { MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 
-import { CardDefinition } from '../shared/models/card.model';
+import { CardDefinition } from '../models/card.model';
 
 @Component({
     moduleId: module.id,
@@ -14,7 +14,7 @@ export class ImageSelectorComponent implements OnInit{
 
     cards : Promise<Array<CardDefinition>> = null;
     type: string = "";
-    selectedCardsPromise: Promise<Array<CardDefinition>>;
+    selectedCards: Array<CardDefinition>;
     selectedCardsMap : Map<number, boolean> = new Map<number, boolean>();
     selectedIndex :number = -1;
     selectSingleCard: string;
@@ -23,14 +23,14 @@ export class ImageSelectorComponent implements OnInit{
                 @Inject(MD_DIALOG_DATA) public data: any,) {   
                     this.cards = this.cards || data.cards;
                     this.type = this.type || data.type;
-                    this.selectedCardsPromise =  data.selectedCards || Promise.resolve( new Array<CardDefinition>());
-                    this.selectSingleCard =   data.selectSingleCard ||  ""
+                    this.selectedCards =  data.selectedCards || Array<CardDefinition>();
+                    this.selectSingleCard =   data.selectSingleCard ||  false
 
     }
 
     ngOnInit(){
-        this.selectedCardsPromise.then(selectedCards => {
-            for(let selectedCard of selectedCards){
+        if (this.selectedCards) {
+            for(let selectedCard of this.selectedCards){
                 this.cards.then(allCards => {
                     let j = 0;
                     for(let card of allCards){
@@ -41,32 +41,31 @@ export class ImageSelectorComponent implements OnInit{
                     }
                 })
             }
-    })
+        }
 
     }
 
     selectCard(card: CardDefinition, index: number) {
         
-        if(this.selectSingleCard !== ""){
-            this.selectSingleCard = card.Url;
+        if(this.selectSingleCard){
             this.dialogRef.close(card.Url);
         }
         
         this.removeCardZoom();
         
-        this.selectedCardsPromise.then(selectedCards => {
-            let removeCard = selectedCards.findIndex((selectedCard => selectedCard.Id === card.Id));
+        if(this.selectedCards) {
+            let removeCard = this.selectedCards.findIndex((selectedCard => selectedCard.Id === card.Id));
                 if( removeCard !== -1){
-                    selectedCards.splice(removeCard, 1);
+                    this.selectedCards.splice(removeCard, 1);
                     this.selectedCardsMap.delete(index);
                 }
                 else {
-                    let lastCard = selectedCards.pop();
-                    selectedCards.push(card);
-                    lastCard? selectedCards.push(lastCard): '';
+                    let lastCard = this.selectedCards.pop();
+                    this.selectedCards.push(card);
+                    lastCard? this.selectedCards.push(lastCard): '';
                     this.selectedCardsMap.set(index,true);
                 }
-        });
+        };
     }
 
     closeDialog() {

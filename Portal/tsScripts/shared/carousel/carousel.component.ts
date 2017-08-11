@@ -29,7 +29,7 @@ export class CarouselComponent {
     selectedItem: number = -1;
 
     ngAfterViewChecked() {
-        if(this.selectedItem < 0 && this.cardsDom.length){
+        if((this.selectedItem < 0 && this.cardsDom.length)|| this.cardsDom.length === 1){
             this.selectedItem = 0;
         }
         for(let i = 0; i < this.cardsDom.length; i++) {

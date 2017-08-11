@@ -1,0 +1,5 @@
+<game-editor *ngIf = "(game | async) && !id" [game]= "(game | async)"  [isCreated] ="false">
+</game-editor>
+
+<game-editor  *ngIf = "(game | async) && id" [game]= "(game | async)" [isCreated] ="true">
+</game-editor>
