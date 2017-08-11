@@ -1,0 +1,37 @@
+.image-selector {
+    margin: 3px 0 3px 0;
+    height: 33%;
+    width: 33%;
+}
+.image-selector.selected{
+    -ms-transform: scale(1.02, 1.02); /* IE 9 */
+    -webkit-transform: scale(1.02, 1.02); /* Safari */
+    transform: scale(1.02, 1.02);
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+}
+
+.leftandright
+{
+	background-color: #eed;
+	box-shadow: 8px 0 15px -4px rgba(244, 30, 30, 0.8), -8px 0 8px -4px rgba(244, 30, 30, 0.8);
+	-moz-box-shadow: 8px 0 15px -4px rgba(244, 30, 30, 0.8), -8px 0 8px -4px rgba(244, 30, 30, 0.8);
+	-webkit-box-shadow: 8px 0 15px -4px rgba(244, 30, 30, 0.8), -8px 0 8px -4px rgba(244, 30, 30, 0.8);
+	-o-box-shadow: 8px 0 15px -4px rgba(244, 30, 30, 0.8), -8px 0 8px -4px rgba(244, 30, 30, 0.8);
+}
+
+ .image-selector.active {
+    -moz-transition: all 0.75s;
+    -webkit-transition: all 0.75s;
+    transition: all 0.75s;
+
+    top:50%;
+    left:50%;
+    position: sticky;
+    -moz-transform: scale(2.0) translate(-30%, -30%);
+    -webkit-transform: scale(2.0) translate(-30%, -30%);
+    transform: scale(2.0) translate(-30%, -30%);
+    box-shadow: 0 8px 6px -6px black;
+}

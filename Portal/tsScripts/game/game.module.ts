@@ -11,9 +11,12 @@ import { UrlSerializer } from '@angular/router';
 
 import { HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { CustomHammerConfig } from './hammer-gesture-config';
-import { GameCreatorComponent } from './creator/game-creator.component';
-import { GameComponent } from './selector/game.component';
-import { ImageSelectorComponent } from './selector/image.selector.component';
+import { GameEditorComponent } from './creator/game-editor.component';
+import { GameComponent } from './game.component';
+import { ImageSelectorComponent } from './shared/selector/image.selector.component';
+import { ToolBarComponent } from './shared/ui/toolbar.component';
+
+import { SaveButtonComponent } from './shared/save/save.button.component';
 
 import { CardsService } from './shared/services/cards.service'
 import { AuthService } from './shared/services/auth.service'
@@ -23,8 +26,8 @@ import { GameService } from './shared/services/game.service'
 
 @NgModule({
     imports: [SharedModule, GameRoutingModule],
-    declarations: [GameCreatorComponent, GameComponent, ImageSelectorComponent],
-    entryComponents: [ImageSelectorComponent],
+    declarations: [GameEditorComponent, ImageSelectorComponent, GameComponent, SaveButtonComponent, ToolBarComponent],
+    entryComponents: [GameComponent, ImageSelectorComponent],
     providers: [CardsService, AuthService, GameService],
     exports: []
 })

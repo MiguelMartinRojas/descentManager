@@ -2,8 +2,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { GameCreatorComponent } from './creator/game-creator.component';
-import { GameComponent } from './selector/game.component';
+import { GameComponent } from './game.component';
 
 @NgModule({
     imports: [
@@ -14,7 +13,7 @@ import { GameComponent } from './selector/game.component';
                 children: [
                     {
                         path: 'new',
-                        component: GameCreatorComponent
+                        component: GameComponent
                     },
                     {
                         path: ':id',

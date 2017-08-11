@@ -31,31 +31,25 @@ export class CardsService {
     }
 
     getObjectsCards(): Promise<Array<CardDefinition>> {
-        if (this._objectsCardsRef == null) {
-            this._objectsCardsRef = this._http
+        return this._http
                 .get('api/game/objects-cards')
                 .map((response: Response) => {
                     const data : Array<CardDefinition> = response.json();
                     return data;
                 })
                 .publishReplay(1)
-                .refCount();
-        }
-        return this._objectsCardsRef.toPromise().catch(() => []);
+                .refCount().toPromise().catch(() => []);
     }
 
-    getSkillsCards(): Promise<Array<CardDefinition>> {
-        if (this._skillsCardsRef == null) {
-            this._skillsCardsRef = this._http
-                .get('api/game/skills-cards')
+    getSkillsCards(klazzType: string, klazz: string): Promise<Array<CardDefinition>> {
+            return this._http
+                .get('api/game/skills-cards' + '/' + encodeURI(klazzType) + '/' + encodeURI(klazz))
                 .map((response: Response) => {
                     const data : Array<CardDefinition> = response.json();
                     return data;
                 })
                 .publishReplay(1)
-                .refCount();
-        }
-        return this._skillsCardsRef.toPromise().catch(() => []);
+                .refCount().toPromise().catch(() => []);
     }
 
 }

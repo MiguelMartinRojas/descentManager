@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, Input, Renderer, ViewChild, ViewChildren, QueryList  } from '@angular/core';
+import { Component, ElementRef, OnInit, Input, Renderer, ViewChild, ViewChildren, QueryList, Output, EventEmitter  } from '@angular/core';
 import { Router, ActivatedRoute, Params, NavigationEnd } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Subscription }   from 'rxjs/Subscription';
@@ -15,9 +15,11 @@ class CardComponent {
     styleUrls: ['carousel.component.css']
 })
 export class CarouselComponent {
+    SWIPE_ACTION = { LEFT: 'swipeleft', RIGHT: 'swiperight' };
 
     @Input() cards: Array<any> = null;
     @Input() window: number = 5;
+    @Output() selectedItemChanged = new EventEmitter<Array<number>>();
     @ViewChild('carousel') figureDom: ElementRef;
     @ViewChildren('mycards') cardsDom: QueryList<ElementRef>;
 
@@ -27,7 +29,7 @@ export class CarouselComponent {
     selectedItem: number = -1;
 
     ngAfterViewChecked() {
-        if(this.selectedItem < 0 && this.cardsDom.length){
+        if((this.selectedItem < 0 && this.cardsDom.length)|| this.cardsDom.length === 1){
             this.selectedItem = 0;
         }
         for(let i = 0; i < this.cardsDom.length; i++) {
@@ -46,6 +48,25 @@ export class CarouselComponent {
 
     selectCard(index: number){
         this.selectedItem = index;
+        this.selectedItemChanged.emit([this.selectedItem, this.cards.length]);
+    }
+
+    swipe(currentIndex: number, action = this.SWIPE_ACTION.RIGHT) {
+        // out of range
+        if (currentIndex > this.cardsDom.length || currentIndex < 0) return;
+
+        let nextIndex = 0;
+        if (action === this.SWIPE_ACTION.LEFT) {
+            const isLast = currentIndex === this.cardsDom.length - 1;
+            nextIndex = isLast ? this.cardsDom.length - 1 : currentIndex + 1;
+        }
+
+        if (action === this.SWIPE_ACTION.RIGHT) {
+            const isFirst = currentIndex === 0;
+            nextIndex = isFirst ? 0 : currentIndex - 1;
+        }
+
+        this.selectedItem = nextIndex;
     }
 
 

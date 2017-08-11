@@ -21,6 +21,11 @@
     <script src="~/Scripts/libs/web-animations.min.js"></script>
     <script src="~/Scripts/libs/smoothscroll.js"></script>
     <script src="~/Scripts/libs/hammer.min.js"></script>
+    <!-- Hammer JS Touch Emulator: Uncomment if for desktop -->
+    <script src="https://cdn.rawgit.com/hammerjs/touchemulator/master/touch-emulator.js"></script>
+    <script>
+        TouchEmulator();
+    </script>
 
     @{ var isDevMode = WebConfigurationManager.AppSettings["DevMode"] == "true"; }
 

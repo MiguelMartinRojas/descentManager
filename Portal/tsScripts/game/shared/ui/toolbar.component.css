@@ -1,0 +1,26 @@
+.toolbar-override{
+    top: 0px;
+    position: absolute;
+    z-index: 300;
+    display: block;
+    width: 100%;
+    height: 4px;
+    content: ' ';
+}
+
+.Scout {
+    background-image: linear-gradient(to right, #004D40 20% ,#00897B 30%, #B2DFDB 50%);
+}
+
+.Healer {
+    background-image: linear-gradient(to right, #01579B 20% ,#039BE5 30%, #B3E5FC 50%);
+}
+
+.Warrior {
+    background-image: linear-gradient(to right, #B71C1C 20% ,#E53935 30%, #E57373 50%);
+}
+
+.Mage {
+    background-image: linear-gradient(to right, #FFAB00 20% ,#FFC107 30%, #FFECB3 50%);
+}
+

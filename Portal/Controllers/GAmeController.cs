@@ -7,7 +7,6 @@ using Descent.Web.Services;
 
 namespace Descent.Web.Controllers
 {
-    [Authorize]
     [RoutePrefix("api/game")]
     public class GameController : ApiController
     {
@@ -49,11 +48,18 @@ namespace Descent.Web.Controllers
             return Ok(_gamesService.GetObjectsCards());
         }
         [HttpGet]
-        [Route("skills-cards")]
+        [Route("skills-cards/{klazzType}/{klazz}")]
         [ResponseType(typeof(List<CardModel>))]
-        public IHttpActionResult GetSkillsCards()
+        public IHttpActionResult GetSkillsCards(string klazzType, string klazz)
         {
-            return Ok(_gamesService.GetSkillsCards());
+            return Ok(_gamesService.GetSkillsCards(klazzType, klazz));
+        }
+        [HttpGet]
+        [Route("class/{klazzType}")]
+        [ResponseType(typeof(List<CardModel>))]
+        public IHttpActionResult GetSkillsCards(string klazzType)
+        {
+            return Ok(_gamesService.GetClassType(klazzType));
         }
 
     }

@@ -2,9 +2,8 @@ import { NgModule } from '@angular/core';
 import {
     MdAutocompleteModule, MdButtonModule, MdCardModule, MdDialogModule,
     MdIconModule, MdInputModule, MdMenuModule, MdSidenavModule, 
-    MdSlideToggleModule, MdListModule, MdChipsModule, MdSnackBarModule
+    MdSlideToggleModule, MdListModule, MdChipsModule, MdSnackBarModule,MdSelectModule
 } from '@angular/material';
-import 'hammerjs';
 const MATERIAL_MODULES = [
     MdAutocompleteModule,
     MdButtonModule,
@@ -17,7 +16,8 @@ const MATERIAL_MODULES = [
     MdSlideToggleModule,
     MdListModule,
     MdChipsModule, 
-    MdSnackBarModule
+    MdSnackBarModule,
+    MdSelectModule
 ];
 @NgModule({
     imports: MATERIAL_MODULES,

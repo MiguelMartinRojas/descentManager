@@ -7,12 +7,16 @@ export class GamesModelDefinition {
 }
 
 export class GameModelDefinition {
+    
+
     Id: string;
     User: string;
     Users: Array<UserDefinition>;
     Name: string;
     CharacterImage: string;
     Gold: string;
+    Class: string;
+    ClassType: string;
     Objects: Array<CardDefinition>;
     Skills: Array<CardDefinition>;
     Notes: string;

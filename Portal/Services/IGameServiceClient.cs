@@ -10,7 +10,9 @@ namespace Descent.Web.Services
         Task<GamesModel> GetGames(string email);
         List<CardModel> GetCharacterCards();
         List<CardModel> GetObjectsCards();
-        List<CardModel> GetSkillsCards();
+        List<CardModel> GetSkillsCards(string klazzType, string klazz);
+        List<string> GetClassType(string klazzType);
+        
 
 
     }

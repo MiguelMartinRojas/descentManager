@@ -2,6 +2,7 @@
 using System.Web;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Descent.Web.Models;
 using Descent.Web.Managers;
 using System.Threading.Tasks;
@@ -88,12 +89,19 @@ namespace Descent.Web.Services
             return paths;
         }
 
-        public List<CardModel> GetSkillsCards()
+        public List<CardModel> GetSkillsCards(string klazzType, string klazz)
         {
-            string folderPath = GetFolderPath("\\Content\\images\\thumbnails\\BaseGame\\heroes\\images");
+            string folderPath = GetFolderPath($"\\Content\\images\\thumbnails\\BaseGame\\heroes\\classes\\{klazzType}\\{klazz}");
             List<CardModel> paths = ProcessDirectory(folderPath);
             return paths;
         }
+
+        public List<string> GetClassType(string klazz)
+        {
+            string folderPath = GetFolderPath($"\\Content\\images\\thumbnails\\BaseGame\\heroes\\classes\\{klazz}");
+            return GetFolders(folderPath);
+        }
+
 
 
         private List<CardModel> ProcessDirectory(string targetDirectory)
@@ -116,6 +124,21 @@ namespace Descent.Web.Services
             }
 
             return paths;
+        }
+
+
+        private List<string> GetFolders(string targetDirectory)
+        {
+            List<string> folders = new List<string>();
+            string[] subdirectoryEntries = Directory.GetDirectories(targetDirectory);
+            foreach (string subdirectory in subdirectoryEntries)
+            {
+                var contentPath = subdirectory.Replace(_outputDir.Replace("file:\\", "") + "\\", "");
+                folders.Add(contentPath.Split('\\').Last());
+
+            }
+
+            return folders;
         }
 
 
