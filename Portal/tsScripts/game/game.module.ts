@@ -15,6 +15,8 @@ import { GameEditorComponent } from './creator/game-editor.component';
 import { GameComponent } from './game.component';
 import { ImageSelectorComponent } from './shared/selector/image.selector.component';
 
+import { SaveButtonComponent } from './shared/save/save.button.component';
+
 import { CardsService } from './shared/services/cards.service'
 import { AuthService } from './shared/services/auth.service'
 import { GameService } from './shared/services/game.service'
@@ -23,7 +25,7 @@ import { GameService } from './shared/services/game.service'
 
 @NgModule({
     imports: [SharedModule, GameRoutingModule],
-    declarations: [GameEditorComponent, ImageSelectorComponent, GameComponent],
+    declarations: [GameEditorComponent, ImageSelectorComponent, GameComponent, SaveButtonComponent],
     entryComponents: [GameComponent, ImageSelectorComponent],
     providers: [CardsService, AuthService, GameService],
     exports: []

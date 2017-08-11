@@ -1,0 +1,41 @@
+
+.fab {
+    position: fixed;
+    bottom: 5%;
+    right: 25px;
+}
+
+@media (min-width: 768px) {
+    .fab {
+        right: calc((100% - 720px)/2)
+    }
+}
+
+@media (min-width: 992px) {
+    .fab {
+        right: calc((100% - 960px)/2)
+    }
+}
+
+@media (min-width: 1200px) {
+    .fab {
+        right: calc((100% - 1140px)/2)
+    }
+}
+
+.Scout{
+    background-color: #004D40;
+}
+
+.Healer{
+    background-color: #01579B;
+}
+
+.Warrior{
+    background-color: #D50000;
+}
+
+.Mage{
+    background-color: #FFAB00;
+}
+
