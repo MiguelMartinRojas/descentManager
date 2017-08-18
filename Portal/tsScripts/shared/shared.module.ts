@@ -7,13 +7,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { SharedMaterialModule } from './shared-material.module';
 import { CarouselComponent } from './carousel/carousel.component';
+import { SnackBarSuccessComponent } from './snack-bar-success/snack-bar-success.component';
 
 
 import 'hammerjs';
 
 
 const MODULES  = [BrowserAnimationsModule, CommonModule, RouterModule, SharedMaterialModule, FlexLayoutModule, FormsModule, ReactiveFormsModule];
-const COMPONENTS  = [CarouselComponent];
+const COMPONENTS  = [CarouselComponent, SnackBarSuccessComponent];
 //const PROVIDERS  = [GameService, CardsService];
 
 /**

@@ -52,6 +52,10 @@ export class AppComponent implements OnInit {
     ngOnInit() {
         this._authService.isLoggedIn(this.el.nativeElement.getAttribute('isAuthenticated') === 'true');
         this.userProfile = this._authService.getProfile();
+        this.getGames();
+    }
+
+    getGames(){
         this.userProfile.then((profile: ProfileDefinition)=>{
             this.games = this._gameService.getGames(profile.Email);
         })

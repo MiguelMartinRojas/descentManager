@@ -1,6 +1,8 @@
 ﻿import { WelcomeComponent } from './welcome/welcome.component';
 import { AuthService } from './game/shared/services/auth.service';
 import { CanActivateViaAuthGuard } from './game/guards/auth.guard';
+import { CanDeactivateGuard } from './game/guards/save.guard';
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
@@ -26,6 +28,7 @@ import { AppComponent } from './app.component';
     providers: [
         AuthService,
         CanActivateViaAuthGuard,
+        CanDeactivateGuard,
         CardsService,
         GameService
     ],

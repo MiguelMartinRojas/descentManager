@@ -41,7 +41,7 @@ export class CardsService {
                 .refCount().toPromise().catch(() => []);
     }
 
-    getSkillsCards(klazzType: string, klazz: string): Promise<Array<CardDefinition>> {
+     getSkillsCards(klazzType: string, klazz: string): Promise<Array<CardDefinition>> {
             return this._http
                 .get('api/game/skills-cards' + '/' + encodeURI(klazzType) + '/' + encodeURI(klazz))
                 .map((response: Response) => {
@@ -51,5 +51,4 @@ export class CardsService {
                 .publishReplay(1)
                 .refCount().toPromise().catch(() => []);
     }
-
 }

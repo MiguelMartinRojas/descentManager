@@ -14,21 +14,24 @@ import { CustomHammerConfig } from './hammer-gesture-config';
 import { GameEditorComponent } from './creator/game-editor.component';
 import { GameComponent } from './game.component';
 import { ImageSelectorComponent } from './shared/selector/image.selector.component';
-import { ToolBarComponent } from './shared/ui/toolbar.component';
 
 import { SaveButtonComponent } from './shared/save/save.button.component';
+import { DiscardDialogComponent } from './dialog/discard-dialog.component';
+import { ToolBarComponent } from './shared/ui/toolbar.component';
+
 
 import { CardsService } from './shared/services/cards.service'
 import { AuthService } from './shared/services/auth.service'
 import { GameService } from './shared/services/game.service'
+import { GameChangedService } from './shared/services/game-changed.service'
 
 
 
 @NgModule({
     imports: [SharedModule, GameRoutingModule],
-    declarations: [GameEditorComponent, ImageSelectorComponent, GameComponent, SaveButtonComponent, ToolBarComponent],
-    entryComponents: [GameComponent, ImageSelectorComponent],
-    providers: [CardsService, AuthService, GameService],
+    declarations: [GameEditorComponent, ImageSelectorComponent, GameComponent, SaveButtonComponent, DiscardDialogComponent, ToolBarComponent],
+    entryComponents: [GameComponent, ImageSelectorComponent, DiscardDialogComponent],
+    providers: [CardsService, AuthService, GameService, GameChangedService ],
     exports: []
 })
 export class GameModule {

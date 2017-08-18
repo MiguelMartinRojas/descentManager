@@ -1,7 +1,7 @@
 ﻿import { CanActivateViaAuthGuard } from './guards/auth.guard';
+import { CanDeactivateGuard } from './guards/save.guard';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-
 import { GameComponent } from './game.component';
 
 @NgModule({
@@ -13,11 +13,13 @@ import { GameComponent } from './game.component';
                 children: [
                     {
                         path: 'new',
-                        component: GameComponent
+                        component: GameComponent,
+                        canDeactivate: [CanDeactivateGuard]
                     },
                     {
                         path: ':id',
-                        component: GameComponent
+                        component: GameComponent,
+                        canDeactivate: [CanDeactivateGuard]
                     }
                 ]
             }

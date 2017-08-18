@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { ImageSelectorComponent } from '../shared/selector/image.selector.component';
 import { CardsService } from '../shared/services/cards.service';
 import { GameService } from '../shared/services/game.service';
+import { GameChangedService } from '../shared/services/game-changed.service';
 import { GameModelDefinition } from '../shared/models/game.model';
 import { CardDefinition } from '../shared/models/card.model';
 
@@ -18,17 +19,18 @@ import { CardDefinition } from '../shared/models/card.model';
 export class GameEditorComponent implements OnInit{
     
     @Input()
-    game : GameModelDefinition;
+    game : any;
 
     @Input()
     isCreated : GameModelDefinition;
     
     constructor(private _dialog: MdDialog,
                 private _cardsService: CardsService,
-                private _gameService: GameService) {
+                private _gameService: GameService,
+                private _gameChangedService: GameChangedService) {
     }
     
-    character: string;
+    hasChange: boolean = false;
 
     classes: Array<string> = new Array('');
 
@@ -46,6 +48,7 @@ export class GameEditorComponent implements OnInit{
                 width: '378px'
             }).afterClosed().subscribe((result: any) => {
                 if(result && result !== "") {
+                    this.hasChange = true;
                     this.game.Class = null;
                     this.game.CharacterImage = result;
                     this.game.ClassType = this.getClassType(this.game.CharacterImage);
@@ -86,6 +89,10 @@ export class GameEditorComponent implements OnInit{
         let urlSplited = characterUrl.split('\\');
         return urlSplited[urlSplited.length-1].split('-')[0];
         
+    }
+
+    onChange(event: Event){
+        this._gameChangedService.updateGameChanged(true);
     }
     
 }

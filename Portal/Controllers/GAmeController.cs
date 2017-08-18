@@ -7,6 +7,7 @@ using Descent.Web.Services;
 
 namespace Descent.Web.Controllers
 {
+    //[Authorize]
     [RoutePrefix("api/game")]
     public class GameController : ApiController
     {
@@ -16,6 +17,7 @@ namespace Descent.Web.Controllers
         {
             _gamesService = gamesService;
         }
+
 
         [HttpGet]
         [Route("{email}")]
@@ -47,6 +49,7 @@ namespace Descent.Web.Controllers
         {
             return Ok(_gamesService.GetObjectsCards());
         }
+
         [HttpGet]
         [Route("skills-cards/{klazzType}/{klazz}")]
         [ResponseType(typeof(List<CardModel>))]
@@ -54,12 +57,13 @@ namespace Descent.Web.Controllers
         {
             return Ok(_gamesService.GetSkillsCards(klazzType, klazz));
         }
-        [HttpGet]
-        [Route("class/{klazzType}")]
-        [ResponseType(typeof(List<CardModel>))]
-        public IHttpActionResult GetSkillsCards(string klazzType)
+
+        [HttpPost]
+        [ResponseType(typeof(ProcessGameActionResponse))]
+        [Route("save/{email}/{gameId}")]
+        public async Task<IHttpActionResult> SaveGame(string email, int gameId, [FromBody] GameModel game)
         {
-            return Ok(_gamesService.GetClassType(klazzType));
+            return Ok(await _gamesService.SaveGames(email, gameId, game));
         }
 
     }

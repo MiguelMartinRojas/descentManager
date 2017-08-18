@@ -12,8 +12,6 @@ namespace Descent.Web.Services
         List<CardModel> GetObjectsCards();
         List<CardModel> GetSkillsCards(string klazzType, string klazz);
         List<string> GetClassType(string klazzType);
-        
-
-
+        Task<ProcessGameActionResponse> SaveGames(string email, int gameId, GameModel game);
     }
 }

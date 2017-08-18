@@ -321,6 +321,7 @@
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Managers\IGamesDocumentDbManager.cs" />
     <Compile Include="Mappers\MimeTypeMap.cs" />
+    <Compile Include="Models\ProcessGameActionResponse.cs" />
     <Compile Include="Models\CardModel.cs" />
     <Compile Include="Models\GamesModel.cs" />
     <Compile Include="Models\GameModel.cs" />
@@ -401,9 +402,6 @@
     <Content Include="tsScripts\shared\card\custom-card.component.html" />
     <TypeScriptCompile Include="tsScripts\shared\card\custom-card.component.ts" />
     <Content Include="tsScripts\shared\card\custom-card.component.css" />
-    <Content Include="tsScripts\shared\snack-bar-error\snack-bar-error.component.html" />
-    <TypeScriptCompile Include="tsScripts\shared\snack-bar-error\snack-bar-error.component.ts" />
-    <Content Include="tsScripts\shared\snack-bar-error\snack-bar-error.component.css" />
     <Content Include="Content\scss\_fonts.scss" />
     <Content Include="Content\scss\_overrides.scss" />
     <TypeScriptCompile Include="tsScripts\shared\circle-progress-bar\circle-progress-bar.component.ts" />

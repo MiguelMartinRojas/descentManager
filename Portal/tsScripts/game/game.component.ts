@@ -2,7 +2,8 @@ import { Component, ElementRef, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MdDialog } from '@angular/material';
 import { Observable } from 'rxjs';
-import { Router, ActivatedRoute, Params, NavigationEnd } from '@angular/router';
+import { Subscription }   from 'rxjs/Subscription';
+import { Router, ActivatedRoute, Params, NavigationEnd, NavigationStart } from '@angular/router';
 
 import { ImageSelectorComponent } from './shared/selector/image.selector.component';
 import { CardsService } from './shared/services/cards.service';
@@ -18,34 +19,38 @@ import { AuthService } from './shared/services/auth.service';
     templateUrl: './game.component.html',
 })
 export class GameComponent {
-    game : Promise<GameModelDefinition>
+    
+    game: Promise<GameModelDefinition>
     id: number;    
     _profile: Promise<ProfileDefinition>; 
-    
+    _routerSubscription: Subscription;
+
     constructor(private _dialog: MdDialog,
                 private _cardsService: CardsService,
                 private _gameService: GameService,
                 private _authService: AuthService,
                 private router: Router,
                 private route: ActivatedRoute) {
-        this._profile = this._authService.getProfile();
-        this.id = this.route.snapshot.params['id'];
-        this._profile.then((profile:ProfileDefinition) =>{
-        
-            if(this.id){
-                    this.game = this._gameService.getGameById(profile.Email, +this.id);
-            }
-            else{
-                this.game = _gameService.createNewGame(profile.Email);
-            }
-        })
-        
-    }
-    
-    character: string;
 
-    classes: Array<string> = new Array('Disciple', 'SpiritSpeaker')
-    selectedClass: string;
+        this._profile = this._authService.getProfile();
+        this._routerSubscription = this.router.events.subscribe(
+            (event) => {
+                this._profile.then((profile:ProfileDefinition) =>{
+                   
+                     if(event instanceof NavigationEnd) {
+                        this.id = this.route.snapshot.params['id'];
+                        if(this.id){
+                                this.game = this._gameService.getGameById(profile.Email, +this.id);
+                                this.game = this.createCopy(this.game);
+                        }
+                        else{
+                            this.game = _gameService.createNewGame(profile.Email);
+                        }
+                    }
+                })
+            }
+        );        
+    }
 
     selectCharacter () {
         this.game.then( game => {
@@ -66,4 +71,20 @@ export class GameComponent {
 
     addUsers(){}
 
+    ngOnDestroy() {
+        this._routerSubscription.unsubscribe();
+    }
+
+
+    createCopy(gamePromise: Promise<GameModelDefinition>) :Promise<GameModelDefinition>{ 
+        let gamePromiseCopy = new Promise<GameModelDefinition>((resolve) => {
+                gamePromise.then((game: GameModelDefinition) => {
+                    let gameCopy = new GameModelDefinition();
+                    gameCopy.clone_object(game);
+                    return resolve(gameCopy);
+                })
+            })
+
+        return gamePromiseCopy;
+    }
 }

@@ -2,16 +2,16 @@
 <md-sidenav-container class="sidenav-container" *ngIf="game">
     <md-sidenav #sidenav class="sidenav" align= "end">
         <md-input-container class="full-width">
-            <textarea mdInput  md-autosize  minRows="6" placeholder="Some notes" [(ngModel)]="game.Notes">{{game?.Notes}}</textarea>
+            <textarea mdInput  md-autosize  minRows="6" placeholder="Some notes" (ngModelChange)="onChange($event)" [(ngModel)]="game.Notes">{{game?.Notes}}</textarea>
         </md-input-container>
         
     </md-sidenav>
     <div fxLayout="column" class="container-fluid block-overflow" >
         <div fxLayout="row" fxLayoutAlign="space-between center">
             <md-input-container  fxFlex="85">
-                <input mdInput placeholder="Game Name" [(ngModel)]="game.Name">
+                <input mdInput placeholder="Game Name" [(ngModel)]="game.Name" (ngModelChange)="onChange($event)">
             </md-input-container>
-            <md-icon (click) ="addUsers()" class ="big-icon grey-icon frame">account_box</md-icon>
+            <md-icon (click) ="addUsers()" class ="big-icon grey-icon frame" (ngModelChange)="onChange($event)">account_box</md-icon>
         </div>
         <div fxLayout="row" fxLayoutAlign="space-between center">
             <div *ngIf="!isCreated" class = "character" fxFlex="30">
@@ -22,19 +22,19 @@
                 <img class = "{{game.ClassType}}" *ngIf="game.CharacterImage" [src] = "game.CharacterImage">
             </div>
             <div fxFlex="35" fxLayout="column" fxLayoutAlign="center">
-                <md-select *ngIf="!isCreated" placeholder="Hero class" [disabled] ="!game.CharacterImage" [(ngModel)]="game.Class" (ngModelChange)="onClassChanged()">
+                <md-select *ngIf="!isCreated" placeholder="Hero class" [disabled] ="!game.CharacterImage" [(ngModel)]="game.Class" (ngModelChange)="onClassChanged(); onChange($event)">
                     <md-option *ngFor="let classHero of classes" [value]="classHero">
                         {{ classHero }}
                     </md-option>
                 </md-select>
                 <md-input-container *ngIf="isCreated" >
-                    <input mdInput disabled value="{{game.Class}}" >
+                    <input mdInput disabled value="{{game.Class}}" (ngModelChange)="onChange($event)">
                 </md-input-container>
                 <md-input-container>
-                    <input mdInput placeholder="Hero Type" disabled value="{{game.ClassType}}" >
+                    <input mdInput placeholder="Hero Type" disabled value="{{game.ClassType}}" [(ngModel)]="game.ClassType" (ngModelChange)="onChange($event)">
                 </md-input-container>
                 <md-input-container>
-                    <input mdInput placeholder="Gold" >
+                    <input mdInput placeholder="Gold" [(ngModel)]="game.Gold" (ngModelChange)="onChange($event)">
                 </md-input-container>
             </div>
             <div fxFlex="30" fxLayout="column" fxLayoutAlign="center">
@@ -58,6 +58,6 @@
                 (selectedItemChanged)="AddCard($event, 'objects')">
             </carousel>
         </div>
-        <save-button [color] = "game.ClassType"></save-button>
+        <save-button [color] = "game.ClassType" [game] = "game"></save-button>
     </div>
 </md-sidenav-container>

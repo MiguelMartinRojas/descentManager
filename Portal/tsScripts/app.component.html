@@ -29,7 +29,7 @@
             </a>
         </md-menu>
         <div [hidden] = "!(userProfile | async)?.Name" >
-            <button md-icon-button [mdMenuTriggerFor]="menu">
+            <button md-icon-button [mdMenuTriggerFor]="menu" (click) = "getGames()">
                 <md-icon class="primary-icon">more_vert</md-icon>
             </button>
         </div>
