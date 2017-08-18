@@ -91,6 +91,26 @@ namespace Descent.Web.Services
             return response;
         }
 
+        public ProcessGameActionResponse Remove(string email, int gameId)
+        {
+            ProcessGameActionResponse response = null;
+
+            GamesModel games = _gamesDocumentDbManager.GetGames(email);
+            GameModel gameDb = games.Games.Find(x => x.Id == gameId + "");
+            if (gameDb != null)
+            {
+                games.Games.Remove(gameDb);
+                response = new ProcessGameActionResponse()
+                {
+                    Id = "",
+                    Success = true,
+                    Errors = new string[0]
+                };
+            }
+
+            return response;
+        }
+
 
         private async Task InsertEmptyGamesAsync(string email)
         {

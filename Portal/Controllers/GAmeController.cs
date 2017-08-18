@@ -58,6 +58,16 @@ namespace Descent.Web.Controllers
             return Ok(_gamesService.GetSkillsCards(klazzType, klazz));
         }
 
+
+        [HttpGet]
+        [Route("class/{klazzType}")]
+        [ResponseType(typeof(List<CardModel>))]
+        public IHttpActionResult GetSkillsCards(string klazzType)
+        {
+            return Ok(_gamesService.GetClassType(klazzType));
+        }
+
+
         [HttpPost]
         [ResponseType(typeof(ProcessGameActionResponse))]
         [Route("save/{email}/{gameId}")]
@@ -67,11 +77,11 @@ namespace Descent.Web.Controllers
         }
 
         [HttpGet]
-        [Route("class/{klazzType}")]
-        [ResponseType(typeof(List<CardModel>))]
-        public IHttpActionResult GetSkillsCards(string klazzType)
+        [Route("remove/{gameId}")]
+        [ResponseType(typeof(ProcessGameActionResponse))]
+        public IHttpActionResult RemoveGame(int gameId)
         {
-            return Ok(_gamesService.GetClassType(klazzType));
+            return Ok(_gamesService.Remove(gameId));
         }
     }
 }
