@@ -26,12 +26,18 @@ export class SaveButtonComponent{
                 public snackBar: MdSnackBar){}
 
     saveGame(){
-        this._authService.getProfile().then((profile) =>{
-            this._gameService.saveGame(profile.Email, this.game).then((data) =>{
-                this.openSnackBar(data.Success? 'Game saved correctly': 'There was an error while saving', 'Close');
-            })
+        if(this.game.CharacterImage !== null && this.game.Class  !== null && this.game.Name  !== null && this.game.Name  !== ''){
+            this._authService.getProfile().then((profile) =>{
+                this._gameService.saveGame(profile.Email, this.game).then((data) =>{
+                    this.openSnackBar(data.Success? 'Game saved correctly': 'There was an error while saving', 'Close');
+                })
             
-        })
+            });
+        }
+        else{
+            this.openSnackBar('You need to choose a character, class and name before saving.', 'Close')
+        }
+        
     }
 
     openSnackBar(message: string, action: string) {

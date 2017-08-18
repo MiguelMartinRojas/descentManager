@@ -66,5 +66,12 @@ namespace Descent.Web.Controllers
             return Ok(await _gamesService.SaveGames(email, gameId, game));
         }
 
+        [HttpGet]
+        [Route("class/{klazzType}")]
+        [ResponseType(typeof(List<CardModel>))]
+        public IHttpActionResult GetSkillsCards(string klazzType)
+        {
+            return Ok(_gamesService.GetClassType(klazzType));
+        }
     }
 }

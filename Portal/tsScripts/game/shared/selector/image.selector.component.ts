@@ -11,7 +11,7 @@ import { CardDefinition } from '../models/card.model';
     styleUrls: ['./image.selector.component.css']
 })
 export class ImageSelectorComponent implements OnInit{
-
+    color: string = 'Healer';
     cards : Promise<Array<CardDefinition>> = null;
     type: string = "";
     selectedCards: Array<CardDefinition>;
@@ -21,6 +21,7 @@ export class ImageSelectorComponent implements OnInit{
     
     constructor(public dialogRef: MdDialogRef<ImageSelectorComponent>, 
                 @Inject(MD_DIALOG_DATA) public data: any,) {   
+                    this.color = this.color || data.color;
                     this.cards = this.cards || data.cards;
                     this.type = this.type || data.type;
                     this.selectedCards =  data.selectedCards || Array<CardDefinition>();
@@ -70,7 +71,7 @@ export class ImageSelectorComponent implements OnInit{
 
     closeDialog() {
         this.removeCardZoom();
-        this.dialogRef.close(true);
+        this.dialogRef.close();
     }
 
     zoomCard(eventType: string, index: number) {

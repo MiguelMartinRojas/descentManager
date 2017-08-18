@@ -13,19 +13,49 @@
     -o-transition: all 0.30s ease-in-out;
 }
 
-.leftandright
+
+.leftandright.warrior
 {
 	background-color: #eed;
-	box-shadow: 8px 0 15px -4px rgba(244, 30, 30, 0.8), -8px 0 8px -4px rgba(244, 30, 30, 0.8);
-	-moz-box-shadow: 8px 0 15px -4px rgba(244, 30, 30, 0.8), -8px 0 8px -4px rgba(244, 30, 30, 0.8);
-	-webkit-box-shadow: 8px 0 15px -4px rgba(244, 30, 30, 0.8), -8px 0 8px -4px rgba(244, 30, 30, 0.8);
-	-o-box-shadow: 8px 0 15px -4px rgba(244, 30, 30, 0.8), -8px 0 8px -4px rgba(244, 30, 30, 0.8);
+	box-shadow: 8px 0 15px -4px #B71C1C, -8px 0 8px -4px #B71C1C;
+	-moz-box-shadow: 8px 0 15px -4px #B71C1C, -8px 0 8px -4px #B71C1C;
+	-webkit-box-shadow: 8px 0 15px -4px #B71C1C, -8px 0 8px -4px #B71C1C;
+	-o-box-shadow: 8px 0 15px -4px #B71C1C, -8px 0 8px -4px #B71C1C;
+}
+
+.leftandright.Scout
+{
+	background-color: #eed;
+	box-shadow: 8px 0 15px -4px #004D40 , -8px 0 8px -4px #004D40 ;
+	-moz-box-shadow: 8px 0 15px -4px #004D40 , -8px 0 8px -4px #004D40 ;
+	-webkit-box-shadow: 8px 0 15px -4px #004D40 , -8px 0 8px -4px #004D40;
+	-o-box-shadow: 8px 0 15px -4px #004D40 , -8px 0 8px -4px #004D40 ;
+}
+
+.leftandright.Healer
+{
+	background-color: #eed;
+	box-shadow: 8px 0 15px -4px #01579B , -8px 0 8px -4px #01579B ;
+	-moz-box-shadow: 8px 0 15px -4px #01579B , -8px 0 8px -4px #01579B ;
+	-webkit-box-shadow: 8px 0 15px -4px #01579B , -8px 0 8px -4px #01579B;
+	-o-box-shadow: 8px 0 15px -4px #01579B , -8px 0 8px -4px #01579B ;
+}
+
+
+.leftandright.Mage
+{
+	background-color: #eed;
+	box-shadow: 8px 0 15px -4px #FFAB00 , -8px 0 8px -4px #FFAB00 ;
+	-moz-box-shadow: 8px 0 15px -4px #FFAB00 , -8px 0 8px -4px #FFAB00 ;
+	-webkit-box-shadow: 8px 0 15px -4px #FFAB00 , -8px 0 8px -4px #FFAB00;
+	-o-box-shadow: 8px 0 15px -4px #FFAB00 , -8px 0 8px -4px #FFAB00 ;
 }
 
  .image-selector.active {
     -moz-transition: all 0.75s;
     -webkit-transition: all 0.75s;
     transition: all 0.75s;
+    z-index: 1;
 
     top:50%;
     left:50%;
@@ -34,4 +64,8 @@
     -webkit-transform: scale(2.0) translate(-30%, -30%);
     transform: scale(2.0) translate(-30%, -30%);
     box-shadow: 0 8px 6px -6px black;
+}
+
+.margin-label {
+    margin: 5px 0 5px 0;
 }

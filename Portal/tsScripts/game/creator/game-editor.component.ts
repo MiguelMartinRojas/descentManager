@@ -42,9 +42,10 @@ export class GameEditorComponent implements OnInit{
             this._dialog.open(ImageSelectorComponent, {
                 data: {
                     cards: this._cardsService.getCharactersCards(),
-                    selectSingleCard: true
+                    selectSingleCard: true,
+                    color: this.game.ClassType
                 },
-                height: '432px',
+                height: '500px',
                 width: '378px'
             }).afterClosed().subscribe((result: any) => {
                 if(result && result !== "") {
@@ -70,7 +71,7 @@ export class GameEditorComponent implements OnInit{
                         selectedCards: type ==="objects"? this.game.Objects: this.game.Skills,
                         cards: type ==="objects"? this._cardsService.getObjectsCards(): this._cardsService.getSkillsCards(this.game.ClassType, this.game.Class)
                     },
-                    height: '432px',
+                    height: '500px',
                     width: '378px'
                 }).afterClosed().subscribe((result: any) => {
                     
