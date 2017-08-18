@@ -83,13 +83,14 @@ export class CarouselComponent {
     private hideElementsOutOfWindow(size: number, index: number, card: ElementRef)  {
         let leftDistance = this.selectedItem,
             rightDistance = size - this.selectedItem;
+            card.nativeElement.style.opacity = '1';
 
         if (index <= this.selectedItem - this.window/2 && Math.abs(index - this.selectedItem) > this.window - rightDistance){
-            card.nativeElement.style.transform = 'translateX(-1000px)';
+            card.nativeElement.style.opacity = '0';
             card.nativeElement.style.maxWidth = '0';
         }
         else if (index >=  this.selectedItem + this.window/2 && Math.abs(index - this.selectedItem) >= this.window - leftDistance){
-            card.nativeElement.style.transform = 'translateX(1000px)';
+            card.nativeElement.style.opacity = '0';
             card.nativeElement.style.maxWidth = '0';
         }
     }
