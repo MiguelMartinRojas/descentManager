@@ -37,7 +37,7 @@ export class CarouselComponent {
             let scaleValue = this.getScale(this.cardsDom.length, i);
             let percentageValue = this.getPercentage();
 
-            card.nativeElement.style = this.getTransformString(scaleValue, (this.cardsDom.length/i)>2?'':'-');
+            card.nativeElement.style = this.getTransformString(scaleValue);
             card.nativeElement.style.maxWidth = percentageValue+'%';
             card.nativeElement.style.zIndex = this.getZIndex(this.cardsDom.length, i);
             this.hideElementsOutOfWindow(this.cardsDom.length, i, card);
@@ -69,6 +69,15 @@ export class CarouselComponent {
         this.selectedItem = nextIndex;
     }
 
+    zoomCard(eventType: string, index: number) {
+        this.selectCard(index);
+        let card = this.cardsDom.toArray()[index];
+        card.nativeElement.className += 'zoom';
+    }
+    unZoomCard(eventType: string, index: number) {
+        let card = this.cardsDom.toArray()[index];
+        card.nativeElement.className = '';
+    }
 
 
     private hideElementsOutOfWindow(size: number, index: number, card: ElementRef)  {
@@ -85,7 +94,7 @@ export class CarouselComponent {
         }
     }
 
-    private getTransformString(scale: number, sign: string): string {
+    private getTransformString(scale: number): string {
         
         return  "-webkit-transform: scale3d("+ scale +", " + scale + ", 1); " +
                 "-moz-transform: scale3d("+ scale +", " + scale + ", 1); " +
