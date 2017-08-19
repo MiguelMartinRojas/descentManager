@@ -4,8 +4,7 @@
          *ngFor = "let card of cards; let i = index">
             <img (swipeleft)="swipe(i, $event.type)"
                  (swiperight)="swipe(i, $event.type)"
-                 (press) = "zoomCard($event.type, i)"
-                 (pressup) = "unZoomCard($event.type, i)"
+                 (tap) = "zoomCard($event, i)"
                  [src] = "card.Url">
     </div>
     
