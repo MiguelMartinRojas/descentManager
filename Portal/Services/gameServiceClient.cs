@@ -182,5 +182,10 @@ namespace Descent.Web.Services
             var uri = new Uri(path);
             return uri.LocalPath;
         }
+
+        public ProcessGameActionResponse Remove(int gameId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
