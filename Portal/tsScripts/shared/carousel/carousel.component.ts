@@ -40,7 +40,7 @@ export class CarouselComponent {
             let scaleValue = this.getScale(this.cardsDom.length, i);
             let percentageValue = this.getPercentage();
 
-            card.nativeElement.style = this.getTransformString(scaleValue);
+            //card.nativeElement.style = this.getTransformString(scaleValue);
             card.nativeElement.style.maxWidth = percentageValue+'%';
             card.nativeElement.style.zIndex = this.getZIndex(this.cardsDom.length, i);
             this.hideElementsOutOfWindow(this.cardsDom.length, i, card);
