@@ -29,9 +29,7 @@ export class CarouselComponent {
     selectedItem: number = -1;
 
     ngAfterViewChecked() {
-        // if(this.cardZoom !== -1){
-        //     this.unZoomCard(this.cardZoom)
-        // }
+        
         if((this.selectedItem < 0 && this.cardsDom.length)|| this.cardsDom.length === 1){
             this.selectedItem = 0;
         }
@@ -50,6 +48,7 @@ export class CarouselComponent {
     }
 
     selectCard(index: number){
+        this.unZoomCards();
         this.selectedItem = index;
         this.selectedItemChanged.emit([this.selectedItem, this.cards.length]);
     }
@@ -57,6 +56,8 @@ export class CarouselComponent {
     swipe(currentIndex: number, action = this.SWIPE_ACTION.RIGHT) {
         // out of range
         if (currentIndex > this.cardsDom.length || currentIndex < 0) return;
+
+        this.unZoomCards();
 
         let nextIndex = 0;
         if (action === this.SWIPE_ACTION.LEFT) {
@@ -73,17 +74,18 @@ export class CarouselComponent {
     }
 
     zoomCard(event: any, index: number) {
-        if(event.tapCount === 2) {
-            this.cardZoom = index;
-            this.selectCard(index);
-            let card = this.cardsDom.toArray()[index];
-            card.nativeElement.className += 'zoom';
-        }
-    }
-    unZoomCard(index: number) {
+        this.unZoomCards();
+        this.cardZoom = index;
+        this.selectCard(index);
         let card = this.cardsDom.toArray()[index];
-        card.nativeElement.className = '';
-        this.cardZoom = -1;
+        card.nativeElement.className += 'zoom';
+        return false;
+    }
+
+    unZoomCards() {
+        this.cardsDom.toArray().forEach( card => {
+            card.nativeElement.className = '';
+        });
     }
 
 
