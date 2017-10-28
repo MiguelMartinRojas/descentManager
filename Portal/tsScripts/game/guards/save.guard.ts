@@ -30,7 +30,7 @@ export class CanDeactivateGuard implements CanDeactivate<GameEditorComponent> {
     state: RouterStateSnapshot
   ): Promise<boolean> | boolean {
     
-    let discardChanges = new Promise((resolve =>{
+    let discardChanges = new Promise<boolean>((resolve =>{
         return component.game.then((game: any)=> {
                 return this._profile.then((profile:ProfileDefinition) => {
                     return this.gameHasChanged(this._gameService.getGameById(profile.Email, +game.Id), game).then((hasChanged: boolean) =>{
@@ -60,7 +60,7 @@ export class CanDeactivateGuard implements CanDeactivate<GameEditorComponent> {
   }
 
       gameHasChanged(gameOriginal: Promise<GameModelDefinition>, gameActual: GameModelDefinition): Promise<boolean> {
-        let hasChanged = new Promise((resolve =>{
+        let hasChanged = new Promise<boolean>((resolve =>{
             gameOriginal.then((gameServer: GameModelDefinition) => {
                 if(!gameActual || !gameServer) {//new game case
                     resolve(true);

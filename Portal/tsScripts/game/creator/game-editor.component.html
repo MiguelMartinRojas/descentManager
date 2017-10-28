@@ -9,7 +9,7 @@
     <div fxLayout="column" class="container-fluid block-overflow" >
         <div fxLayout="row" fxLayoutAlign="space-between center">
             <md-input-container  fxFlex="85">
-                <input mdInput placeholder="Game Name" [(ngModel)]="game.Name" (ngModelChange)="onChange($event)">
+                <input required mdInput placeholder="Game Name" [(ngModel)]="game.Name" (ngModelChange)="onChange($event)">
             </md-input-container>
             <md-icon (click) ="addUsers()" class ="big-icon grey-icon frame" (ngModelChange)="onChange($event)">account_box</md-icon>
         </div>

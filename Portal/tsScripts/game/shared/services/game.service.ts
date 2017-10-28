@@ -33,12 +33,12 @@ export class GameService {
                 .publishReplay(1)
                 .refCount();
         }
-        return this._gamesRef.toPromise().catch(() => []);
+        return this._gamesRef.toPromise().catch(() => null);
     }
 
     getGameById(userValue: string, id: number): Promise<GameModelDefinition> {
         return this.getGames(userValue).then((gamesObject:GamesModelDefinition)=>{
-            return gamesObject.Games[id];
+            return gamesObject.Games.find(x=>x.Id === id +'');
         })
     }
 

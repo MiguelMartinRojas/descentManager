@@ -22,11 +22,11 @@
             <a md-menu-item *ngFor="let game of (games | async)?.Games" routerLink="/games/{{game.Id}}">
                 <span>{{game.Name}}</span>
             </a>
-            <a md-menu-item (click) = "onLogOut()">
+            <!--<a md-menu-item (click) = "onLogOut()">
                 <div fxLayoutAlign="start center">
                     <span>Log out</span>
                 </div>
-            </a>
+            </a>-->
         </md-menu>
         <div [hidden] = "!(userProfile | async)?.Name" >
             <button md-icon-button [mdMenuTriggerFor]="menu" (click) = "getGames()">
