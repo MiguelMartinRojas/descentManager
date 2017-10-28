@@ -40,7 +40,7 @@ export class CanDeactivateGuard implements CanDeactivate<GameEditorComponent> {
                         }
 
                         this._dialog.open(DiscardDialogComponent, {
-                                    height: '432px',
+                                    height: '150px',
                                     width: '378px'
                         }).afterClosed().subscribe((result: any) => {
                             if(result && result !== "" && result === true) { //discard
