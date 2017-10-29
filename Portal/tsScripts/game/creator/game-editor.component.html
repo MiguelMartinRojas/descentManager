@@ -11,7 +11,9 @@
             <md-input-container  fxFlex="85">
                 <input required mdInput placeholder="Game Name" [(ngModel)]="game.Name" (ngModelChange)="onChange($event)">
             </md-input-container>
-            <md-icon (click) ="addUsers()" class ="big-icon grey-icon frame" (ngModelChange)="onChange($event)">account_box</md-icon>
+        
+            <save-button [color] = "game.ClassType" [game] = "game"></save-button>
+            <!-- <md-icon (click) ="addUsers()" class ="big-icon grey-icon frame" (ngModelChange)="onChange($event)">account_box</md-icon> -->
         </div>
         <div fxLayout="row" fxLayoutAlign="space-between center">
             <div *ngIf="!isCreated" class = "character" fxFlex="30">
@@ -58,6 +60,6 @@
                 (selectedItemChanged)="AddCard($event, 'objects')">
             </carousel>
         </div>
-        <save-button [color] = "game.ClassType" [game] = "game"></save-button>
+
     </div>
 </md-sidenav-container>

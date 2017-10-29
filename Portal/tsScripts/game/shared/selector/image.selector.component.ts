@@ -4,6 +4,11 @@ import { MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 
 import { CardDefinition } from '../models/card.model';
 
+declare global {
+    interface Window { initLongPress: any; }
+}
+window.initLongPress = window.initLongPress || {};
+
 @Component({
     moduleId: module.id,
     selector: 'game',
@@ -18,6 +23,7 @@ export class ImageSelectorComponent implements OnInit{
     selectedCardsMap : Map<number, boolean> = new Map<number, boolean>();
     selectedIndex :number = -1;
     selectSingleCard: string;
+    @ViewChildren('allcards') cardsDom: QueryList<ElementRef>;
     
     constructor(public dialogRef: MdDialogRef<ImageSelectorComponent>, 
                 @Inject(MD_DIALOG_DATA) public data: any,) {   
@@ -43,7 +49,10 @@ export class ImageSelectorComponent implements OnInit{
                 })
             }
         }
+    }
 
+    ngAfterViewChecked() {
+        this.fixLongPress();
     }
 
     selectCard(event: any, card: CardDefinition, index: number) {
@@ -69,6 +78,15 @@ export class ImageSelectorComponent implements OnInit{
                     this.selectedCardsMap.set(index,true);
                 }
         };
+    }
+
+    fixLongPress() {
+        if(this.cardsDom.length)
+        {       
+            this.cardsDom.forEach(card => {
+                window.initLongPress(card.nativeElement)
+            });    
+        } 
     }
 
     closeDialog() {

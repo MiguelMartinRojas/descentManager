@@ -3,7 +3,7 @@
     <md-icon (click) = "closeDialog()" class="primary-icon">check</md-icon>
     </div>
     <div fxLayout="row" fxLayoutWrap fxLayoutAlign = "space-between">
-        <img 
+        <img #allcards 
              *ngFor ="let card of (cards | async); let i = index" 
              (press) = "zoomCard($event, i)" fxFlex="30" [class.active]="i === selectedIndex"
              (tap) = "selectCard($event, card, i)"
