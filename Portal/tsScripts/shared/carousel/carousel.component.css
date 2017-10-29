@@ -21,6 +21,5 @@ div#carousel {
 div.zoom { 
     transform: scale3d(2, 2, 1) !important;
     position: absolute;
-
 }
 

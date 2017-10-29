@@ -31,7 +31,10 @@ import { GameChangedService } from './shared/services/game-changed.service'
     imports: [SharedModule, GameRoutingModule],
     declarations: [GameEditorComponent, ImageSelectorComponent, GameComponent, SaveButtonComponent, DiscardDialogComponent, ToolBarComponent],
     entryComponents: [GameComponent, ImageSelectorComponent, DiscardDialogComponent],
-    providers: [CardsService, AuthService, GameService, GameChangedService ],
+    providers: [CardsService, AuthService, GameService, GameChangedService,{ 
+        provide: HAMMER_GESTURE_CONFIG, 
+        useClass: CustomHammerConfig 
+    }],
     exports: []
 })
 export class GameModule {

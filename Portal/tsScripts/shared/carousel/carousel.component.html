@@ -1,10 +1,10 @@
 <div id ="carousel" #carousel class = "carousel " fxLayout="row" fxLayoutAlign="center center">
     <div #mycards 
-         (click)="selectCard(i)"
+         (tap)="selectCard($event, i)"
          *ngFor = "let card of cards; let i = index">
             <img (swipeleft)="swipe(i, $event.type)"
                  (swiperight)="swipe(i, $event.type)"
-                 (press) = "zoomCard($event, i)"
+                 (tap) = "zoomCard($event, i)"
                  [src] = "card.Url">
     </div>
     
