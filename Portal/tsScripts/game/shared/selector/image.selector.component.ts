@@ -35,7 +35,7 @@ export class ImageSelectorComponent implements OnInit{
                 this.cards.then(allCards => {
                     let j = 0;
                     for(let card of allCards){
-                        if(selectedCard.Id === card.Id){
+                        if(selectedCard.Url === card.Url){
                                 this.selectedCardsMap.set(j,true);
                         }
                         j++;
@@ -46,8 +46,10 @@ export class ImageSelectorComponent implements OnInit{
 
     }
 
-    selectCard(card: CardDefinition, index: number) {
-        
+    selectCard(event: any, card: CardDefinition, index: number) {
+        if(event.tapCount !== 1) {
+            return false;
+        }
         if(this.selectSingleCard){
             this.dialogRef.close(card.Url);
         }
@@ -74,8 +76,10 @@ export class ImageSelectorComponent implements OnInit{
         this.dialogRef.close();
     }
 
-    zoomCard(eventType: string, index: number) {
-        this.selectedIndex = (this.selectedIndex == index)? -1 : index;
+    zoomCard(event: any, index: number) {
+        //if(event.tapCount === 2) {
+            this.selectedIndex = (this.selectedIndex == index)? -1 : index;
+        //}
     }
 
     isCardSelected (index: number): boolean {

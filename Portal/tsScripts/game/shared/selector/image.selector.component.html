@@ -5,8 +5,8 @@
     <div fxLayout="row" fxLayoutWrap fxLayoutAlign = "space-between">
         <img 
              *ngFor ="let card of (cards | async); let i = index" 
-             (press) = "zoomCard($event.type, i)" fxFlex="30" [class.active]="i == selectedIndex"
-             (click) = "selectCard(card, i)"
+             (press) = "zoomCard($event, i)" fxFlex="30" [class.active]="i === selectedIndex"
+             (tap) = "selectCard($event, card, i)"
              class="{{ isCardSelected(i) ? 'image-selector selected leftandright' : 'image-selector'}} {{color}}"
              [src] ="card?.Url">
     </div>
