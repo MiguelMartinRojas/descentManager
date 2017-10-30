@@ -66,7 +66,7 @@ export class ImageSelectorComponent implements OnInit{
         this.removeCardZoom();
         
         if(this.selectedCards) {
-            let removeCard = this.selectedCards.findIndex((selectedCard => selectedCard.Id === card.Id));
+            let removeCard = this.selectedCards.findIndex((selectedCard => selectedCard.Url === card.Url));
                 if( removeCard !== -1){
                     this.selectedCards.splice(removeCard, 1);
                     this.selectedCardsMap.delete(index);
